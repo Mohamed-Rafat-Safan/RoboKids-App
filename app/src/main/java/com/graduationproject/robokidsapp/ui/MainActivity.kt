@@ -3,6 +3,7 @@ package com.graduationproject.robokidsapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.graduationproject.robokidsapp.R
 
@@ -14,6 +15,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        //Mohamed Samir
+        Toast.makeText(this, "mohamed", Toast.LENGTH_SHORT).show()
     }
 }
