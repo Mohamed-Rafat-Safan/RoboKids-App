@@ -25,7 +25,7 @@
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_welcomeNewAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,12 +38,12 @@
         android:text="Create New Account" />
 
     <TextView
-        android:id="@+id/button2"
+        android:id="@+id/btn_welcomeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="#EA3E78"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_25ssp"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Login" />

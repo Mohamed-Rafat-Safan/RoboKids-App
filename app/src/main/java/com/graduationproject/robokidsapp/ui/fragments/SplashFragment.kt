@@ -1,5 +1,6 @@
 package com.graduationproject.robokidsapp.ui.fragments
 
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,10 +18,15 @@ class SplashFragment : Fragment() {
 
     private lateinit var mNavController:NavController
 
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+//        //Hide status bar
+//        activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Hide status bar
-        activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
         mNavController = findNavController()
     }
 

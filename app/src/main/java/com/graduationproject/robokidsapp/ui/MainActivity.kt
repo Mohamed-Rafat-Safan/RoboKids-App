@@ -1,5 +1,6 @@
 package com.graduationproject.robokidsapp.ui
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         // بسنم الله الرحمن الرحيم
 
-        Toast.makeText(this, "mohamed", Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, "mohamed", Toast.LENGTH_SHORT).show()
     }
+
+
+
+
 }

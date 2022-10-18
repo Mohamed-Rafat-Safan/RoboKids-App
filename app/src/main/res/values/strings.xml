@@ -2,4 +2,6 @@
     <string name="app_name">RoboKids App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_back"><u>Welcome Back</u></string>
+    <string name="sign_up_now"><u>Sign Up Now</u></string>
 </resources>
