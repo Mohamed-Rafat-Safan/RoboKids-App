@@ -19,7 +19,6 @@ class SplashFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         //Hide status bar
         activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
         mNavController = findNavController()

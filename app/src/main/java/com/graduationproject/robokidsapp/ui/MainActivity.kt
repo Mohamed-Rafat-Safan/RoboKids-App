@@ -15,6 +15,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         // بسنم الله الرحمن الرحيم
-        Toast.makeText(this, "mohamed", Toast.LENGTH_SHORT).show()
+
     }
 }

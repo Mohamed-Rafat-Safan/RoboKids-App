@@ -21,7 +21,6 @@ class ParentsORKidsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         mNavController = findNavController()
     }
 
@@ -35,8 +34,8 @@ class ParentsORKidsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToWelcomeFragment("")
-//        mNavController.navigate(action)
+        val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToWelcomeFragment()
+        mNavController.navigate(action)
     }
 
 
