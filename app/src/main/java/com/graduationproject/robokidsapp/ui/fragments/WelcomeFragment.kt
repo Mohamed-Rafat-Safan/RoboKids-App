@@ -8,18 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
 import com.graduationproject.robokidsapp.databinding.FragmentWelcomeBinding
+import com.graduationproject.robokidsapp.ui.MainActivity
 
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
 
-
+    // this action
     private lateinit var mNavController: NavController
+
+
 
 
 //    override fun onAttach(context: Context) {

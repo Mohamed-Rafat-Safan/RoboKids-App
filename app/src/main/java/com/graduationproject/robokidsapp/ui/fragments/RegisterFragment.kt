@@ -35,9 +35,14 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+
+       binding.btnRegister.setOnClickListener {
+           val action = RegisterFragmentDirections.actionRegisterFragmentToParentsDataFragment()
+           mNavController.navigate(action)
+       }
 
         binding.selectCountry.setOnClickListener {
             showDialogCountries()

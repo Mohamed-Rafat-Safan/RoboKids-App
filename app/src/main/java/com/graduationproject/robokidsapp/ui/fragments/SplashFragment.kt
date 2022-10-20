@@ -27,6 +27,8 @@ class SplashFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         mNavController = findNavController()
     }
 
@@ -44,6 +46,8 @@ class SplashFragment : Fragment() {
             delay(5000)
             withContext(Dispatchers.Main){
                 val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+
+//                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
                 mNavController.navigate(action)
             }
 

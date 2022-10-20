@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#81C6DCE4"
-        android:padding="@dimen/_18sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="@dimen/_18sdp"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -127,15 +127,10 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:paddingVertical="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
                     android:background="@drawable/bg_select_country"
                     android:layout_below="@id/register_confirmPassword" >
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow_down"  />
 
                     <ImageView
                         android:layout_width="@dimen/_40sdp"
@@ -144,18 +139,25 @@
                         android:src="@drawable/egypt" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Egypt"
-                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16ssp" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow_down"  />
+
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/selectCountry"
@@ -165,17 +167,17 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:textColor="@color/white"
-                    android:background="@drawable/btn_background_login"
-                    android:enabled="false"  />
+                    android:background="@drawable/btn_background_login"  />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/btn_login"
+                    android:layout_below="@id/btn_register"
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center">
+
 
                     <TextView
                         android:id="@+id/tv_ques"
