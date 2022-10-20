@@ -3,16 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.ParentsHomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_reportsKids"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_add_new_kids"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_kids"
+        android:drawableStart="@drawable/ic_add_circle"
+        android:drawablePadding="@dimen/_4sdp"
+        android:textColor="#2196F3"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_reportsKids" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

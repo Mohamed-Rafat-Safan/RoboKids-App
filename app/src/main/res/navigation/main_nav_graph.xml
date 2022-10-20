@@ -82,6 +82,12 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_kidsReportsFragment"
             app:destination="@id/kidsReportsFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_addKidsFragment"
+            app:destination="@id/addKidsFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"

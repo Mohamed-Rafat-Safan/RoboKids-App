@@ -8,16 +8,19 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
+import com.graduationproject.robokidsapp.ui.fragments.ParentsHomeFragmentDirections
 
 //                              بسم الله الرحمن الرحيم
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     companion object{
         lateinit var binding:ActivityMainBinding
     }
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
 
         setSupportActionBar(binding.customToolbarMainActivity)
@@ -44,9 +47,23 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(this, item.title ,Toast.LENGTH_LONG).show()
+        when(item.itemId){
+            R.id.myKids -> showToast(item.title.toString())
+            R.id.knowApp -> showToast(item.title.toString())
+            R.id.commonQuestions -> showToast(item.title.toString())
+            R.id.setting -> showToast(item.title.toString())
+            R.id.signOut -> {
+                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
+                navController.navigate(action)
+            }
+
+        }
         closeDrawer() // this method to end or hide the Navigation drawer
         return true
+    }
+
+    fun showToast(str:String){
+        Toast.makeText(this, str ,Toast.LENGTH_LONG).show()
     }
 
     fun closeDrawer(){

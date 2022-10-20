@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.graduationproject.robokidsapp.databinding.FragmentKidsReportsBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
 
 class KidsReportsFragment : Fragment() {
     private var _binding: FragmentKidsReportsBinding? = null
@@ -26,18 +25,6 @@ class KidsReportsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentKidsReportsBinding.inflate(inflater, container, false)
-
-//        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.customToolbarReports)
-//
-//
-//        // لكي يستدعي الداله الي تحت الي اسمها  onNavigationItemSelected
-//        navigationView.setNavigationItemSelectedListener(this)
-//
-//
-//        val actionToggle = ActionBarDrawerToggle(this, drawLayout , toolBar ,
-//            R.string.draw_open , R.string.draw_close)
-//
-//        drawLayout.addDrawerListener(actionToggle)
 
         return binding.root
     }
