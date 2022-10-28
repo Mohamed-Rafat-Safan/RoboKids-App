@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_30sdp"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
 
@@ -147,7 +148,6 @@
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_40sdp"
                     android:background="@drawable/btn_background_login"
-                    android:enabled="false"
                     android:text="Login"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -173,7 +173,7 @@
                     <TextView
                         android:id="@+id/tv_signUp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="#00000000"
                         android:text="@string/sign_up_now"
                         android:textColor="#ED75AD"

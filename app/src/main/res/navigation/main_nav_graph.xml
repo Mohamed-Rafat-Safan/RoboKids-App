@@ -91,10 +91,35 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
         android:name="com.graduationproject.robokidsapp.ui.fragments.KidsReportsFragment"
         android:label="fragment_kids_reports"
         tools:layout="@layout/fragment_kids_reports" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_updateAccountFragment"
+            app:destination="@id/updateAccountFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateAccountFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.UpdateAccountFragment"
+        android:label="fragment_update_account"
+        tools:layout="@layout/fragment_update_account" />
 </navigation>

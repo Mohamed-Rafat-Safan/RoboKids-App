@@ -18,6 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/left_back"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,12 +36,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="@dimen/_26sdp"
-            android:layout_height="@dimen/_26sdp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/back"/>
+
 
     </LinearLayout>
 
@@ -52,7 +54,8 @@
         android:id="@+id/go_to_update_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         android:elevation="@dimen/_3sdp"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
@@ -81,9 +84,10 @@
         android:id="@+id/go_to_change_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
         android:background="@drawable/bg_select_country"
         android:elevation="@dimen/_3sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginVertical="@dimen/_25sdp"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -57,12 +57,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     }
 
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.myKids -> showToast(item.title.toString())
             R.id.knowApp -> showToast(item.title.toString())
             R.id.commonQuestions -> showToast(item.title.toString())
-            R.id.setting -> showToast(item.title.toString())
+            R.id.setting -> {
+                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToSettingFragment()
+                navController.navigate(action)
+            }
             R.id.signOut -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
                 navController.navigate(action)
