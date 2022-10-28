@@ -4,10 +4,12 @@ import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
@@ -22,10 +24,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
     private lateinit var navController: NavController
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //Hide status bar
+        this.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -33,8 +40,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         setSupportActionBar(binding.customToolbarMainActivity)
 
+        binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+
         // لكي يستدعي الداله الي تحت الي اسمها  onNavigationItemSelected
         binding.navigationView.setNavigationItemSelectedListener(this)
+
 
 
         val actionToggle = ActionBarDrawerToggle(this, binding.drawLayout , binding.customToolbarMainActivity ,
@@ -81,3 +92,4 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
 }
+

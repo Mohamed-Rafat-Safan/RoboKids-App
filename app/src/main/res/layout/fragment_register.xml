@@ -10,18 +10,24 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#81C6DCE4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_18sdp"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_230sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/background_shap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_logo"
@@ -29,14 +35,19 @@
                 android:layout_height="@dimen/_100sdp"
                 android:layout_gravity="center"
                 android:padding="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_35sdp">
+                android:layout_marginTop="@dimen/_20sdp"
+                android:paddingHorizontal="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_email"
@@ -51,7 +62,7 @@
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_email"
-                    app:startIconTint="@color/black" >
+                    app:startIconTint="#2196F3">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -60,8 +71,8 @@
                         android:layout_height="match_parent"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_14ssp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,14 +82,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/register_email"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:hint="Enter Your Password"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="@color/black"
+                    app:endIconTint="#2196F3"
                     app:startIconDrawable="@drawable/ic_lock"
-                    app:startIconTint="@color/black"
-                    android:layout_marginTop="@dimen/_16sdp">
+                    app:startIconTint="#2196F3">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -86,8 +97,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
-                        android:textSize="@dimen/_14ssp"
-                        android:textColor="@color/black"  />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,16 +108,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/register_password"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:hint="Enter Confirm Password"
                     android:textColorHint="#FF737373"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="@color/black"
+                    app:endIconTint="#2196F3"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_lock"
-                    app:startIconTint="@color/black"
-                    android:layout_marginTop="@dimen/_16sdp">
+                    app:startIconTint="#2196F3">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -114,8 +125,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
-                        android:textSize="@dimen/_14ssp"
-                        android:textColor="@color/black"  />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,12 +135,13 @@
                     android:id="@+id/selectCountry"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:layout_below="@id/register_confirmPassword"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:paddingVertical="@dimen/_5sdp"
-                    android:paddingHorizontal="@dimen/_10sdp"
                     android:background="@drawable/bg_select_country"
-                    android:layout_below="@id/register_confirmPassword" >
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:elevation="@dimen/_3sdp" >
 
 
                     <ImageView
@@ -141,10 +153,10 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Egypt"
-                        android:paddingStart="@dimen/_5sdp"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:text="Egypt"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16ssp" />
 
@@ -152,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow_down"  />
+                        android:src="@drawable/ic_arrow_down" />
 
                 </LinearLayout>
 
@@ -161,22 +173,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/selectCountry"
-                    android:text="Register"
-                    android:textSize="@dimen/_20ssp"
-                    android:textAllCaps="false"
-                    android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/btn_background_login"
+                    android:text="Register"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:background="@drawable/btn_background_login"  />
+                    android:textSize="@dimen/_20ssp" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btn_register"
-                    android:orientation="horizontal"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
 
                     <TextView
@@ -184,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="You have an account? "
-                        android:textSize="@dimen/_15ssp"/>
+                        android:textSize="@dimen/_15ssp" />
 
 
                     <TextView
@@ -193,9 +205,9 @@
                         android:layout_height="wrap_content"
                         android:background="#00000000"
                         android:text="@string/welcome_back"
-                        android:textStyle="bold"
+                        android:textColor="#ED75AD"
                         android:textSize="@dimen/_16ssp"
-                        android:textColor="#FF0057" />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -215,11 +227,10 @@
                         android:layout_centerInParent="true" />
 
                 </RelativeLayout>
-
-
             </RelativeLayout>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 

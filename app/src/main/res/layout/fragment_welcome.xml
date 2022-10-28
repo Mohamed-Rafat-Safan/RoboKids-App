@@ -1,50 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".ui.fragments.WelcomeFragment" >
 
+
     <ImageView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_230sdp"
+        android:src="@drawable/background_shap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"/>
+
+
+        <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:src="@drawable/logo" />
+        android:layout_marginTop="@dimen/_30sdp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_15sdp"
         android:text="Welcome To RoboKids!"
+        android:textColor="@color/white"
         android:textSize="@dimen/_18ssp"
-        android:layout_gravity="center"/>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btn_welcomeNewAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_130sdp"
         android:background="@drawable/btn_create_account_background"
-        android:backgroundTint="#EA3E78"
-        android:textColor="@color/white"
         android:paddingHorizontal="@dimen/_24sdp"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:text="Create New Account"
+        android:textColor="@color/white"
         android:textSize="@dimen/_16ssp"
-        android:text="Create New Account" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/btn_welcomeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="#EA3E78"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="Login"
+        android:textColor="#ED75AD"
         android:textSize="@dimen/_25ssp"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Login" />
-</LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_welcomeNewAccount" />
+</androidx.constraintlayout.widget.ConstraintLayout>

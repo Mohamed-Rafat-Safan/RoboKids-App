@@ -18,12 +18,6 @@ class SplashFragment : Fragment() {
 
     private lateinit var mNavController:NavController
 
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//        //Hide status bar
-//        activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +39,9 @@ class SplashFragment : Fragment() {
         GlobalScope.launch {
             delay(5000)
             withContext(Dispatchers.Main){
-                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+//                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
 
-//                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
+                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
                 mNavController.navigate(action)
             }
 

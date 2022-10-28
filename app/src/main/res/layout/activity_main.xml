@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawLayout"
+
     tools:context=".ui.MainActivity">
 
     <LinearLayout
@@ -59,8 +60,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/header_navigation"
         app:menu="@menu/navigation_drawer_menu">
-    </com.google.android.material.navigation.NavigationView>
 
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

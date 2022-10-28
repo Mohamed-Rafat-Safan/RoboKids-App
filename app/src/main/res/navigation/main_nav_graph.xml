@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashFragment_to_parentsORKidsFragment"
             app:destination="@id/parentsORKidsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_kidsReportsFragment"
+            app:destination="@id/kidsReportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"

@@ -20,9 +20,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_24sdp"
-                android:text="child age"
+                android:text="Child Age"
                 android:textSize="@dimen/_18ssp"
                 android:textColor="@color/black"
+                android:paddingBottom="@dimen/_5sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_name_kids" />
 
@@ -54,6 +55,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
+                android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@+id/iv_select_boye"
                 app:layout_constraintStart_toStartOf="@+id/iv_select_boye"
                 app:layout_constraintTop_toBottomOf="@+id/iv_select_boye" />
@@ -84,6 +86,7 @@
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/boye"
+                android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -114,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:text="OR"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
                 app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -125,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_24sdp"
-                android:text="child name"
+                android:text="Child Name"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,6 +145,7 @@
                 android:textSize="@dimen/_16ssp"
                 android:inputType="textPersonName"
                 android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -167,7 +172,7 @@
                 android:paddingTop="@dimen/_20sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:text="is your child"
+                android:text="Is Your Child"
                 android:textSize="@dimen/_20ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />

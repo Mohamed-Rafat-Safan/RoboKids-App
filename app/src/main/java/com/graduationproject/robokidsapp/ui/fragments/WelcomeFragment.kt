@@ -24,12 +24,14 @@ class WelcomeFragment : Fragment() {
     private lateinit var mNavController: NavController
 
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//    }
+        //show status bar
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

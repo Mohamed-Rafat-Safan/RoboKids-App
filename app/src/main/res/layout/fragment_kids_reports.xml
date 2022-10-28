@@ -4,8 +4,285 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ui.fragments.KidsReportsFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/tv_text_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reports From "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp" />
+
+                <TextView
+                    android:id="@+id/tv_startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tv_date"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="11 October"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_toEndOf="@+id/tv_text_first"/>
+
+                <TextView
+                    android:id="@+id/tv_text_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Even today "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_below="@+id/tv_text_first" />
+
+                <TextView
+                    android:id="@+id/tv_endDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tv_date"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="25 October"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_text_second"
+                    android:layout_below="@id/tv_startDate"/>
+
+            </RelativeLayout>
 
 
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:columnCount="3"
+                android:rowCount="4">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true" >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sat"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sun"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mon"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tues"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wed"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thurs"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/calender">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fri"
+                            android:textSize="@dimen/_20ssp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_10sdp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/br_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_30sdp"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
