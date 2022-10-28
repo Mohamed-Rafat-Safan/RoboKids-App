@@ -39,9 +39,9 @@ class SplashFragment : Fragment() {
         GlobalScope.launch {
             delay(5000)
             withContext(Dispatchers.Main){
-//                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
 
-                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
+//                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
                 mNavController.navigate(action)
             }
 

@@ -171,7 +171,7 @@
 
 
                     <TextView
-                        android:id="@+id/tv_signUpo"
+                        android:id="@+id/tv_signUp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
