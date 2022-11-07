@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_splashFragment_to_parentsORKidsFragment"
             app:destination="@id/parentsORKidsFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_kidsReportsFragment"
-            app:destination="@id/kidsReportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -94,6 +91,9 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_commonQuestionsFragment"
+            app:destination="@id/commonQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
@@ -122,4 +122,13 @@
         android:name="com.graduationproject.robokidsapp.ui.fragments.UpdateAccountFragment"
         android:label="fragment_update_account"
         tools:layout="@layout/fragment_update_account" />
+    <fragment
+        android:id="@+id/commonQuestionsFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.CommonQuestionsFragment"
+        android:label="fragment_common_questions"
+        tools:layout="@layout/fragment_common_questions" >
+        <action
+            android:id="@+id/action_commonQuestionsFragment_to_parentsHomeFragment"
+            app:destination="@id/parentsHomeFragment" />
+    </fragment>
 </navigation>

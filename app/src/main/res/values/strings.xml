@@ -7,4 +7,35 @@
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
     <string name="add_kids"><u>add kids</u></string>
+
+
+    <string name="question1">Is the app free ?</string>
+    <string name="question2">What is the appropriate age to benefit from the application ?</string>
+    <string name="question3">Do I have to be connected to the Internet while using the application ?</string>
+    <string name="question4">How does my child benefit from the app ?</string>
+    <string name="question5">I created my account on an Android device Can I sign in with an Apple iOS device ?</string>
+    <string name="question6">How do I benefit from the reports section ?</string>
+    <string name="question7">Can I change the language of the application ?</string>
+    <string name="question8">How do I login to the RoboKids app ?</string>
+
+    <string name="answer1">Yes, the application is free and you can download it from the phone store and enjoy the application</string>
+    <string name="answer2">The current content of the application is suitable for children from the age of 3 to 9 years, and in the following versions we will work to provide content suitable for more age groups</string>
+    <string name="answer3">The current version of the application requires an Internet connection</string>
+    <string name="answer4">The application offers your child many cartoon series, tales and songs under the supervision of a group of psychological educational specialists in an attractive artistic framework.  It helps them develop and develop them and perform their educational role optimally</string>
+    <string name="answer5">Currently, you can not register through the iOS because the application works on the Android system only.</string>
+    <string name="answer6">The RoboKids application provides you with different types of reports: - Views reports: It presents you with what your child has watched of educational and entertainment content such as episodes, series, songs, stories and what they contain of interesting and useful values. Usage Reports: Find out how long your child has been using the app for educational and entertainment content over the course of the week and the average daily usage.</string>
+    <string name="answer7"> At the moment, the application provides two main languages, Arabic and English</string>
+    <string name="answer8">In the event that you have an account on the RoboKids application:
+                            \n -Open the RoboKids app from the device you want to log in with.
+                            \n -Choose "Login". Enter the email of your account in the RoboKids app.
+                            \n -Type your password and press the "Go" button.
+                           \n<b>If you are a new user, you must first create an account via the following steps:</b>
+                              \n- Open the RoboKids app.
+                              \n- Parental entry selection.
+                              \n- Choose "Create a new account".
+                              \n- Enter your email and password.
+                              \n- Choose the country.
+                              \n- Click "Login".</string>
+
+
 </resources>

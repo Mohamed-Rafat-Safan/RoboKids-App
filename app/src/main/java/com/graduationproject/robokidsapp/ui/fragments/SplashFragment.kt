@@ -41,7 +41,6 @@ class SplashFragment : Fragment() {
             withContext(Dispatchers.Main){
                 val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
 
-//                val action = SplashFragmentDirections.actionSplashFragmentToKidsReportsFragment()
                 mNavController.navigate(action)
             }
 

@@ -13,4 +13,5 @@
         android:text="splash screen"
         android:textSize="@dimen/_30ssp"/>
 
+
 </FrameLayout>

@@ -62,7 +62,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         when(item.itemId){
             R.id.myKids -> showToast(item.title.toString())
             R.id.knowApp -> showToast(item.title.toString())
-            R.id.commonQuestions -> showToast(item.title.toString())
+            R.id.commonQuestions -> {
+                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToCommonQuestionsFragment()
+                navController.navigate(action)
+            }
             R.id.setting -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToSettingFragment()
                 navController.navigate(action)
