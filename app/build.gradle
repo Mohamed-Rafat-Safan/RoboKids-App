@@ -71,4 +71,6 @@ dependencies {
     // Chart Graph
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    implementation 'kr.co.prnd:readmore-textview:1.0.0'
+
 }

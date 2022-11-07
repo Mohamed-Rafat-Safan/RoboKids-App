@@ -133,6 +133,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter Name"
+                android:textColorHint="#BFBFBF"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp"
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingVertical="@dimen/_10sdp"
