@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -94,6 +97,9 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_commonQuestionsFragment"
             app:destination="@id/commonQuestionsFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_getToKnowTheAppFragment2"
+            app:destination="@id/getToKnowTheAppFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
@@ -130,5 +136,35 @@
         <action
             android:id="@+id/action_commonQuestionsFragment_to_parentsHomeFragment"
             app:destination="@id/parentsHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getToKnowTheAppFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.GetToKnowTheAppFragment"
+        android:label="fragment_get_to_know_the_app"
+        tools:layout="@layout/fragment_get_to_know_the_app" >
+        <action
+            android:id="@+id/action_getToKnowTheAppFragment_to_parentsHomeFragment"
+            app:destination="@id/parentsHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_emailSendingSuccessFragment"
+            app:destination="@id/emailSendingSuccessFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailSendingSuccessFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.EmailSendingSuccessFragment"
+        android:label="fragment_email_sending_success"
+        tools:layout="@layout/fragment_email_sending_success" >
+        <action
+            android:id="@+id/action_emailSendingSuccessFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

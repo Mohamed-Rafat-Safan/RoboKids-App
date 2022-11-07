@@ -40,7 +40,6 @@ class SplashFragment : Fragment() {
             delay(5000)
             withContext(Dispatchers.Main){
                 val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
-
                 mNavController.navigate(action)
             }
 

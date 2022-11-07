@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <kr.co.prnd.readmore.ReadMoreTextView
         android:id="@+id/tv_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="I am mohamed"
         android:textSize="@dimen/_18ssp"
         android:textColor="#A8A7A7"
+        app:readMoreMaxLine="6"
+        app:readMoreText="..read more"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:layout_marginVertical="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
