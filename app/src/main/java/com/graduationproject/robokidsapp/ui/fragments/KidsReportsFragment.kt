@@ -5,7 +5,10 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -13,6 +16,7 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentKidsReportsBinding
 
 class KidsReportsFragment : Fragment() {
+    private lateinit var mNavController: NavController
     private var _binding: FragmentKidsReportsBinding? = null
     private val binding get() = _binding!!
 
@@ -20,6 +24,7 @@ class KidsReportsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        mNavController = findNavController()
 
         //show status bar
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
@@ -44,7 +49,6 @@ class KidsReportsFragment : Fragment() {
 
         getBarChartData()  // this add data to bar chart
 
-
         val barDataset1 = BarDataSet(list1, "Sat")
         barDataset1.setColor(Color.GREEN)
         barDataset1.valueTextSize = 16f
@@ -54,7 +58,6 @@ class KidsReportsFragment : Fragment() {
         barDataset2.setColor(Color.RED)
         barDataset2.valueTextSize = 16f
         barDataset2.valueTextColor = R.color.black
-
 
         val barDataset3 = BarDataSet(list3, "Mon")
         barDataset3.setColor(Color.YELLOW)
@@ -81,15 +84,39 @@ class KidsReportsFragment : Fragment() {
         barDataset7.valueTextSize = 16f
         barDataset7.valueTextColor = R.color.black
 
-
-
         val bareData = BarData(barDataset1, barDataset2, barDataset3, barDataset4, barDataset5, barDataset6, barDataset7)
         binding.brDate.data = bareData
 
-
-
         binding.brDate.description.isEnabled = false
 
+        binding.cardSat.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Sat")
+            mNavController.navigate(action)
+        }
+        binding.cardSun.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Sun")
+            mNavController.navigate(action)
+        }
+        binding.cardMon.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Mon")
+            mNavController.navigate(action)
+        }
+        binding.cardTues.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Tues")
+            mNavController.navigate(action)
+        }
+        binding.cardWed.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Wed")
+            mNavController.navigate(action)
+        }
+        binding.cardThurs.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Thurs")
+            mNavController.navigate(action)
+        }
+        binding.cardFri.setOnClickListener {
+            val action = KidsReportsFragmentDirections.actionKidsReportsFragmentToTimesUseFragment("Fri")
+            mNavController.navigate(action)
+        }
 
         return binding.root
     }
@@ -111,8 +138,5 @@ class KidsReportsFragment : Fragment() {
         list6.add(BarEntry(12f, 50f))
         list7.add(BarEntry(14f, 30f))
     }
-
-
-
 
 }
