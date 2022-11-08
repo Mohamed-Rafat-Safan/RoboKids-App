@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentForgotPasswordBinding
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
+import com.graduationproject.robokidsapp.databinding.FragmentEmailSendingSuccessBinding
 
-class ForgotPasswordFragment : Fragment() {
+class EmailSendingSuccessFragment : Fragment() {
     private lateinit var mNavController: NavController
-    private var _binding: FragmentForgotPasswordBinding? = null
+    private var _binding: FragmentEmailSendingSuccessBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,15 +23,10 @@ class ForgotPasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        _binding = FragmentEmailSendingSuccessBinding.inflate(inflater, container, false)
 
-        binding.btnSendEmail.setOnClickListener {
-            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToEmailSendingSuccessFragment()
-            mNavController.navigate(action)
-        }
-
-        binding.ivBack.setOnClickListener {
-            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment()
+        binding.btnLoginEmailSent.setOnClickListener {
+            val action = EmailSendingSuccessFragmentDirections.actionEmailSendingSuccessFragmentToLoginFragment()
             mNavController.navigate(action)
         }
 
@@ -44,5 +37,6 @@ class ForgotPasswordFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }

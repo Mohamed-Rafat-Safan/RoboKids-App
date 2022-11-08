@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,16 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
-import com.graduationproject.robokidsapp.databinding.FragmentSettingBinding
+import com.graduationproject.robokidsapp.databinding.FragmentForgotPasswordBinding
 
-class SettingFragment : Fragment() {
+class ForgotPasswordFragment : Fragment() {
     private lateinit var mNavController: NavController
-
-    private var _binding: FragmentSettingBinding? = null
+    private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,22 +23,20 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentSettingBinding.inflate(inflater, container, false)
+        _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 
-        binding.goToUpdateAccount.setOnClickListener {
-            val action = SettingFragmentDirections.actionSettingFragmentToUpdateAccountFragment()
+        binding.btnSendEmail.setOnClickListener {
+            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToEmailSendingSuccessFragment()
             mNavController.navigate(action)
         }
 
-        binding.goToChangePassword.setOnClickListener {
-            val action = SettingFragmentDirections.actionSettingFragmentToChangePasswordFragment()
+        binding.ivBack.setOnClickListener {
+            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment()
             mNavController.navigate(action)
         }
 
         return binding.root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

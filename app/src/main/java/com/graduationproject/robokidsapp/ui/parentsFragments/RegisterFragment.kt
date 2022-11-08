@@ -1,18 +1,15 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
+import com.hbb20.countrypicker.models.CPCountry
 
 
 class RegisterFragment : Fragment() {
@@ -44,13 +41,17 @@ class RegisterFragment : Fragment() {
            mNavController.navigate(action)
        }
 
-        binding.selectCountry.setOnClickListener {
-            showDialogCountries()
-        }
 
         binding.tvBackToLogin.setOnClickListener {
             val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
             mNavController.navigate(action)
+        }
+
+        binding.countryPicker.cpViewHelper.cpViewConfig.viewTextGenerator =  { cpCountry: CPCountry ->
+
+            Toast.makeText(activity, "${cpCountry.name} (${cpCountry.alpha2})" , Toast.LENGTH_SHORT).show()
+
+            "${cpCountry.name} (${cpCountry.alpha2})"
         }
 
         return binding.root
@@ -62,24 +63,5 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
-
-    fun showDialogCountries() {
-        val customView = LayoutInflater.from(activity)
-            .inflate(R.layout.custom_layout_select_country, null, false)
-
-        val dialog = AlertDialog.Builder(requireContext())
-        dialog.setView(customView)
-
-        val alert = dialog.create()
-        alert.show()
-
-        val close = customView.findViewById<ImageView>(R.id.iv_close)
-        val editTextSearch = customView.findViewById<EditText>(R.id.et_searchCountry)
-        val rvCountry = customView.findViewById<RecyclerView>(R.id.rv_countries)
-
-
-        close.setOnClickListener { alert.dismiss() } // this to close dialog
-
-    }
 
 }

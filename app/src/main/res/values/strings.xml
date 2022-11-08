@@ -38,4 +38,15 @@
                               \n- Click "Login".</string>
 
 
+    <string name="text">\u0628\u0646\u063a\u0644\u0627\u062f\u064a\u0634</string>
+    <string name="title_activity_content">ContentActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

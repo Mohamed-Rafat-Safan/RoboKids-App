@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.content.Context
 import android.content.pm.ActivityInfo

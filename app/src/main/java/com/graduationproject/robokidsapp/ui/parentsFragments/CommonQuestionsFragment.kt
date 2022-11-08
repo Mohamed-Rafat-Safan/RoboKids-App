@@ -1,11 +1,10 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
@@ -13,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.CommonQuestionsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentCommonQuestionsBinding
-import com.graduationproject.robokidsapp.databinding.FragmentSettingBinding
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap

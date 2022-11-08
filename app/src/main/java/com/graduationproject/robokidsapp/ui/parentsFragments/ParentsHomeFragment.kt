@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentAddKidsBinding
 import com.graduationproject.robokidsapp.databinding.FragmentParentsHomeBinding
 import com.graduationproject.robokidsapp.ui.MainActivity
 

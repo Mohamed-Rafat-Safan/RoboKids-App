@@ -1,20 +1,13 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
-import android.content.Context
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentLoginBinding
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
 
 class LoginFragment : Fragment() {
     private lateinit var mNavController: NavController

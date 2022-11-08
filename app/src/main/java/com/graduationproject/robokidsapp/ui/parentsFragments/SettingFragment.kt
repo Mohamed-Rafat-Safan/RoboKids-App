@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,19 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentAddKidsBinding
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
+import com.graduationproject.robokidsapp.databinding.FragmentSettingBinding
 
-class AddKidsFragment : Fragment() {
+class SettingFragment : Fragment() {
     private lateinit var mNavController: NavController
-    private var _binding: FragmentAddKidsBinding? = null
+
+    private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
-
     }
 
     override fun onCreateView(
@@ -27,15 +26,21 @@ class AddKidsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentAddKidsBinding.inflate(inflater, container, false)
+        _binding = FragmentSettingBinding.inflate(inflater, container, false)
 
-        binding.btnAddKids.setOnClickListener {
-            val action = AddKidsFragmentDirections.actionAddKidsFragmentToParentsHomeFragment()
+        binding.goToUpdateAccount.setOnClickListener {
+            val action = SettingFragmentDirections.actionSettingFragmentToUpdateAccountFragment()
+            mNavController.navigate(action)
+        }
+
+        binding.goToChangePassword.setOnClickListener {
+            val action = SettingFragmentDirections.actionSettingFragmentToChangePasswordFragment()
             mNavController.navigate(action)
         }
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

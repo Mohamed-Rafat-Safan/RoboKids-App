@@ -1,6 +1,5 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
-import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,20 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentParentsORKidsBinding
-import com.graduationproject.robokidsapp.model.Kids
-import com.graduationproject.robokidsapp.ui.MainActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.util.*
 
 class ParentsORKidsFragment : Fragment() {
@@ -31,6 +22,13 @@ class ParentsORKidsFragment : Fragment() {
     private lateinit var mNavController: NavController
 
 
+    override fun onResume() {
+        super.onResume()
+        //Hide status bar
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,8 @@ class ParentsORKidsFragment : Fragment() {
         }
 
         binding.kidsEntry.setOnClickListener {
-
+            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentActivity()
+            mNavController.navigate(action)
         }
 
         binding.parentsEntry.setOnClickListener {

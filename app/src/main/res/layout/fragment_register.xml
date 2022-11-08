@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.RegisterFragment">
+    tools:context=".ui.parentsFragments.RegisterFragment">
 
 
     <ScrollView
@@ -144,30 +144,13 @@
                     android:paddingVertical="@dimen/_5sdp"
                     android:elevation="@dimen/_3sdp" >
 
-
-                    <ImageView
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/egypt" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:paddingStart="@dimen/_5sdp"
-                        android:text="Egypt"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16ssp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow_down" />
+                    <com.hbb20.CountryPickerView
+                        android:id="@+id/countryPicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
+
 
                 <Button
                     android:id="@+id/btn_register"

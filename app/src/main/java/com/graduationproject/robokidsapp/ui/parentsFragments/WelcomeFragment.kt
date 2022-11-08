@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.fragments
+package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.content.Context
 import android.content.pm.ActivityInfo
@@ -8,13 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
 import com.graduationproject.robokidsapp.databinding.FragmentWelcomeBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
 
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomeBinding? = null
@@ -24,14 +21,15 @@ class WelcomeFragment : Fragment() {
     private lateinit var mNavController: NavController
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
+    override fun onResume() {
+        super.onResume()
         //show status bar
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
+
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

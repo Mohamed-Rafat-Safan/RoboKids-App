@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.graduationproject.robokidsapp"
-        minSdk 21
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -71,6 +71,11 @@ dependencies {
     // Chart Graph
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    // read more
     implementation 'kr.co.prnd:readmore-textview:1.0.0'
+
+
+    // country code picker
+    implementation 'com.hbb20:android-country-picker:0.0.7'
 
 }

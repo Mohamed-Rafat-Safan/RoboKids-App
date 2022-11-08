@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/_10sdp"
-    tools:context=".ui.fragments.ParentsDataFragment">
+    tools:context=".ui.parentsFragments.ParentsDataFragment">
 
 
     <ScrollView
