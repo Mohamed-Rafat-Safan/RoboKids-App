@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:background="@drawable/img">
+    android:layout_height="@dimen/_80sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#74E1EF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,10 +11,13 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_2sdp"
             android:src="@drawable/man" />
 
         <LinearLayout
@@ -22,15 +26,6 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="mohamed123"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/textView2"

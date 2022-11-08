@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashFragment_to_parentsORKidsFragment"
             app:destination="@id/parentsORKidsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_kidsReportsFragment"
+            app:destination="@id/kidsReportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -105,7 +108,11 @@
         android:id="@+id/kidsReportsFragment"
         android:name="com.graduationproject.robokidsapp.ui.fragments.KidsReportsFragment"
         android:label="fragment_kids_reports"
-        tools:layout="@layout/fragment_kids_reports" />
+        tools:layout="@layout/fragment_kids_reports" >
+        <action
+            android:id="@+id/action_kidsReportsFragment_to_timesUseFragment"
+            app:destination="@id/timesUseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.graduationproject.robokidsapp.ui.fragments.ChangePasswordFragment"
@@ -166,5 +173,14 @@
         <action
             android:id="@+id/action_emailSendingSuccessFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timesUseFragment"
+        android:name="com.graduationproject.robokidsapp.ui.fragments.TimesUseFragment"
+        android:label="fragment_times_use"
+        tools:layout="@layout/fragment_times_use" >
+        <argument
+            android:name="Day"
+            app:argType="string" />
     </fragment>
 </navigation>

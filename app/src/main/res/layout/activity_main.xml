@@ -58,8 +58,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
         app:headerLayout="@layout/header_navigation"
         app:menu="@menu/navigation_drawer_menu">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/bgnav"
+            android:layout_gravity="bottom"/>
 
     </com.google.android.material.navigation.NavigationView>
 

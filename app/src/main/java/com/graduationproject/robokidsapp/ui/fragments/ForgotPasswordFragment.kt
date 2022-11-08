@@ -32,6 +32,11 @@ class ForgotPasswordFragment : Fragment() {
             mNavController.navigate(action)
         }
 
+        binding.ivBack.setOnClickListener {
+            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment()
+            mNavController.navigate(action)
+        }
+
         return binding.root
     }
 
