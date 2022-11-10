@@ -50,7 +50,8 @@ class ParentsORKidsFragment : Fragment() {
         }
 
         binding.kidsEntry.setOnClickListener {
-
+            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentFragment()
+            mNavController.navigate(action)
         }
 
         binding.parentsEntry.setOnClickListener {
@@ -61,11 +62,10 @@ class ParentsORKidsFragment : Fragment() {
         return binding.root
     }
 
-
-
-
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 
 //    override fun onActivityCreated(savedInstanceState: Bundle?) {
