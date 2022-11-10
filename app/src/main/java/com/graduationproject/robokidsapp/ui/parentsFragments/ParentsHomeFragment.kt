@@ -1,13 +1,16 @@
 package com.graduationproject.robokidsapp.ui.parentsFragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentParentsHomeBinding
 import com.graduationproject.robokidsapp.ui.MainActivity
 
@@ -23,6 +26,7 @@ class ParentsHomeFragment : Fragment() {
 
         MainActivity.binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +48,12 @@ class ParentsHomeFragment : Fragment() {
         super.onResume()
         MainActivity.binding.customToolbarMainActivity.visibility = View.VISIBLE
         MainActivity.binding.customToolbarMainActivity.title = ""
+
+        //show status bar
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
+
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 
     override fun onDestroyView() {

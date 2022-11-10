@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_splashFragment_to_kidsReportsFragment"
             app:destination="@id/kidsReportsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeKidsFragment"
+            app:destination="@id/homeKidsFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -25,6 +28,9 @@
         <action
             android:id="@+id/action_parentsORKidsFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_parentsORKidsFragment_to_contentFragment"
+            app:destination="@id/contentFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -103,6 +109,9 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_getToKnowTheAppFragment2"
             app:destination="@id/getToKnowTheAppFragment" />
+        <action
+            android:id="@+id/action_parentsHomeFragment_to_homeKidsFragment"
+            app:destination="@id/homeKidsFragment" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
@@ -182,5 +191,23 @@
         <argument
             android:name="Day"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/contentFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment"
+        android:label="fragment_content"
+        tools:layout="@layout/fragment_content" >
+        <action
+            android:id="@+id/action_contentFragment_to_homeKidsFragment"
+            app:destination="@id/homeKidsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeKidsFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.HomeKidsFragment"
+        android:label="fragment_home_kids"
+        tools:layout="@layout/fragment_home_kids" >
+        <action
+            android:id="@+id/action_homeKidsFragment_to_contentFragment"
+            app:destination="@id/contentFragment" />
     </fragment>
 </navigation>
