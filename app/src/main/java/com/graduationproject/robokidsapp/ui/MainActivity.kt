@@ -14,7 +14,6 @@ import com.google.android.material.navigation.NavigationView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
 import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragmentDirections
-import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsORKidsFragmentDirections
 
 //                              بسم الله الرحمن الرحيم
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +26,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //Hide status bar
+        this.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -55,10 +56,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.myKids -> {
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToContentActivity()
-                navController.navigate(action)
-            }
+            R.id.myKids -> showToast(item.title.toString())
             R.id.knowApp -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToGetToKnowTheAppFragment2()
                 navController.navigate(action)

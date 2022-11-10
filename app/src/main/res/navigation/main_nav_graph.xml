@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_splashFragment_to_kidsReportsFragment"
             app:destination="@id/kidsReportsFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_contentActivity"
-            app:destination="@id/contentActivity" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -28,9 +25,6 @@
         <action
             android:id="@+id/action_parentsORKidsFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
-        <action
-            android:id="@+id/action_parentsORKidsFragment_to_contentActivity"
-            app:destination="@id/contentActivity" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -109,9 +103,6 @@
         <action
             android:id="@+id/action_parentsHomeFragment_to_getToKnowTheAppFragment2"
             app:destination="@id/getToKnowTheAppFragment" />
-        <action
-            android:id="@+id/action_parentsHomeFragment_to_contentActivity"
-            app:destination="@id/contentActivity" />
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
@@ -192,9 +183,4 @@
             android:name="Day"
             app:argType="string" />
     </fragment>
-    <activity
-        android:id="@+id/contentActivity"
-        android:name="com.graduationproject.robokidsapp.ui.ContentActivity"
-        android:label="activity_content"
-        tools:layout="@layout/activity_content" />
 </navigation>

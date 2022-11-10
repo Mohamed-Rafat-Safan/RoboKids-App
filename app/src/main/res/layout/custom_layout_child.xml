@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_20sdp" >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_child"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:src="@drawable/boye"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_childName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_30ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_child" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

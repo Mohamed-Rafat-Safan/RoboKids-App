@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.contentFragments
+package com.graduationproject.robokidsapp.ui.kidsFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
