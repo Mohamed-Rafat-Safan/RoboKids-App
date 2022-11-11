@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/baby_blue"
+    android:background="@drawable/backgroup"
     tools:context=".ui.kidsFragments.HomeKidsFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_child"
+        android:id="@+id/img_content"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:src="@drawable/man"
@@ -20,16 +20,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_parent_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
         android:text="Parent Entry"
         android:textColor="@color/black"
         android:textSize="@dimen/_18ssp"
         android:textStyle="bold"
-        android:layout_marginStart="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_child"
-        app:layout_constraintStart_toEndOf="@+id/img_child"
-        app:layout_constraintTop_toTopOf="@+id/img_child" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_content"
+        app:layout_constraintStart_toEndOf="@+id/img_content"
+        app:layout_constraintTop_toTopOf="@+id/img_content" />
 
 
     <ImageView
@@ -38,18 +39,19 @@
         android:layout_height="@dimen/_60sdp"
         android:src="@drawable/home_logo"
         android:layout_marginEnd="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_child"
+        app:layout_constraintBottom_toBottomOf="@+id/img_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_child" />
+        app:layout_constraintTop_toTopOf="@+id/img_content" />
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_kids"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_child" />
+        app:layout_constraintTop_toBottomOf="@+id/img_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

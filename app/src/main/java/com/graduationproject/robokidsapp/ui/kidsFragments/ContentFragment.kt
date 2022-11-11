@@ -43,7 +43,8 @@ class ContentFragment : Fragment() {
         _binding = FragmentContentBinding.inflate(inflater, container, false)
 
         binding.educationalContent.setOnClickListener {
-            Toast.makeText(activity, "educational", Toast.LENGTH_SHORT).show()
+            val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment()
+            mNavController.navigate(action)
 
         }
 
@@ -53,7 +54,8 @@ class ContentFragment : Fragment() {
         }
 
         binding.back.setOnClickListener {
-
+//            val action = ContentFragmentDirections.actionContentFragmentToHomeKidsFragment()
+//            mNavController.navigate(action)
         }
 
         return binding.root

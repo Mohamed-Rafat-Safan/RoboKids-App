@@ -6,7 +6,7 @@
     android:paddingVertical="@dimen/_20sdp" >
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_child"
+        android:id="@+id/img_content"
         android:layout_width="@dimen/_180sdp"
         android:layout_height="@dimen/_180sdp"
         android:src="@drawable/boye"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_childName"
+        android:id="@+id/tv_content_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Child Name"
@@ -25,7 +25,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_child" />
+        app:layout_constraintTop_toBottomOf="@+id/img_content" />
 
 
 

@@ -200,6 +200,12 @@
         <action
             android:id="@+id/action_contentFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
+        <action
+            android:id="@+id/action_contentFragment_to_educationalContentFragment"
+            app:destination="@id/educationalContentFragment" />
+        <action
+            android:id="@+id/action_contentFragment_to_parentsORKidsFragment"
+            app:destination="@id/parentsORKidsFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeKidsFragment"
@@ -209,5 +215,26 @@
         <action
             android:id="@+id/action_homeKidsFragment_to_contentFragment"
             app:destination="@id/contentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationalContentFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EducationalContentFragment"
+        android:label="fragment_educational_content"
+        tools:layout="@layout/fragment_educational_content" >
+        <action
+            android:id="@+id/action_educationalContentFragment_to_educationLevelsFragment"
+            app:destination="@id/educationLevelsFragment" />
+        <action
+            android:id="@+id/action_educationalContentFragment_to_contentFragment"
+            app:destination="@id/contentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationLevelsFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EducationLevelsFragment"
+        android:label="fragment_education_levels"
+        tools:layout="@layout/fragment_education_levels" >
+        <action
+            android:id="@+id/action_educationLevelsFragment_to_educationalContentFragment"
+            app:destination="@id/educationalContentFragment" />
     </fragment>
 </navigation>
