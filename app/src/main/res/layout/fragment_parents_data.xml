@@ -153,11 +153,12 @@
             android:background="@drawable/bg_parents_name" >
 
             <TextView
+                android:id="@+id/tv_birth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Year of Birth"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="@dimen/_16ssp" />

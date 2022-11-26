@@ -45,7 +45,6 @@ class CommonQuestionsFragment : Fragment() {
         binding.elvCommonQuestions.setAdapter(adapter)
 
         val isLeftToRight = TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_LTR
-
         if(!isLeftToRight){
             binding.elvCommonQuestions.layoutDirection = View.LAYOUT_DIRECTION_LTR
         }else{

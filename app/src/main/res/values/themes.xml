@@ -12,6 +12,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:itemTextAppearance">@style/myCustomMenuTextAppearance</item>
+        <item name="android:itemBackground">@color/white</item>
+
     </style>
     <style name="Theme.RoboKidsApp.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -19,4 +23,18 @@
     </style>
     <style name="Theme.RoboKidsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.RoboKidsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
+    <style name="myCustomMenuTextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="MySeekBar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint">#E91E63</item>
+        <item name="android:progressTint">#E91E63</item>
+        <item name="android:thumbTint">#E91E63</item>
+
+    </style>
+
 </resources>

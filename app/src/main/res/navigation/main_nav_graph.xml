@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_whiteboardFragment"
+            app:destination="@id/whiteboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -237,4 +240,9 @@
             android:id="@+id/action_educationLevelsFragment_to_educationalContentFragment"
             app:destination="@id/educationalContentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/whiteboardFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment"
+        android:label="fragment_whiteboard"
+        tools:layout="@layout/fragment_whiteboard" />
 </navigation>

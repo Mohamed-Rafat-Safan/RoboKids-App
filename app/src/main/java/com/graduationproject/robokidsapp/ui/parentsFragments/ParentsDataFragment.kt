@@ -5,18 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
 import android.widget.ImageView
+import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentParentsDataBinding
+import java.util.*
 
 
 class ParentsDataFragment : Fragment() {
     private var _binding: FragmentParentsDataBinding? = null
     private val binding get() = _binding!!
+
+    companion object{
+        var mDay = 0
+        var mMonth = 0
+        var mYear = 0
+    }
+
+    var flagBirth = false
 
 
     private lateinit var mNavController: NavController
@@ -56,14 +67,36 @@ class ParentsDataFragment : Fragment() {
             .inflate(R.layout.custom_layout_select_year_birth, null, false)
 
         val dialog = AlertDialog.Builder(requireContext())
+
+
+        val calenderBirth = customView.findViewById<CalendarView>(R.id.calenderBirth!!)
+        calenderBirth.setOnDateChangeListener(object : CalendarView.OnDateChangeListener {
+            override fun onSelectedDayChange(p0: CalendarView, year: Int, month: Int, dayOfMonth: Int) {
+                UpdateAccountFragment.mDay = dayOfMonth
+                UpdateAccountFragment.mMonth = month+1
+                UpdateAccountFragment.mYear = year
+                flagBirth = true
+                val birth = "$dayOfMonth/${month+1}/$year"
+                binding.tvBirth.text = birth
+            }
+        })
+
+
+        if(flagBirth){
+            var calendar = Calendar.getInstance()
+            calendar.set(Calendar.DAY_OF_MONTH, UpdateAccountFragment.mDay)
+            calendar.set(Calendar.YEAR, UpdateAccountFragment.mYear -1)
+            calendar.add(Calendar.MONTH, UpdateAccountFragment.mMonth +1 )
+            calenderBirth.setDate(calendar.timeInMillis, true, true)
+        }
+
+
         dialog.setView(customView)
 
         val alert = dialog.create()
         alert.show()
 
         val close = customView.findViewById<ImageView>(R.id.iv_close)
-        val rvYearBirth = customView.findViewById<RecyclerView>(R.id.rv_yearBirth)
-
 
         close.setOnClickListener { alert.dismiss() } // this to close dialog
 
