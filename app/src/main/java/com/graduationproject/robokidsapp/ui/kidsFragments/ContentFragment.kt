@@ -50,13 +50,14 @@ class ContentFragment : Fragment() {
 
 
         binding.entertainmentContent.setOnClickListener {
-            Toast.makeText(activity, "entertainment", Toast.LENGTH_SHORT).show()
+            val action = ContentFragmentDirections.actionContentFragmentToIntertainmentContentFragment()
+            mNavController.navigate(action)
 
         }
 
         binding.back.setOnClickListener {
-//            val action = ContentFragmentDirections.actionContentFragmentToHomeKidsFragment()
-//            mNavController.navigate(action)
+            val action = ContentFragmentDirections.actionContentFragmentToHomeKidsFragment()
+            mNavController.navigate(action)
         }
 
         return binding.root

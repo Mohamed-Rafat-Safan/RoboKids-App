@@ -209,6 +209,9 @@
         <action
             android:id="@+id/action_contentFragment_to_parentsORKidsFragment"
             app:destination="@id/parentsORKidsFragment" />
+        <action
+            android:id="@+id/action_contentFragment_to_intertainmentContentFragment"
+            app:destination="@id/intertainmentContentFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeKidsFragment"
@@ -245,4 +248,37 @@
         android:name="com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment"
         android:label="fragment_whiteboard"
         tools:layout="@layout/fragment_whiteboard" />
+    <fragment
+        android:id="@+id/intertainmentVidoFramFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentVidoFramFragment"
+        android:label="fragment_intertainment_vido_fram"
+        tools:layout="@layout/fragment_intertainment_vido_fram" >
+        <action
+            android:id="@+id/action_intertainmentVidoFramFragment_to_intertainmentSectionFragment"
+            app:destination="@id/intertainmentSectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intertainmentContentFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentContentFragment"
+        android:label="fragment_intertainment_content"
+        tools:layout="@layout/fragment_intertainment_content" >
+        <action
+            android:id="@+id/action_intertainmentContentFragment_to_contentFragment"
+            app:destination="@id/contentFragment" />
+        <action
+            android:id="@+id/action_intertainmentContentFragment_to_intertainmentSectionFragment"
+            app:destination="@id/intertainmentSectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/intertainmentSectionFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentSectionFragment"
+        android:label="fragment_intertainment_section"
+        tools:layout="@layout/fragment_intertainment_section" >
+        <action
+            android:id="@+id/action_intertainmentSectionFragment_to_intertainmentContentFragment"
+            app:destination="@id/intertainmentContentFragment" />
+        <action
+            android:id="@+id/action_intertainmentSectionFragment_to_intertainmentVidoFramFragment"
+            app:destination="@id/intertainmentVidoFramFragment" />
+    </fragment>
 </navigation>
