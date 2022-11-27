@@ -78,4 +78,7 @@ dependencies {
     // country code picker
     implementation 'com.hbb20:android-country-picker:0.0.7'
 
+    //Gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+
 }
