@@ -45,8 +45,9 @@ class ContentFragment : Fragment() {
         binding.educationalContent.setOnClickListener {
             val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment()
             mNavController.navigate(action)
-
         }
+
+
 
         binding.entertainmentContent.setOnClickListener {
             Toast.makeText(activity, "entertainment", Toast.LENGTH_SHORT).show()
