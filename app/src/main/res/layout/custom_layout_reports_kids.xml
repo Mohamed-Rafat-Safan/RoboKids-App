@@ -33,7 +33,7 @@
                     android:src="@drawable/boy" />
 
                 <TextView
-                    android:id="@+id/tv_content_name"
+                    android:id="@+id/tv_child_report_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Child Name"

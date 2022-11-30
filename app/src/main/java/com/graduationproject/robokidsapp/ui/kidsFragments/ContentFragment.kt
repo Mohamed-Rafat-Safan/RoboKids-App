@@ -10,10 +10,12 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentAddKidsBinding
 import com.graduationproject.robokidsapp.databinding.FragmentContentBinding
 import com.graduationproject.robokidsapp.databinding.FragmentParentsORKidsBinding
+import com.graduationproject.robokidsapp.model.Child
 import com.graduationproject.robokidsapp.ui.parentsFragments.AddKidsFragmentDirections
 
 class ContentFragment : Fragment() {
@@ -21,6 +23,7 @@ class ContentFragment : Fragment() {
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
+    private val args by navArgs<ContentFragmentArgs>()
 
     override fun onResume() {
         super.onResume()
@@ -42,17 +45,20 @@ class ContentFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentContentBinding.inflate(inflater, container, false)
 
+        //get data from Home_Kids
+        if(args.currentChild != null){
+            binding.tvContentChildName.text = args.currentChild?.childName
+            binding.ivChild.setImageResource(args.currentChild!!.childImage)
+        }
+
         binding.educationalContent.setOnClickListener {
             val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment()
             mNavController.navigate(action)
         }
 
-
-
         binding.entertainmentContent.setOnClickListener {
             val action = ContentFragmentDirections.actionContentFragmentToIntertainmentContentFragment()
             mNavController.navigate(action)
-
         }
 
         binding.back.setOnClickListener {

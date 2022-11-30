@@ -212,6 +212,10 @@
         <action
             android:id="@+id/action_contentFragment_to_intertainmentContentFragment"
             app:destination="@id/intertainmentContentFragment" />
+        <argument
+            android:name="currentChild"
+            app:argType="com.graduationproject.robokidsapp.model.Child"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/homeKidsFragment"
@@ -221,6 +225,9 @@
         <action
             android:id="@+id/action_homeKidsFragment_to_contentFragment"
             app:destination="@id/contentFragment" />
+        <action
+            android:id="@+id/action_homeKidsFragment_to_parentsHomeFragment"
+            app:destination="@id/parentsHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/educationalContentFragment"
@@ -242,6 +249,10 @@
         <action
             android:id="@+id/action_educationLevelsFragment_to_educationalContentFragment"
             app:destination="@id/educationalContentFragment" />
+        <argument
+            android:name="currentContent"
+            app:argType="com.graduationproject.robokidsapp.model.EducationalLevels"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/whiteboardFragment"
