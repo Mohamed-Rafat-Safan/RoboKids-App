@@ -45,8 +45,8 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_education_levels"
-        android:layout_width="match_parent"
+        android:id="@+id/rv_education_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

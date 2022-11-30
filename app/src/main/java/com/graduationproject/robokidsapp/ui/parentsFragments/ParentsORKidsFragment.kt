@@ -50,7 +50,7 @@ class ParentsORKidsFragment : Fragment() {
         }
 
         binding.kidsEntry.setOnClickListener {
-            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentFragment()
+            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentFragment(null)
             mNavController.navigate(action)
         }
 

@@ -76,7 +76,6 @@ class Canvas : View {
 
                     startFlag = false
                     endFlag = false
-                    Toast.makeText(context, ""+ pathList.size, Toast.LENGTH_SHORT).show()
                 }
                 invalidate()
                 true
