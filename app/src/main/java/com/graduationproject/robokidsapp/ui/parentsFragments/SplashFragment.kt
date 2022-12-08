@@ -42,12 +42,12 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         GlobalScope.launch {
             delay(2000)
             withContext(Dispatchers.Main){
-                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+                val action = SplashFragmentDirections.actionSplashFragmentToMemoryGameFragment()
                 mNavController.navigate(action)
-
             }
 
         }
