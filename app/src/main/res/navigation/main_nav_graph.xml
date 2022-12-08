@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_splashFragment_to_whiteboardFragment"
             app:destination="@id/whiteboardFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_memoryGameFragment"
+            app:destination="@id/memoryGameFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -292,4 +295,9 @@
             android:id="@+id/action_intertainmentSectionFragment_to_intertainmentVidoFramFragment"
             app:destination="@id/intertainmentVidoFramFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/memoryGameFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.MemoryGameFragment"
+        android:label="fragment_memory_game"
+        tools:layout="@layout/fragment_memory_game" />
 </navigation>

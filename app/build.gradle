@@ -81,4 +81,7 @@ dependencies {
     //Gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
+    //lottie
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 }
