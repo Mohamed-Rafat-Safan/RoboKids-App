@@ -10,12 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.EducationalContentAdapter
-import com.graduationproject.robokidsapp.databinding.FragmentContentBinding
-import com.graduationproject.robokidsapp.databinding.FragmentEducationLevelsBinding
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
-import com.graduationproject.robokidsapp.model.EducationalContent
 import com.graduationproject.robokidsapp.model.EducationalLevels
-import com.graduationproject.robokidsapp.ui.parentsFragments.AddKidsFragmentDirections
+
 
 class EducationalContentFragment : Fragment(),EducationalContentAdapter.OnItemClickListener {
 
@@ -54,18 +51,24 @@ class EducationalContentFragment : Fragment(),EducationalContentAdapter.OnItemCl
         binding.rvEducationContent.adapter = adapter
         binding.rvEducationContent.setHasFixedSize(true)
 
+
+
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
     override fun onItemClick(position: Int) {
         val content = contentList[position]
         val action = EducationalContentFragmentDirections.actionEducationalContentFragmentToEducationLevelsFragment(content)
         mNavController.navigate(action)
     }
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
 }

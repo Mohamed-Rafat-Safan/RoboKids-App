@@ -9,12 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="color_sat">#DA00FF</color>
-    <color name="color_sun">#17FF20</color>
-    <color name="color_mon">#00B0FF</color>
-    <color name="color_tues">#E91E63</color>
-    <color name="color_wed">#FFC107</color>
-    <color name="color_thurs">#007368</color>
-    <color name="color_fri">#FF3D00</color>
     <color name="baby_blue">#E6F5FB</color>
 </resources>

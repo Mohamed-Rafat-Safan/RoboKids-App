@@ -62,11 +62,15 @@
         app:headerLayout="@layout/header_navigation"
         app:menu="@menu/navigation_drawer_menu">
 
-        <ImageView
+
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
-            android:src="@drawable/bgnav"
-            android:layout_gravity="bottom"/>
+            android:layout_gravity="bottom"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/navbg" />
+
 
     </com.google.android.material.navigation.NavigationView>
 

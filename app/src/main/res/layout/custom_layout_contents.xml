@@ -13,13 +13,14 @@
             android:layout_margin="@dimen/_10sdp"
             android:orientation="vertical">
 
-            <ImageView
+
+            <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/img_content"
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/content" />
+                android:src="@drawable/main_board" />
 
             <TextView
                 android:id="@+id/tv_content_name"
@@ -31,6 +32,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
 

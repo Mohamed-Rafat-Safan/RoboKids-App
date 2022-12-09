@@ -19,12 +19,6 @@
         <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_whiteboardFragment"
-            app:destination="@id/whiteboardFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_memoryGameFragment"
-            app:destination="@id/memoryGameFragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -258,36 +252,34 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/whiteboardFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment"
-        android:label="fragment_whiteboard"
-        tools:layout="@layout/fragment_whiteboard" />
-    <fragment
         android:id="@+id/intertainmentVidoFramFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentVidoFramFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EntertainmentVideoFramFragment"
         android:label="fragment_intertainment_vido_fram"
-        tools:layout="@layout/fragment_intertainment_vido_fram" >
+        tools:layout="@layout/fragment_entertainment_video_fram" >
         <action
             android:id="@+id/action_intertainmentVidoFramFragment_to_intertainmentSectionFragment"
             app:destination="@id/intertainmentSectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentContentFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentContentFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EntertainmentContentFragment"
         android:label="fragment_intertainment_content"
-        tools:layout="@layout/fragment_intertainment_content" >
+        tools:layout="@layout/fragment_entertainment_content" >
         <action
             android:id="@+id/action_intertainmentContentFragment_to_contentFragment"
             app:destination="@id/contentFragment" />
         <action
             android:id="@+id/action_intertainmentContentFragment_to_intertainmentSectionFragment"
             app:destination="@id/intertainmentSectionFragment" />
+        <action
+            android:id="@+id/action_intertainmentContentFragment_to_gamingSectionFragment"
+            app:destination="@id/gamingSectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentSectionFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.IntertainmentSectionFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EntertainmentSectionFragment"
         android:label="fragment_intertainment_section"
-        tools:layout="@layout/fragment_intertainment_section" >
+        tools:layout="@layout/fragment_entertainment_section" >
         <action
             android:id="@+id/action_intertainmentSectionFragment_to_intertainmentContentFragment"
             app:destination="@id/intertainmentContentFragment" />
@@ -296,8 +288,36 @@
             app:destination="@id/intertainmentVidoFramFragment" />
     </fragment>
     <fragment
+        android:id="@+id/gamingSectionFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.gaming.GamingSectionFragment"
+        android:label="fragment_gaming_section"
+        tools:layout="@layout/fragment_gaming_section" >
+        <action
+            android:id="@+id/action_gamingSectionFragment_to_intertainmentContentFragment"
+            app:destination="@id/intertainmentContentFragment" />
+        <action
+            android:id="@+id/action_gamingSectionFragment_to_memoryGameFragment"
+            app:destination="@id/memoryGameFragment" />
+        <action
+            android:id="@+id/action_gamingSectionFragment_to_ticTacToeFragment"
+            app:destination="@id/ticTacToeFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/memoryGameFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.MemoryGameFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.gaming.MemoryGameFragment"
         android:label="fragment_memory_game"
-        tools:layout="@layout/fragment_memory_game" />
+        tools:layout="@layout/fragment_memory_game" >
+        <action
+            android:id="@+id/action_memoryGameFragment_to_gamingSectionFragment"
+            app:destination="@id/gamingSectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticTacToeFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.gaming.TicTacToeFragment"
+        android:label="fragment_tic_tac_toe"
+        tools:layout="@layout/fragment_tic_tac_toe" >
+        <action
+            android:id="@+id/action_ticTacToeFragment_to_gamingSectionFragment"
+            app:destination="@id/gamingSectionFragment" />
+    </fragment>
 </navigation>

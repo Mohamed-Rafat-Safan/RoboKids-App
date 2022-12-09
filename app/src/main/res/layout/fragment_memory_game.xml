@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.kidsFragments.MemoryGameFragment">
+    tools:context=".ui.kidsFragments.gaming.MemoryGameFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
                 android:layout_margin="@dimen/_6sdp"
                 app:layout_constraintStart_toEndOf="@+id/exit_memory_game"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView3"

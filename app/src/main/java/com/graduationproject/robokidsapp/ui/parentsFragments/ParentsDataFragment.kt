@@ -57,10 +57,7 @@ class ParentsDataFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 
     fun showDialogCountries() {
         val customView = LayoutInflater.from(activity)
@@ -100,6 +97,12 @@ class ParentsDataFragment : Fragment() {
 
         close.setOnClickListener { alert.dismiss() } // this to close dialog
 
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
