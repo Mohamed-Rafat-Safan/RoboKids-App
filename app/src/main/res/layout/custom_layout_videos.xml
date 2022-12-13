@@ -7,8 +7,8 @@
 
     <com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
         android:id="@+id/img_video"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_250sdp"
         android:scaleType="fitXY"
         android:src="@drawable/videos"
         app:layout_constraintBottom_toBottomOf="parent"

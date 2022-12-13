@@ -4,13 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.model.Content
-import com.graduationproject.robokidsapp.model.EducationalLevels
 import pl.droidsonroids.gif.GifImageView
 
 class ContentAdapter(val context: Context , val listContent:ArrayList<Content>, val onItemClickListener: OnItemClickListener):

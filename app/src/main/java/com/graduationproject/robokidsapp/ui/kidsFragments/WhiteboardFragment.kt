@@ -11,20 +11,26 @@ import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.adapters.TabWidgetBindingAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
+import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
 import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
 import com.graduationproject.robokidsapp.model.Canvas
+import com.graduationproject.robokidsapp.model.Content
 
 
 class WhiteboardFragment : Fragment() {
+    private lateinit var mNavController: NavController
+    lateinit var listLetters:ArrayList<String>
+    lateinit var typeLetter:String
 
     companion object{
         var path:Path = Path()
         var paint_brush = Paint()
-
 
         private var _binding: FragmentWhiteboardBinding? = null
         val binding get() = _binding!!
@@ -35,6 +41,7 @@ class WhiteboardFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mNavController = findNavController()
     }
 
     override fun onCreateView(
@@ -103,12 +110,12 @@ class WhiteboardFragment : Fragment() {
         }
 
 
-        val data = ArrayList<String>()
-        for (i in 'A'..'Z'){
-            data.add(""+i)
-        }
+        typeLetter = arguments?.getString("learnSection")!!
+        // this fill arrayList by type letters
+        setDataInArrayList(typeLetter)
 
-        val adapter = WhiteboardAdapter(requireContext() , data)
+
+        val adapter = WhiteboardAdapter(requireContext() , listLetters)
         binding.rvWhiteboard.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.rvWhiteboard.adapter = adapter
         binding.rvWhiteboard.setHasFixedSize(true)
@@ -124,6 +131,13 @@ class WhiteboardFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {}
         })
 
+
+        binding.whiteboardBack.setOnClickListener {
+            val action = WhiteboardFragmentDirections.actionWhiteboardFragmentToEducationalSectionFragment("Board")
+            mNavController.navigate(action)
+        }
+
+
         return binding.root
     }
 
@@ -136,6 +150,33 @@ class WhiteboardFragment : Fragment() {
     fun currentSize(size:Float){
         Canvas.currentSize = size
         path = Path()
+    }
+
+
+
+    fun setDataInArrayList(type:String){
+        listLetters = ArrayList()
+        when(type){
+            "Arabic"->{
+                for(i in 1569..1594){
+                    listLetters.add(""+ i.toChar())
+                }
+                for(i in 1601..1610){
+                    listLetters.add(""+ i.toChar())
+                }
+            }
+            "English"->{
+                for(i in 'A'..'Z'){
+                    listLetters.add(""+ i)
+                }
+            }
+            "Math"->{
+                for(i in 0..100){
+                    listLetters.add(""+ i)
+                }
+            }
+            else -> println("invalid type")
+        }
     }
 
 

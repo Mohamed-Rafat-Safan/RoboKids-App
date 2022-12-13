@@ -232,24 +232,11 @@
         android:label="fragment_educational_content"
         tools:layout="@layout/fragment_educational_content" >
         <action
-            android:id="@+id/action_educationalContentFragment_to_educationLevelsFragment"
-            app:destination="@id/educationLevelsFragment" />
-        <action
             android:id="@+id/action_educationalContentFragment_to_contentFragment"
             app:destination="@id/contentFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/educationLevelsFragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EducationLevelsFragment"
-        android:label="fragment_education_levels"
-        tools:layout="@layout/fragment_education_levels" >
         <action
-            android:id="@+id/action_educationLevelsFragment_to_educationalContentFragment"
-            app:destination="@id/educationalContentFragment" />
-        <argument
-            android:name="currentContent"
-            app:argType="com.graduationproject.robokidsapp.model.EducationalLevels"
-            app:nullable="true" />
+            android:id="@+id/action_educationalContentFragment_to_educationalSectionFragment"
+            app:destination="@id/educationalSectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentVidoFramFragment"
@@ -319,5 +306,43 @@
         <action
             android:id="@+id/action_ticTacToeFragment_to_gamingSectionFragment"
             app:destination="@id/gamingSectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationalSectionFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.EducationalSectionFragment"
+        android:label="fragment_educational_section"
+        tools:layout="@layout/fragment_educational_section" >
+        <action
+            android:id="@+id/action_educationalSectionFragment_to_educationalContentFragment"
+            app:destination="@id/educationalContentFragment" />
+        <action
+            android:id="@+id/action_educationalSectionFragment_to_whiteboardFragment"
+            app:destination="@id/whiteboardFragment" />
+        <argument
+            android:name="currentSection"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_educationalSectionFragment_to_pronunciationLettersFragment"
+            app:destination="@id/pronunciationLettersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/whiteboardFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment"
+        android:label="fragment_whiteboard"
+        tools:layout="@layout/fragment_whiteboard" >
+        <action
+            android:id="@+id/action_whiteboardFragment_to_educationalSectionFragment"
+            app:destination="@id/educationalSectionFragment" />
+        <argument android:name="learnSection"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pronunciationLettersFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.PronunciationLettersFragment"
+        android:label="fragment_pronunciation_letters"
+        tools:layout="@layout/fragment_pronunciation_letters" >
+        <action
+            android:id="@+id/action_pronunciationLettersFragment_to_educationalSectionFragment"
+            app:destination="@id/educationalSectionFragment" />
     </fragment>
 </navigation>

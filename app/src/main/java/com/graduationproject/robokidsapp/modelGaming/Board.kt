@@ -22,15 +22,8 @@ data class Board(private val board: MutableMap<Cell, CellState> = mutableMapOf()
     val bottomRight: CellState
         get() = board[Cell.BOTTOM_RIGHT] ?: CellState.Blank
 
-    /**
-     * Set the cell state
-     *
-     * @param cell: The Cell to assign a state to
-     * @param state: The State to assign
-     *
-     * @return true iff the state was set successfully. If the cell has already been set,
-     * false will be returned
-     */
+
+
     fun setCell(cell: Cell, state: CellState): Boolean {
         if (board.containsKey(cell)) {
             return false
@@ -39,19 +32,12 @@ data class Board(private val board: MutableMap<Cell, CellState> = mutableMapOf()
         return true
     }
 
-    /**
-     * Clear the board of all states
-     */
+
     fun clearBoard() {
         board.clear()
     }
 
-    /**
-     * Find the next winning move for the current cell state
-     *
-     * @return The cell of the winning move for the provided state.
-     * If there is no winning move on this turn, return null
-     */
+
     fun findNextWinningMove(state: CellState): Cell? = when {
         Cell.TOP_LEFT wins state -> Cell.TOP_LEFT
         Cell.TOP_CENTER wins state -> Cell.TOP_CENTER
@@ -75,11 +61,7 @@ data class Board(private val board: MutableMap<Cell, CellState> = mutableMapOf()
         return hasWon
     }
 
-    /**
-     * Determine if the board has been won / current status of the board
-     *
-     * @return state of the board
-     */
+
     val boardState: BoardState
         get() {
             return when {

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/left_back"
+            android:id="@+id/whiteboard_back"
             android:layout_width="@dimen/_32sdp"
             android:layout_height="@dimen/_32sdp"
             android:src="@drawable/left_back" />
@@ -97,7 +97,6 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="A"
             android:textColor="@color/black"
             android:textSize="@dimen/_50ssp"
             android:textStyle="bold" />

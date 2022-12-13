@@ -6,3 +6,4 @@ enum class BoardState {
     CIRCLE_WON,
     DRAW
 }
+

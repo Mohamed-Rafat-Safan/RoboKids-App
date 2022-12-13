@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.VideoAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentSectionBinding
-import com.graduationproject.robokidsapp.model.EducationalLevels
 import com.graduationproject.robokidsapp.model.Videos
 
 class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListener {
@@ -34,11 +33,13 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
 
 
         videoList = ArrayList()
-        videoList.add(Videos("", R.drawable.videos))
-        videoList.add(Videos("", R.drawable.content))
-        videoList.add(Videos("", R.drawable.educational))
-        videoList.add(Videos("", R.drawable.entertaining))
-        videoList.add(Videos("", R.drawable.videos))
+        videoList.add(Videos("", R.drawable.image0))
+        videoList.add(Videos("", R.drawable.image1))
+        videoList.add(Videos("", R.drawable.image2))
+        videoList.add(Videos("", R.drawable.image3))
+        videoList.add(Videos("", R.drawable.image4))
+        videoList.add(Videos("", R.drawable.image5))
+
 
         val adapter = VideoAdapter(requireContext(),videoList,this)
         binding.rvEntertainmentSection.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
