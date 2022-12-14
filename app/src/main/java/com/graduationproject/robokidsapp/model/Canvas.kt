@@ -1,16 +1,14 @@
 package com.graduationproject.robokidsapp.model
 
 import android.content.Context
+import android.graphics.*
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
-import android.graphics.Path
-import android.widget.Toast
+
 
 class Canvas : View {
     companion object{
@@ -27,6 +25,14 @@ class Canvas : View {
 
    var startFlag = false
    var endFlag = false
+
+    var btmBackground: Bitmap? = null
+    var btmView: Bitmap? = null
+    var nCanvas : Canvas? = null
+
+
+//    private var mBitmap: Bitmap? = null
+//    private var mCanvas: Canvas? = null
 
     constructor(context: Context?) : super(context){
         init(context!!)
@@ -45,6 +51,10 @@ class Canvas : View {
     }
 
     private fun init(context: Context){
+
+//        mBitmap = Bitmap.createBitmap(10000,10000, Bitmap.Config.ARGB_8888)
+//        mCanvas = Canvas(mBitmap!!)
+
         WhiteboardFragment.paint_brush.isAntiAlias = true
         WhiteboardFragment.paint_brush.color = Color.BLACK
         WhiteboardFragment.paint_brush.style = Paint.Style.STROKE
@@ -94,9 +104,27 @@ class Canvas : View {
         return true
     }
 
+    fun getBitmap(): Bitmap? {
+        this.isDrawingCacheEnabled = true
+        this.buildDrawingCache()
+        var bitmap = Bitmap.createBitmap(this.getDrawingCache())
+        this.isDrawingCacheEnabled = false
+        return bitmap
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        btmBackground = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
+        btmView = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
+        nCanvas = Canvas(btmView!!)
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
+        canvas?.drawBitmap(btmBackground!!,0f,0f,null)
+        canvas?.drawBitmap(btmView!!,0f,0f,null)
+
         for (i in 0 until  pathList.size){
             WhiteboardFragment.paint_brush.color = colorList[i]
             WhiteboardFragment.paint_brush.strokeWidth = sizeList[i]
@@ -104,7 +132,6 @@ class Canvas : View {
             invalidate()
         }
     }
-
 
 
     fun undo(){
@@ -120,7 +147,6 @@ class Canvas : View {
             invalidate()
         }
     }
-
 
 
     fun redo(){

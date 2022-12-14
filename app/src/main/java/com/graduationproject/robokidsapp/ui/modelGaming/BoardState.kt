@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.modelGaming
+package com.graduationproject.robokidsapp.ui.modelGaming
 
 enum class BoardState {
     INCOMPLETE,

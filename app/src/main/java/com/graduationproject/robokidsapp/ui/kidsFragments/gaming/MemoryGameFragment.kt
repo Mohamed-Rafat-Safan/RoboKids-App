@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentMemoryGameBinding
-import com.graduationproject.robokidsapp.modelGaming.MemoryCard
+import com.graduationproject.robokidsapp.ui.modelGaming.MemoryCard
 import kotlinx.coroutines.*
 
 class MemoryGameFragment : Fragment() {
@@ -40,6 +41,7 @@ class MemoryGameFragment : Fragment() {
         _binding = FragmentMemoryGameBinding.inflate(inflater, container, false)
 
         val images = mutableListOf(R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6)
+
         // Add each image twice so we can create pairs
         images.addAll(images)
         // Randomize the order of images
@@ -54,6 +56,8 @@ class MemoryGameFragment : Fragment() {
         buttons.forEachIndexed { index, Button ->
             Button.setOnClickListener {
                 // Update models
+                val animation = AnimationUtils.loadAnimation(activity,R.anim.fade_in)
+                Button.startAnimation(animation)
                 updateModels(index)
                 // Update the UI for the game
                 updateViews()
@@ -66,7 +70,9 @@ class MemoryGameFragment : Fragment() {
         }
 
         binding.restartGame.setOnClickListener {
-
+            flag = true
+            val action = MemoryGameFragmentDirections.actionMemoryGameFragmentToGamingSectionFragment()
+            mNavController.navigate(action)
         }
 
         return binding.root
@@ -81,6 +87,9 @@ class MemoryGameFragment : Fragment() {
                 if (count == 6){
                     GlobalScope.launch {
                         withContext(Dispatchers.Main){
+                            buttons.forEachIndexed { index, Button ->
+                                Button.isEnabled = false
+                            }
                             binding.animationView.visibility = View.VISIBLE
                             binding.animationView2.visibility = View.VISIBLE
                             delay(1500)
@@ -92,7 +101,9 @@ class MemoryGameFragment : Fragment() {
             }else{
                 button.setBackgroundResource(R.drawable.bg_memory_game_false)
             }
-            button.setImageResource(if (card.isFaceUp) card.identifier else R.drawable.ask)
+            button.setImageResource(if (card.isFaceUp){
+                card.identifier
+            } else R.drawable.ask)
         }
     }
 

@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.modelGaming
+package com.graduationproject.robokidsapp.ui.modelGaming
 
 
 data class Board(private val board: MutableMap<Cell, CellState> = mutableMapOf()) {

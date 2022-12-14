@@ -13,8 +13,6 @@ class EducationalSectionsAdapter (val context: Context, val listSection:ArrayLis
     RecyclerView.Adapter<EducationalSectionsAdapter.SectionViewHolder>() {
 
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
         return SectionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_layout_sections, parent, false), onItemClickListener)
     }
