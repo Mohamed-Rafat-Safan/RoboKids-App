@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.adapters.EducationalSectionsAdapter
-import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.model.Content
 import com.graduationproject.robokidsapp.model.EducationalSections
@@ -50,14 +49,12 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
             listSection.add(EducationalSections("Arabic",R.drawable.speek_arapic))
             listSection.add(EducationalSections("English",R.drawable.speek_abc))
             listSection.add(EducationalSections("Math",R.drawable.speek_123))
+            listSection.add(EducationalSections("Photo",R.drawable.photos_know))
         }else if(sectionData=="Board"){
             listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
             listSection.add(EducationalSections("English",R.drawable.board_abc))
             listSection.add(EducationalSections("Math",R.drawable.board_123))
-        }else if(sectionData=="Images Know"){
-            listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
-            listSection.add(EducationalSections("English",R.drawable.board_abc))
-            listSection.add(EducationalSections("Math",R.drawable.board_123))
+            listSection.add(EducationalSections("Photo",R.drawable.photos_know))
         }else if(sectionData=="Questions"){
             listSection.add(EducationalSections("Arabic",R.drawable.ques_arapic))
             listSection.add(EducationalSections("English",R.drawable.ques_abc))
@@ -81,11 +78,7 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
         return binding.root
     }
 
-
-
     var character = ArrayList<Char>()
-
-
 
     override fun onItemClick(position: Int) {
         val section = listSection[position]
@@ -97,9 +90,6 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
             "Board"->{
                 val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToWhiteboardFragment(section.sectionName)
                 mNavController.navigate(action)
-            }
-            "Images Know"->{
-
             }
             "Questions"->{
 

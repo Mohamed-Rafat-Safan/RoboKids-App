@@ -42,7 +42,6 @@ class EducationalContentFragment : Fragment(),ContentAdapter.OnItemClickListener
         listContent = ArrayList()
         listContent.add(Content("Pronunciation",R.drawable.main_pronounce))
         listContent.add(Content("Board",R.drawable.main_board))
-        listContent.add(Content("Images Know",R.drawable.photos_know))
         listContent.add(Content("Questions",R.drawable.solving_problems))
 
 

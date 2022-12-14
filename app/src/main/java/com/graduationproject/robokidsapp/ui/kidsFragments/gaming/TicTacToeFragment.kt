@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.databinding.FragmentTicTacToeBinding
-import com.graduationproject.robokidsapp.modelGaming.Board
-import com.graduationproject.robokidsapp.modelGaming.BoardState
-import com.graduationproject.robokidsapp.modelGaming.Cell
+import com.graduationproject.robokidsapp.ui.modelGaming.Board
+import com.graduationproject.robokidsapp.ui.modelGaming.BoardState
+import com.graduationproject.robokidsapp.ui.modelGaming.Cell
 
 
 class TicTacToeFragment : Fragment() {

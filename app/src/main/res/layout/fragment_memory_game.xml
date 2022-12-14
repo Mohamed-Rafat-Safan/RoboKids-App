@@ -4,219 +4,199 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     tools:context=".ui.kidsFragments.gaming.MemoryGameFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/_18sdp">
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/exit_memory_game"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_6sdp"
-                android:src="@drawable/exit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-            <ImageView
-                android:id="@+id/restart_game"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:src="@drawable/restart"
-                android:layout_margin="@dimen/_6sdp"
-                app:layout_constraintStart_toEndOf="@+id/exit_memory_game"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView3"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
-                android:layout_margin="@dimen/_6sdp"
-                android:layout_gravity="center"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/relaxing_emoji" />
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_4sdp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/exit_memory_game">
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton1"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton4"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_4sdp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton10"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton7"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+            <ImageButton
+                android:id="@+id/imageButton11"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
 
-                <ImageButton
-                    android:id="@+id/imageButton8"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_3sdp"
+                android:background="@drawable/bg_memory_game_deflett"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ask" />
+        </LinearLayout>
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_4sdp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+    <ImageView
+        android:id="@+id/restart_game"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_6sdp"
+        android:src="@drawable/restart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/imageButton9"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+    <ImageView
+        android:id="@+id/exit_memory_game"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_6sdp"
+        android:src="@drawable/exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/imageButton10"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/animationView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/good_emoji" />
 
-                <ImageButton
-                    android:id="@+id/imageButton11"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
-
-                <ImageButton
-                    android:id="@+id/imageButton12"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:background="@drawable/bg_memory_game_deflett"
-                    android:scaleType="centerCrop"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:src="@drawable/ask" />
-            </LinearLayout>
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                android:visibility="gone"
-                app:lottie_rawRes="@raw/confetti_day" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                android:visibility="gone"
-                app:lottie_rawRes="@raw/good_emoji" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/confetti_day" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

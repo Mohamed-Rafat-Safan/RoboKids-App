@@ -47,6 +47,12 @@ class GamingSectionFragment : Fragment() {
             mNavController.navigate(action)
         }
 
+        if(MemoryGameFragment.flag){
+            MemoryGameFragment.flag = false
+            val action = GamingSectionFragmentDirections.actionGamingSectionFragmentToMemoryGameFragment()
+            mNavController.navigate(action)
+        }
+
         return binding.root
     }
 

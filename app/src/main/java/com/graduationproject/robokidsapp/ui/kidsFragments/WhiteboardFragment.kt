@@ -1,32 +1,34 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
+import android.content.ContentValues
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.view.*
 import android.widget.SeekBar
 import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.adapters.TabWidgetBindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
-import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
 import com.graduationproject.robokidsapp.model.Canvas
-import com.graduationproject.robokidsapp.model.Content
+import com.graduationproject.robokidsapp.model.WhiteBoardContent
+import java.io.OutputStream
 
 
 class WhiteboardFragment : Fragment() {
     private lateinit var mNavController: NavController
-    lateinit var listLetters:ArrayList<String>
+    lateinit var listWhiteBoardContent:ArrayList<WhiteBoardContent>
     lateinit var typeLetter:String
+    var isImage:Boolean = false
 
     companion object{
         var path:Path = Path()
@@ -51,6 +53,10 @@ class WhiteboardFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentWhiteboardBinding.inflate(inflater, container, false)
 
+        Canvas.pathList.clear()
+        Canvas.colorList.clear()
+        Canvas.sizeList.clear()
+        path.reset()
 
         binding.customToolbar.inflateMenu(R.menu.whiteboard_menu)
 
@@ -115,7 +121,7 @@ class WhiteboardFragment : Fragment() {
         setDataInArrayList(typeLetter)
 
 
-        val adapter = WhiteboardAdapter(requireContext() , listLetters)
+        val adapter = WhiteboardAdapter(requireContext() , listWhiteBoardContent,isImage)
         binding.rvWhiteboard.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.rvWhiteboard.adapter = adapter
         binding.rvWhiteboard.setHasFixedSize(true)
@@ -141,6 +147,42 @@ class WhiteboardFragment : Fragment() {
         return binding.root
     }
 
+    // get image of whiteBoard
+    public fun savePhoto() {
+        val bmp = binding.mCanvas.getBitmap()
+        var imageOutStream: OutputStream? = null
+
+        val cv = ContentValues()
+
+        // name of the file
+        // name of the file
+        cv.put(MediaStore.Images.Media.DISPLAY_NAME, "drawing.png")
+
+        // type of the file
+        // type of the file
+        cv.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+
+        // location of the file to be saved
+        // location of the file to be saved
+        cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+
+        // get the Uri of the file which is to be created in the storage
+        // get the Uri of the file which is to be created in the storage
+        val uri: Uri = activity?.getContentResolver()?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv)!!
+        try {
+            // open the output stream with the above uri
+            imageOutStream = activity?.getContentResolver()!!.openOutputStream(uri)
+
+            // this method writes the files in storage
+            bmp?.compress(Bitmap.CompressFormat.PNG, 100, imageOutStream)
+            Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show()
+            // close the output stream after use
+            imageOutStream?.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 
     fun currentColor(c:Int){
         Canvas.currentBrush = c
@@ -155,25 +197,44 @@ class WhiteboardFragment : Fragment() {
 
 
     fun setDataInArrayList(type:String){
-        listLetters = ArrayList()
+        listWhiteBoardContent = ArrayList()
         when(type){
             "Arabic"->{
                 for(i in 1569..1594){
-                    listLetters.add(""+ i.toChar())
+                    listWhiteBoardContent.add(WhiteBoardContent(""+ i.toChar(),0,""))
                 }
                 for(i in 1601..1610){
-                    listLetters.add(""+ i.toChar())
+                    listWhiteBoardContent.add(WhiteBoardContent(""+ i.toChar(),0,""))
                 }
+                isImage = false
+                binding.tvText.visibility = View.VISIBLE
             }
             "English"->{
                 for(i in 'A'..'Z'){
-                    listLetters.add(""+ i)
+                    listWhiteBoardContent.add(WhiteBoardContent(""+ i,0,""))
                 }
+                isImage = false
+                binding.tvText.visibility = View.VISIBLE
             }
             "Math"->{
                 for(i in 0..100){
-                    listLetters.add(""+ i)
+                    listWhiteBoardContent.add(WhiteBoardContent(""+ i,0,""))
                 }
+                isImage = false
+                binding.tvText.visibility = View.VISIBLE
+            }
+            "Photo"->{
+                binding.knowImageLayout.visibility = View.VISIBLE
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.rabbit,"rabbit"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.line,"lion"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.tiger,"tiger"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.bird,"bird"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.panda,"panda"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.giraffe,"giraffe"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.deer,"deer"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.cat,"cat"))
+                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.dog,"dog"))
+                isImage = true
             }
             else -> println("invalid type")
         }
