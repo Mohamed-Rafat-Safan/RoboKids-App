@@ -103,6 +103,8 @@ class PronunciationLettersFragment : Fragment() {
                     playableSecond = 0
                     second = 0
                     dummySecond = 0
+                    binding.pronunciationLettersSpeaker.isEnabled = false
+                    binding.pronunciationLettersEnableSpeaker.isEnabled = false
                     binding.pronunciationLettersEnableMic.visibility = View.VISIBLE
                     binding.pronunciationLettersMic.visibility = View.INVISIBLE
                     runTimer()
@@ -120,6 +122,8 @@ class PronunciationLettersFragment : Fragment() {
 
                 activity?.runOnUiThread{
                     handler.removeCallbacksAndMessages(null)
+                    binding.pronunciationLettersSpeaker.isEnabled = true
+                    binding.pronunciationLettersEnableSpeaker.isEnabled = true
                     binding.pronunciationLettersEnableMic.visibility = View.INVISIBLE
                     binding.pronunciationLettersMic.visibility = View.VISIBLE
                 }
@@ -139,6 +143,8 @@ class PronunciationLettersFragment : Fragment() {
             mediaPlayer!!.prepare()
             mediaPlayer!!.start()
             isPlaying = true
+            binding.pronunciationLettersSpeaker.isEnabled = true
+            binding.pronunciationLettersEnableSpeaker.isEnabled = true
             binding.pronunciationLettersSpeaker.visibility = View.INVISIBLE
             binding.pronunciationLettersEnableSpeaker.visibility = View.VISIBLE
             runTimer()
@@ -150,6 +156,8 @@ class PronunciationLettersFragment : Fragment() {
             isPlaying = false
             second = 0
             handler.removeCallbacksAndMessages(null)
+            binding.pronunciationLettersSpeaker.isEnabled = true
+            binding.pronunciationLettersEnableSpeaker.isEnabled = true
             binding.pronunciationLettersEnableSpeaker.visibility = View.INVISIBLE
             binding.pronunciationLettersSpeaker.visibility = View.VISIBLE
         }
@@ -181,6 +189,7 @@ class PronunciationLettersFragment : Fragment() {
                         mediaPlayer = MediaPlayer()
                         playableSecond = dummySecond
                         second = 0
+                        isPlaying = false
                         handler.removeCallbacksAndMessages(null)
                         binding.pronunciationLettersEnableSpeaker.visibility = View.INVISIBLE
                         binding.pronunciationLettersSpeaker.visibility = View.VISIBLE
