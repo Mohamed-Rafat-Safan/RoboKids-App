@@ -14,9 +14,6 @@
             android:id="@+id/action_splashFragment_to_parentsORKidsFragment"
             app:destination="@id/parentsORKidsFragment" />
         <action
-            android:id="@+id/action_splashFragment_to_kidsReportsFragment"
-            app:destination="@id/kidsReportsFragment" />
-        <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
     </fragment>
@@ -85,6 +82,9 @@
         <action
             android:id="@+id/action_addKidsFragment_to_parentsHomeFragment"
             app:destination="@id/parentsHomeFragment" />
+        <argument
+            android:name="operation"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/parentsHomeFragment"

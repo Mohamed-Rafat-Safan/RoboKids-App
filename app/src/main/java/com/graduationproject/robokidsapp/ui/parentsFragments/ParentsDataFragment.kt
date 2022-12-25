@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
 import android.widget.ImageView
-import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentParentsDataBinding
 import java.util.*
@@ -46,8 +44,18 @@ class ParentsDataFragment : Fragment() {
         _binding = FragmentParentsDataBinding.inflate(inflater, container, false)
 
         binding.btnParentData.setOnClickListener {
-            val action = ParentsDataFragmentDirections.actionParentsDataFragmentToAddKidsFragment()
+            val action = ParentsDataFragmentDirections.actionParentsDataFragmentToAddKidsFragment("addKids")
             mNavController.navigate(action)
+        }
+
+        binding.ivFather.setOnClickListener {
+            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
+            binding.ivMother.setBackgroundResource(0)
+        }
+
+        binding.ivMother.setOnClickListener {
+            binding.ivFather.setBackgroundResource(0)
+            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender)
         }
 
         binding.selectYearBirth.setOnClickListener {
@@ -56,8 +64,6 @@ class ParentsDataFragment : Fragment() {
 
         return binding.root
     }
-
-
 
     fun showDialogCountries() {
         val customView = LayoutInflater.from(activity)

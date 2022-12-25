@@ -108,12 +108,15 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         if(binding.drawLayout.isDrawerOpen(GravityCompat.START))
             closeDrawer()
-        else{
-            val mainIntent = Intent(Intent.ACTION_MAIN)
-            mainIntent.addCategory(Intent.CATEGORY_HOME)
-            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(mainIntent)
-        }
+        else
+            super.onBackPressed()
+
+//        else{
+//            val mainIntent = Intent(Intent.ACTION_MAIN)
+//            mainIntent.addCategory(Intent.CATEGORY_HOME)
+//            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//            startActivity(mainIntent)
+//        }
 
     }
 

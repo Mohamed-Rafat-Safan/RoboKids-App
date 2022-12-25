@@ -13,19 +13,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_16sdp">
+            android:padding="@dimen/_10sdp">
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_24sdp"
-                android:text="Child Age"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/black"
-                android:paddingBottom="@dimen/_5sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_name_kids" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -36,7 +25,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_addKids_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Kids"
@@ -51,20 +40,21 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Boye"
+                android:text="Boy"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_select_boye"
-                app:layout_constraintStart_toStartOf="@+id/iv_select_boye"
-                app:layout_constraintTop_toBottomOf="@+id/iv_select_boye" />
+                app:layout_constraintEnd_toEndOf="@+id/iv_select_boy"
+                app:layout_constraintStart_toStartOf="@+id/iv_select_boy"
+                app:layout_constraintTop_toBottomOf="@+id/iv_select_boy" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_select_girl"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/girl"
+                android:padding="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -82,34 +72,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_select_girl" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_select_boye"
+                android:id="@+id/iv_select_boy"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/boye"
+                android:padding="3dp"
+                android:background="@drawable/bg_select_gender"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <ImageView
-                android:id="@+id/iv_sub_kidsAge"
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:clickable="true"
-                android:src="@drawable/minus"
-                android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_age_kids"
-                app:layout_constraintStart_toEndOf="@+id/tv_age_kids"
-                app:layout_constraintTop_toTopOf="@+id/tv_age_kids" />
-
-            <ImageView
-                android:id="@+id/iv_plus_kidsAge"
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/plus"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_age_kids"
-                app:layout_constraintEnd_toStartOf="@+id/tv_age_kids"
-                app:layout_constraintTop_toTopOf="@+id/tv_age_kids" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -121,14 +94,15 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
                 app:layout_constraintBottom_toTopOf="@+id/textView5"
-                app:layout_constraintStart_toEndOf="@+id/iv_select_boye"
-                app:layout_constraintTop_toTopOf="@+id/iv_select_boye" />
+                app:layout_constraintStart_toEndOf="@+id/iv_select_boy"
+                app:layout_constraintTop_toTopOf="@+id/iv_select_boy" />
+
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:text="Child Name"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
@@ -136,52 +110,115 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <EditText
-                android:id="@+id/et_name_kids"
+                android:id="@+id/et_parentsName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_search_country"
-                android:ems="10"
-                android:hint="Name"
-                android:textSize="@dimen/_16ssp"
-                android:inputType="textPersonName"
-                android:padding="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="Enter Name"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:textSize="@dimen/_15ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-            <TextView
-                android:id="@+id/tv_age_kids"
-                android:layout_width="wrap_content"
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/name_kids"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Child Name"-->
+<!--                android:textColorHint="#737373"-->
+<!--                app:boxStrokeWidthFocused="@dimen/_2sdp"-->
+<!--                android:layout_marginTop="@dimen/_25sdp"-->
+<!--                app:hintTextColor="@color/black"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/textView5">-->
+
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/et_name_kids"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:inputType="textEmailAddress"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textCursorDrawable="@null"-->
+<!--                    android:textSize="@dimen/_14ssp" />-->
+
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_search_country"
-                android:paddingHorizontal="@dimen/_30sdp"
-                android:paddingVertical="@dimen/_12sdp"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_40sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/et_parentsName">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Child Age"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18ssp" />
+
+                <ImageView
+                    android:id="@+id/iv_sub_kidsAge"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:clickable="true"
+                    android:src="@drawable/minus" />
+
+                <TextView
+                    android:id="@+id/tv_age_kids"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:background="@drawable/bg_search_country"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_plus_kidsAge"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/plus" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_20sdp"
-                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/black"
                 android:text="Is Your Child"
                 android:textSize="@dimen/_20ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+
             <Button
                 android:id="@+id/btn_add_kids"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_70sdp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_create_account_background"
                 android:text="Add Kids"
@@ -190,7 +227,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_age_kids" />
+                android:layout_marginTop="@dimen/_50sdp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

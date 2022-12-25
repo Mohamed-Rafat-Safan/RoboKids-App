@@ -15,18 +15,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_add_new_kids"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_new_kids"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_kids"
-        android:drawableStart="@drawable/ic_add_circle"
-        android:drawablePadding="@dimen/_4sdp"
-        android:textColor="#2196F3"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_reportsKids" />
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

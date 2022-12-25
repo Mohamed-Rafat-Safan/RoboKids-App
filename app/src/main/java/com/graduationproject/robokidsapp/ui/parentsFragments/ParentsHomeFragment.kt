@@ -10,14 +10,21 @@ import android.view.WindowManager
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.adapters.ReportsKidsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentParentsHomeBinding
+import com.graduationproject.robokidsapp.model.Child
 import com.graduationproject.robokidsapp.ui.MainActivity
 
-class ParentsHomeFragment : Fragment() {
-    private lateinit var mNavController: NavController
+class ParentsHomeFragment : Fragment() , ReportsKidsAdapter.OnItemClickListener{
+    companion object{
+        lateinit var mNavController: NavController
+    }
+
     private var _binding: FragmentParentsHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var listChild:ArrayList<Child>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +42,24 @@ class ParentsHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentParentsHomeBinding.inflate(inflater, container, false)
 
-        binding.tvAddNewKids.setOnClickListener {
-            val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment()
+        binding.addNewKids.setOnClickListener {
+            val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment("addKids")
             mNavController.navigate(action)
         }
+
+
+        listChild = ArrayList()
+        listChild.add(Child("محمد" , R.drawable.boy2))
+        listChild.add(Child("سلمي" , R.drawable.boy2))
+        listChild.add(Child("أحمد" , R.drawable.boy2))
+        listChild.add(Child("علي" , R.drawable.boy2))
+        listChild.add(Child("شروق" , R.drawable.boy2))
+
+
+        val adapter = ReportsKidsAdapter(requireContext() , listChild , this)
+        binding.rvReportsKids.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+        binding.rvReportsKids.adapter = adapter
+        binding.rvReportsKids.setHasFixedSize(true)
 
         return binding.root
     }
@@ -60,6 +81,12 @@ class ParentsHomeFragment : Fragment() {
         super.onDestroyView()
         MainActivity.binding.customToolbarMainActivity.visibility = View.GONE
         _binding = null
+    }
+
+
+
+    override fun onItemClick(position: Int) {
+
     }
 
 }

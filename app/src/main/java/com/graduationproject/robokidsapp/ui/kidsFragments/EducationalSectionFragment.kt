@@ -107,3 +107,5 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
     }
 
 }
+
+

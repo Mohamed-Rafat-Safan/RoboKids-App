@@ -31,7 +31,6 @@
                android:id="@+id/iv_logo"
                android:layout_width="@dimen/_50sdp"
                android:layout_height="@dimen/_50sdp"
-               android:padding="@dimen/_5sdp"
                android:src="@drawable/logo" />
 
            <TextView
@@ -52,7 +51,7 @@
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/black"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_20sdp" />
+            android:layout_marginTop="@dimen/_30sdp" />
 
 
         <RelativeLayout
@@ -65,6 +64,8 @@
                 android:id="@+id/iv_father"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
+                android:padding="3dp"
+                android:background="@drawable/bg_select_gender"
                 android:src="@drawable/dad"  />
 
             <TextView
@@ -95,6 +96,7 @@
                 android:id="@+id/iv_mother"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
+                android:padding="3dp"
                 android:src="@drawable/mother"
                 android:layout_toEndOf="@+id/tv_or"/>
 
