@@ -45,7 +45,7 @@ class SplashFragment : Fragment() {
         GlobalScope.launch {
             delay(2000)
             withContext(Dispatchers.Main){
-                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+                val action = SplashFragmentDirections.actionSplashFragmentToEnglishQuiz1Fragment()
                 mNavController.navigate(action)
 
             }

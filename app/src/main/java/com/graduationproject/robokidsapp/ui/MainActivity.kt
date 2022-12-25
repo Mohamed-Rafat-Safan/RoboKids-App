@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
@@ -19,7 +18,6 @@ import com.google.android.material.navigation.NavigationView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
 import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragmentDirections
-import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsORKidsFragmentDirections
 
 //                              بسم الله الرحمن الرحيم
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {

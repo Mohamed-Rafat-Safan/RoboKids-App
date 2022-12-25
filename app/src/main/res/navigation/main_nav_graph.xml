@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_englishQuiz1Fragment"
+            app:destination="@id/englishQuiz1Fragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -345,4 +348,9 @@
             android:id="@+id/action_pronunciationLettersFragment_to_educationalSectionFragment"
             app:destination="@id/educationalSectionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/englishQuiz1Fragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.EnglishQuiz1Fragment"
+        android:label="fragment_english_quiz1"
+        tools:layout="@layout/fragment_english_quiz1" />
 </navigation>
