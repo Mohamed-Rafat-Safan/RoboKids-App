@@ -12,9 +12,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connects"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
+        android:text="Connect"
+        android:textColor="#EB455F"
+        android:textSize="@dimen/_25ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="@dimen/_45sdp"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_width="@dimen/_38sdp"
+        android:layout_height="@dimen/_38sdp"
         android:src="@drawable/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5">
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_28ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -162,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_28ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -188,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_28ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -213,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_28ssp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -352,5 +352,9 @@
         android:id="@+id/englishQuiz1Fragment"
         android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.EnglishQuiz1Fragment"
         android:label="fragment_english_quiz1"
-        tools:layout="@layout/fragment_english_quiz1" />
+        tools:layout="@layout/fragment_english_quiz1" >
+        <action
+            android:id="@+id/action_englishQuiz1Fragment_self"
+            app:destination="@id/englishQuiz1Fragment" />
+    </fragment>
 </navigation>

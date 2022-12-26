@@ -47,7 +47,6 @@ class SplashFragment : Fragment() {
             withContext(Dispatchers.Main){
                 val action = SplashFragmentDirections.actionSplashFragmentToEnglishQuiz1Fragment()
                 mNavController.navigate(action)
-
             }
 
         }
