@@ -52,8 +52,7 @@ class CommonQuestionsFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            val action = CommonQuestionsFragmentDirections.actionCommonQuestionsFragmentToParentsHomeFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root

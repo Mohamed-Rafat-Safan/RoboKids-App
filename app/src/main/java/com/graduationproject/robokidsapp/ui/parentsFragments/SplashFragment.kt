@@ -48,7 +48,6 @@ class SplashFragment : Fragment() {
                 val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
                 mNavController.navigate(action)
             }
-
         }
     }
 

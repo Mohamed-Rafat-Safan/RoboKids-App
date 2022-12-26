@@ -26,8 +26,7 @@ class GetToKnowTheAppFragment : Fragment() {
         _binding = FragmentGetToKnowTheAppBinding.inflate(inflater, container, false)
 
         binding.ivBack.setOnClickListener {
-            val action = GetToKnowTheAppFragmentDirections.actionGetToKnowTheAppFragmentToParentsHomeFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root
