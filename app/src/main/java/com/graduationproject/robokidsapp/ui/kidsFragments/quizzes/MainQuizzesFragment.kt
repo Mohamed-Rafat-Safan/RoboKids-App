@@ -5,13 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.graduationproject.robokidsapp.R
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import com.graduationproject.robokidsapp.databinding.FragmentMainQuizzesBinding
 
 class MainQuizzesFragment : Fragment() {
+    private var _binding: FragmentMainQuizzesBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var mNavController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mNavController = findNavController()
     }
 
     override fun onCreateView(
@@ -19,8 +24,27 @@ class MainQuizzesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_quizzes, container, false)
+        _binding = FragmentMainQuizzesBinding.inflate(inflater, container, false)
+
+        binding.mainQuizzesQuiz1.setOnClickListener {
+            val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToEnglishQuiz1Fragment()
+            mNavController.navigate(action)
+        }
+
+        binding.mainQuizzesQuiz2.setOnClickListener {
+            val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToMathQuiz1Fragment()
+            mNavController.navigate(action)
+        }
+
+        binding.mainQuizzesBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        }
+
+        return binding.root
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

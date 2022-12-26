@@ -80,6 +80,10 @@ class PronunciationLettersFragment : Fragment() {
 
         }
 
+        binding.pronunciationLettersExit.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        }
+
         return binding.root
     }
 

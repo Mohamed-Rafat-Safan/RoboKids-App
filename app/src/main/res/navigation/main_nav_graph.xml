@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
             app:destination="@id/homeKidsFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_englishQuiz1Fragment"
-            app:destination="@id/englishQuiz1Fragment" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -300,6 +297,11 @@
         <action
             android:id="@+id/action_memoryGameFragment_to_gamingSectionFragment"
             app:destination="@id/gamingSectionFragment" />
+        <action
+            android:id="@+id/action_memoryGameFragment_self"
+            app:destination="@id/memoryGameFragment"
+            app:popUpTo="@id/memoryGameFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/ticTacToeFragment"
@@ -327,6 +329,9 @@
         <action
             android:id="@+id/action_educationalSectionFragment_to_pronunciationLettersFragment"
             app:destination="@id/pronunciationLettersFragment" />
+        <action
+            android:id="@+id/action_educationalSectionFragment_to_mainQuizzesFragment2"
+            app:destination="@id/mainQuizzesFragment2" />
     </fragment>
     <fragment
         android:id="@+id/whiteboardFragment"
@@ -349,12 +354,38 @@
             app:destination="@id/educationalSectionFragment" />
     </fragment>
     <fragment
+        android:id="@+id/mainQuizzesFragment2"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.MainQuizzesFragment"
+        android:label="fragment_main_quizzes"
+        tools:layout="@layout/fragment_main_quizzes" >
+        <action
+            android:id="@+id/action_mainQuizzesFragment2_to_educationalSectionFragment"
+            app:destination="@id/educationalSectionFragment" />
+        <action
+            android:id="@+id/action_mainQuizzesFragment2_to_englishQuiz1Fragment"
+            app:destination="@id/englishQuiz1Fragment" />
+        <action
+            android:id="@+id/action_mainQuizzesFragment2_to_mathQuiz1Fragment"
+            app:destination="@id/mathQuiz1Fragment" />
+    </fragment>
+    <fragment
         android:id="@+id/englishQuiz1Fragment"
         android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.EnglishQuiz1Fragment"
         android:label="fragment_english_quiz1"
         tools:layout="@layout/fragment_english_quiz1" >
         <action
             android:id="@+id/action_englishQuiz1Fragment_self"
-            app:destination="@id/englishQuiz1Fragment" />
+            app:destination="@id/englishQuiz1Fragment"
+            app:popUpTo="@id/englishQuiz1Fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathQuiz1Fragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.MathQuiz1Fragment"
+        android:label="fragment_math_quiz1"
+        tools:layout="@layout/fragment_math_quiz1" >
+        <action
+            android:id="@+id/action_mathQuiz1Fragment_self"
+            app:destination="@id/mathQuiz1Fragment" />
     </fragment>
 </navigation>

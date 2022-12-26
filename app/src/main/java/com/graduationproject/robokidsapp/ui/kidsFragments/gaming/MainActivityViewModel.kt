@@ -2,10 +2,10 @@ package com.graduationproject.robokidsapp.ui.kidsFragments.gaming
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.graduationproject.robokidsapp.ui.modelGaming.Board
-import com.graduationproject.robokidsapp.ui.modelGaming.BoardState
-import com.graduationproject.robokidsapp.ui.modelGaming.Cell
-import com.graduationproject.robokidsapp.ui.modelGaming.CellState
+import com.graduationproject.robokidsapp.modelGaming.Board
+import com.graduationproject.robokidsapp.modelGaming.BoardState
+import com.graduationproject.robokidsapp.modelGaming.Cell
+import com.graduationproject.robokidsapp.modelGaming.CellState
 
 import kotlinx.coroutines.*
 

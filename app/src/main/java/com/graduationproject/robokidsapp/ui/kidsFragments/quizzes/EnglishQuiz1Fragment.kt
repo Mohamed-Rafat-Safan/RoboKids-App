@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.allViews
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -120,6 +121,10 @@ class EnglishQuiz1Fragment : Fragment() {
             onDrag(view,dragEvent)
         }
 
+        binding.connectQuizBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        }
+
         return binding.root
     }
 
@@ -141,12 +146,19 @@ class EnglishQuiz1Fragment : Fragment() {
                 return event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
+                if(v.background == null){
+                    v.background = resources.getDrawable(R.drawable.bg_layout_quiz_connect)
+                }
+
                 v.invalidate()
                 return true
             }
             DragEvent.ACTION_DRAG_LOCATION ->
                 return true
             DragEvent.ACTION_DRAG_EXITED -> {
+                if(v.allViews.count() < 3){
+                    v.setBackgroundResource(0)
+                }
                 v.invalidate()
                 return true
             }
@@ -169,7 +181,13 @@ class EnglishQuiz1Fragment : Fragment() {
                     correctCount++
                     if(correctCount==4){
                         showWinDialog()
-                        mediaPlayer = MediaPlayer.create(requireContext() , R.raw.finish)
+
+                        if(mediaPlayer.isPlaying){
+                            mediaPlayer.pause()
+                            mediaPlayer.stop()
+                            mediaPlayer.seekTo(0)
+                        }
+                        mediaPlayer = MediaPlayer.create(requireContext() , R.raw.sound_kids)
                         mediaPlayer.start()
                     }
 
@@ -178,11 +196,11 @@ class EnglishQuiz1Fragment : Fragment() {
 
                     return true
                 }else{
-                    mediaPlayer = MediaPlayer.create(requireContext() , R.raw.error)
-                    mediaPlayer.start()
-
-//                    v.background.callback = null
-//                    v.setBackgroundResource(0)
+                    if(v.allViews.count() < 3){
+                        mediaPlayer = MediaPlayer.create(requireContext() , R.raw.error)
+                        mediaPlayer.start()
+                        v.setBackgroundResource(0)
+                    }
                 }
             }
             DragEvent.ACTION_DRAG_ENDED -> {

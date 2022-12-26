@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.databinding.FragmentTicTacToeBinding
-import com.graduationproject.robokidsapp.ui.modelGaming.Board
-import com.graduationproject.robokidsapp.ui.modelGaming.BoardState
-import com.graduationproject.robokidsapp.ui.modelGaming.Cell
+import com.graduationproject.robokidsapp.modelGaming.Board
+import com.graduationproject.robokidsapp.modelGaming.BoardState
+import com.graduationproject.robokidsapp.modelGaming.Cell
 
 
 class TicTacToeFragment : Fragment() {
@@ -40,9 +40,7 @@ class TicTacToeFragment : Fragment() {
         bindClickEvents()
 
         binding.ivExit.setOnClickListener {
-            val action = TicTacToeFragmentDirections.actionTicTacToeFragmentToGamingSectionFragment()
-            mNavController.navigate(action)
-
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root

@@ -103,19 +103,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     // هذه الدله علشان لو انت كنت فاتح ال navigation drawer ضغط علي زر الرجوع ميخرجش من التطبيق كاكل
     // لا هي لو مفتوحه هيعملها close عادي ومش هيخرجك من التطبيق
     override fun onBackPressed() {
-
         if(binding.drawLayout.isDrawerOpen(GravityCompat.START))
             closeDrawer()
         else
             super.onBackPressed()
-
-//        else{
-//            val mainIntent = Intent(Intent.ACTION_MAIN)
-//            mainIntent.addCategory(Intent.CATEGORY_HOME)
-//            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//            startActivity(mainIntent)
-//        }
-
     }
 
 }

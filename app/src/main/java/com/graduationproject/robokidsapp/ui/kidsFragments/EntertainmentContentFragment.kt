@@ -45,8 +45,7 @@ class EntertainmentContentFragment : Fragment() , ContentAdapter.OnItemClickList
 
 
         binding.entertainmentContentBack.setOnClickListener {
-            val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToContentFragment(null)
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
 

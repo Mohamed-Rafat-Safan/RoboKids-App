@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentMemoryGameBinding
-import com.graduationproject.robokidsapp.ui.modelGaming.MemoryCard
+import com.graduationproject.robokidsapp.modelGaming.MemoryCard
 import kotlinx.coroutines.*
 
 class MemoryGameFragment : Fragment() {
@@ -24,9 +24,7 @@ class MemoryGameFragment : Fragment() {
     private lateinit var cards: List<MemoryCard>
     private var indexOfSingleSelectedCard: Int? = null
     private var count = 0
-    companion object{
-        var flag = false
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,13 +63,11 @@ class MemoryGameFragment : Fragment() {
         }
 
         binding.exitMemoryGame.setOnClickListener {
-            val action = MemoryGameFragmentDirections.actionMemoryGameFragmentToGamingSectionFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         binding.restartGame.setOnClickListener {
-            flag = true
-            val action = MemoryGameFragmentDirections.actionMemoryGameFragmentToGamingSectionFragment()
+            val action = MemoryGameFragmentDirections.actionMemoryGameFragmentSelf()
             mNavController.navigate(action)
         }
 

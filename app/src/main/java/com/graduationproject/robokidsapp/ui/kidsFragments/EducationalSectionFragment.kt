@@ -71,8 +71,7 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
         binding.educationalSectionContentName.text = sectionData
 
         binding.educationalContentBack.setOnClickListener {
-            val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToEducationalContentFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root
@@ -92,7 +91,8 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
                 mNavController.navigate(action)
             }
             "Questions"->{
-
+                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToMainQuizzesFragment2()
+                mNavController.navigate(action)
             }
             else -> println("invalid section Data")
 

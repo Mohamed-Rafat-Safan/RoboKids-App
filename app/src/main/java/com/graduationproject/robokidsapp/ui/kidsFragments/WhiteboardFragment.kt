@@ -139,8 +139,7 @@ class WhiteboardFragment : Fragment() {
 
 
         binding.whiteboardBack.setOnClickListener {
-            val action = WhiteboardFragmentDirections.actionWhiteboardFragmentToEducationalSectionFragment("Board")
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
 

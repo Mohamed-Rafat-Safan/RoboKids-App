@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.modelGaming
+package com.graduationproject.robokidsapp.modelGaming
 
 enum class Cell {
     TOP_LEFT,

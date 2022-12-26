@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.ui.modelGaming
+package com.graduationproject.robokidsapp.modelGaming
 
 import androidx.annotation.DrawableRes
 import com.graduationproject.robokidsapp.R

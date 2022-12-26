@@ -35,8 +35,7 @@ class EducationalContentFragment : Fragment(),ContentAdapter.OnItemClickListener
         _binding = FragmentEducationalContentBinding.inflate(inflater, container, false)
 
         binding.educationalContentBack.setOnClickListener {
-            val action = EducationalContentFragmentDirections.actionEducationalContentFragmentToContentFragment(null)
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         listContent = ArrayList()

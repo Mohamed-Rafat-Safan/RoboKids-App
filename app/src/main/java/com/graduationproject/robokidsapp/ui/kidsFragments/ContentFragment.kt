@@ -62,8 +62,7 @@ class ContentFragment : Fragment() {
         }
 
         binding.back.setOnClickListener {
-            val action = ContentFragmentDirections.actionContentFragmentToHomeKidsFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root

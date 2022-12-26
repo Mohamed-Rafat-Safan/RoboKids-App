@@ -54,8 +54,7 @@ class EntertainmentVideoFramFragment : Fragment() {
 
 
         binding.entertainmentVideoBack.setOnClickListener {
-            val action =  EntertainmentVideoFramFragmentDirections.actionIntertainmentVidoFramFragmentToIntertainmentSectionFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root

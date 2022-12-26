@@ -43,15 +43,9 @@ class GamingSectionFragment : Fragment() {
         }
 
         binding.gamingSectionBack.setOnClickListener {
-            val action = GamingSectionFragmentDirections.actionGamingSectionFragmentToIntertainmentContentFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
-        if(MemoryGameFragment.flag){
-            MemoryGameFragment.flag = false
-            val action = GamingSectionFragmentDirections.actionGamingSectionFragmentToMemoryGameFragment()
-            mNavController.navigate(action)
-        }
 
         return binding.root
     }
