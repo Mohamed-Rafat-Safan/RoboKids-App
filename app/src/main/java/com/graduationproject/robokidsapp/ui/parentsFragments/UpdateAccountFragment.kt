@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.CalendarView.OnDateChangeListener
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentUpdateAccountBinding
 import java.util.*
 
 class UpdateAccountFragment : Fragment() {
+    private lateinit var mNavController: NavController
     private var _binding: FragmentUpdateAccountBinding? = null
     private val binding get() = _binding!!
 
@@ -28,7 +31,7 @@ class UpdateAccountFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mNavController = findNavController()
     }
 
     override fun onCreateView(
@@ -41,6 +44,10 @@ class UpdateAccountFragment : Fragment() {
         binding.selectYearBirth.setOnClickListener { showDialogCountries()  }
 
         binding.btnSaveParentData.setOnClickListener {  }
+
+        binding.ivLeftBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        }
 
         return binding.root
     }

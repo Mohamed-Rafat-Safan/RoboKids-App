@@ -31,8 +31,7 @@ class ForgotPasswordFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment()
-            mNavController.navigate(action)
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
         return binding.root

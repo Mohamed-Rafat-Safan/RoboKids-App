@@ -38,6 +38,10 @@ class SettingFragment : Fragment() {
             mNavController.navigate(action)
         }
 
+        binding.ivBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        }
+
         return binding.root
     }
 

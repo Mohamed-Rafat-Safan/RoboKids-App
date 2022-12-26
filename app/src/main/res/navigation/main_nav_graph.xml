@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_parentsORKidsFragment"
-            app:destination="@id/parentsORKidsFragment" />
+            app:destination="@id/parentsORKidsFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homeKidsFragment"
-            app:destination="@id/homeKidsFragment" />
+            app:destination="@id/homeKidsFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/parentsORKidsFragment"
@@ -36,10 +40,14 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_welcomeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -52,6 +60,11 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_parentsHomeFragment"
+            app:destination="@id/parentsHomeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -60,7 +73,9 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_parentsDataFragment"
-            app:destination="@id/parentsDataFragment" />
+            app:destination="@id/parentsDataFragment"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -72,7 +87,9 @@
         tools:layout="@layout/fragment_parents_data" >
         <action
             android:id="@+id/action_parentsDataFragment_to_addKidsFragment"
-            app:destination="@id/addKidsFragment" />
+            app:destination="@id/addKidsFragment"
+            app:popUpTo="@id/parentsDataFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/addKidsFragment"
@@ -81,7 +98,9 @@
         tools:layout="@layout/fragment_add_kids" >
         <action
             android:id="@+id/action_addKidsFragment_to_parentsHomeFragment"
-            app:destination="@id/parentsHomeFragment" />
+            app:destination="@id/parentsHomeFragment"
+            app:popUpTo="@id/addKidsFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="operation"
             app:argType="string" />
@@ -99,7 +118,9 @@
             app:destination="@id/addKidsFragment" />
         <action
             android:id="@+id/action_parentsHomeFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/parentsHomeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_parentsHomeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
