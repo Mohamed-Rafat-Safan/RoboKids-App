@@ -117,6 +117,9 @@
     <string name="purple">Purple</string>
     <string name="yellow">Yellow</string>
     <string name="blue">Blue</string>
+    <string name="reports">Reports</string>
+    <string name="more_questions">More Questions</string>
+    <string name="date_of_birth">Date of Birth</string>
 
 
     <!-- Strings used for fragments for navigation -->

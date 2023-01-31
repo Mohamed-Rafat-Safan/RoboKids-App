@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_correct_quiz"
         android:paddingHorizontal="@dimen/_20sdp"
-        android:text="More Questions"
+        android:text="@string/more_questions"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_20ssp"

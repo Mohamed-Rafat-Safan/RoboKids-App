@@ -114,5 +114,8 @@
     <string name="purple">بنفسجي</string>
     <string name="yellow">اصفر</string>
     <string name="blue">ازرق</string>
+    <string name="reports">تقارير</string>
+    <string name="more_questions">المزيد من الأسئلة</string>
+    <string name="date_of_birth">تاريخ الميلاد</string>
 
 </resources>
