@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        android:text="Parent Entry"
+        android:text="@string/parentEntry"
         android:textColor="@color/black"
         android:textSize="@dimen/_18ssp"
         android:textStyle="bold"

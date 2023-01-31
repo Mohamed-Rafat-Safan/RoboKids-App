@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quiz 1"
+                android:text="@string/quiz1"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -119,7 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quiz 2"
+                android:text="@string/quiz2"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_gravity="center"

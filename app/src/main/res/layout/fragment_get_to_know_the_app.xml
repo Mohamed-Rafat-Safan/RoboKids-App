@@ -31,7 +31,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="Get to know the app"
+            android:text="@string/knowApp"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
@@ -57,7 +57,7 @@
             <kr.co.prnd.readmore.ReadMoreTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The application provides a continuous journey that the parents share with the child, as it allows the child a useful screen time to develop his behavior through games and activities that the child does after watching the interesting and varied educational content between series and stories."
+                android:text="@string/appInfo"
                 android:textSize="@dimen/_20ssp"
                 app:readMoreMaxLine="6"
                 android:layout_marginTop="@dimen/_30sdp"

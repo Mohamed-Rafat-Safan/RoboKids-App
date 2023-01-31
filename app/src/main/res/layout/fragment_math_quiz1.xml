@@ -163,7 +163,7 @@
         android:id="@+id/mathQuiz1_checkAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Answer"
+        android:text="@string/checkAnswer"
         android:textAllCaps="false"
         android:textSize="@dimen/_20ssp"
         android:background="@drawable/bg_btn_math_quiz"

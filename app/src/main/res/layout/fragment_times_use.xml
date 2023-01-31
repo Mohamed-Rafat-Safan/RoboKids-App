@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Today's date "
+            android:text="@string/todayDate"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Duration of use in entertainment content"
+                    android:text="@string/useEntertainment"
                     android:textSize="@dimen/_16ssp" />
 
                 <TextView
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Minutes"
+                    android:text="@string/minutes"
                     android:textSize="@dimen/_16ssp" />
             </LinearLayout>
 
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Duration of use in educational content"
+                    android:text="@string/useEducational"
                     android:textSize="@dimen/_16ssp" />
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Minutes"
+                    android:text="@string/minutes"
                     android:textSize="@dimen/_16ssp" />
             </LinearLayout>
 
