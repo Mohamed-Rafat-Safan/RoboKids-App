@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/myKids"
-        android:title="My Kids"
+        android:title="@string/my_kids"
         app:showAsAction="never"
         android:icon="@drawable/kids"/>
 
     <item
         android:id="@+id/knowApp"
-        android:title="Get to know the app"
+        android:title="@string/get_to_know_the_app"
         app:showAsAction="never"
         android:icon="@drawable/exclamation"/>
 
     <item
         android:id="@+id/commonQuestions"
-        android:title="common questions"
+        android:title="@string/common_questions"
         app:showAsAction="never"
         android:icon="@drawable/question"/>
 
     <item
         android:id="@+id/setting"
-        android:title="Setting"
+        android:title="@string/setting"
         app:showAsAction="never"
         android:icon="@drawable/setting"/>
 
     <item
         android:id="@+id/signOut"
-        android:title="Sign Out"
+        android:title="@string/sign_out"
         app:showAsAction="never"
         android:icon="@drawable/signout"/>
 

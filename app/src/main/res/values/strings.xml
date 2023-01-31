@@ -101,6 +101,22 @@
     <string name="save">Save</string>
     <string name="welcomeRobokids">Welcome To RoboKids!</string>
     <string name="createNewAccount">Create New Account</string>
+    <string name="my_kids">My Kids</string>
+    <string name="get_to_know_the_app">Get to know the app</string>
+    <string name="common_questions">common questions</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="eraser">Eraser</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="colors_palette">colors palette</string>
+    <string name="black">Black</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="purple">Purple</string>
+    <string name="yellow">Yellow</string>
+    <string name="blue">Blue</string>
 
 
     <!-- Strings used for fragments for navigation -->
