@@ -50,7 +50,7 @@
     <string name="changePassword">تغير كلمة السر</string>
     <string name="commonQuestions">الأسئلة الشائعة</string>
     <string name="educational">تعليمي</string>
-    <string name="entertainment">وسائل الترفيه</string>
+    <string name="entertainment">ترفيهي</string>
     <string name="linkToResetPassword">لقد أرسلنا لك رابطًا لإعادة تعيين كلمة المرور الخاصة بي على بريدك الإلكتروني:</string>
     <string name="infoEmail">تصفح بريدك الإلكتروني واتبع الخطوات مرة أخرى لإعادة تعيين كلمة مرورك مرة أخرى عن طريق كتابة بريدك الإلكتروني الجديد وكلمة المرور.</string>
     <string name="signIn">تسجيل الدخول</string>
@@ -86,7 +86,7 @@
     <string name="yearBirth">سنة الميلاد</string>
     <string name="nextStep">الخطوة التالية</string>
     <string name="enterConfirmPassword">أدخل تأكيد كلمة المرور</string>
-    <string name="register">تسجل</string>
+    <string name="register">تسجيل</string>
     <string name="youHaveAccount">لديك حساب؟</string>
     <string name="setting">الاعدادات</string>
     <string name="updateAccount">تحديث الحساب</string>
