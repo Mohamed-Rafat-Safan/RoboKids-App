@@ -57,7 +57,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter E-mail"
+                    android:hint="@string/enterEmail"
                     android:textColorHint="#737373"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="clear_text"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/login_email"
                     android:layout_marginTop="@dimen/_25sdp"
-                    android:hint="Enter Your Password"
+                    android:hint="@string/enterPassword"
                     android:textColorHint="#FF737373"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:buttonTint="#2196F3"
-                        android:text="Remember Me"
+                        android:text="@string/rememberMe"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12ssp" />
 
@@ -133,7 +133,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="#00000000"
-                        android:text="Forget Password"
+                        android:text="@string/forgotPassword"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12ssp" />
 
@@ -148,7 +148,7 @@
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_40sdp"
                     android:background="@drawable/btn_background_login"
-                    android:text="Login"
+                    android:text="@string/login"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20ssp" />
@@ -166,7 +166,7 @@
                         android:id="@+id/tv_ques"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Don't Have an account? "
+                        android:text="@string/haveAccount"
                         android:textSize="@dimen/_15ssp" />
 
 

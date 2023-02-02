@@ -55,7 +55,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter E-mail"
+                    android:hint="@string/enterEmail"
                     android:textColorHint="#FF737373"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/register_email"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:hint="Enter Your Password"
+                    android:hint="@string/enterPassword"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/register_password"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:hint="Enter Confirm Password"
+                    android:hint="@string/enterConfirmPassword"
                     android:textColorHint="#FF737373"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
@@ -160,7 +160,7 @@
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/btn_background_login"
-                    android:text="Register"
+                    android:text="@string/register"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20ssp" />
@@ -179,7 +179,7 @@
                         android:id="@+id/tv_ques"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You have an account? "
+                        android:text="@string/youHaveAccount"
                         android:textSize="@dimen/_15ssp" />
 
 

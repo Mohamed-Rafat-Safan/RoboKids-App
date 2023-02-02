@@ -30,7 +30,7 @@
                     android:id="@+id/tv_text_first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reports From "
+                    android:text="@string/reportsFrom"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15ssp" />
 
@@ -49,7 +49,7 @@
                     android:id="@+id/tv_text_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Even today "
+                    android:text="@string/evenToday"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14ssp"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -96,7 +96,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sat"
+                            android:text="@string/sat"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -124,7 +124,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sun"
+                            android:text="@string/sun"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -153,7 +153,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Mon"
+                            android:text="@string/mon"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -184,7 +184,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tues"
+                            android:text="@string/tues"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -214,7 +214,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wed"
+                            android:text="@string/wed"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -245,7 +245,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Thurs"
+                            android:text="@string/thurs"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -276,7 +276,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fri"
+                            android:text="@string/fri"
                             android:textSize="@dimen/_20ssp"
                             android:textStyle="bold"
                             android:textColor="@color/black"

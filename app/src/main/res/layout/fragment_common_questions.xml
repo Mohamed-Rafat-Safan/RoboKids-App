@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Common Questions"
+            android:text="@string/commonQuestions"
             android:gravity="center_horizontal"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/black"
