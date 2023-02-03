@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         // this code is Permission
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,

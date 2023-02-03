@@ -5,17 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.adapters.EducationalSectionsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
-import com.graduationproject.robokidsapp.model.Content
 import com.graduationproject.robokidsapp.model.EducationalSections
-import org.intellij.lang.annotations.RegExp
 
 
 class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItemClickListener {
@@ -49,16 +45,16 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
             listSection.add(EducationalSections("Arabic",R.drawable.speek_arapic))
             listSection.add(EducationalSections("English",R.drawable.speek_abc))
             listSection.add(EducationalSections("Math",R.drawable.speek_123))
-            listSection.add(EducationalSections("Photo",R.drawable.photos_know))
+            listSection.add(EducationalSections("Photo",R.drawable.animals))
         }else if(sectionData=="Board"){
             listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
             listSection.add(EducationalSections("English",R.drawable.board_abc))
             listSection.add(EducationalSections("Math",R.drawable.board_123))
-            listSection.add(EducationalSections("Photo",R.drawable.photos_know))
+            listSection.add(EducationalSections("Photo",R.drawable.animals))
         }else if(sectionData=="Questions"){
             listSection.add(EducationalSections("Arabic",R.drawable.ques_arapic))
             listSection.add(EducationalSections("English",R.drawable.ques_abc))
-            listSection.add(EducationalSections("Math",R.drawable.ques_123))
+            listSection.add(EducationalSections("Math",R.drawable.math))
         }
 
 
@@ -91,7 +87,7 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
                 mNavController.navigate(action)
             }
             "Questions"->{
-                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToMainQuizzesFragment2()
+                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToMainQuizzesFragment2(section.sectionName)
                 mNavController.navigate(action)
             }
             else -> println("invalid section Data")

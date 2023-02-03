@@ -28,13 +28,14 @@
             android:id="@+id/tv_child_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="top"
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="center"
             android:paddingEnd="@dimen/_6ssp"
-            android:text="child name"
+            android:text="Section Name"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp" />
+            android:textSize="@dimen/_20ssp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_child"

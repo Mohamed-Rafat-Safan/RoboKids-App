@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_20sdp"
-    android:background="@color/white"
-    android:layout_margin="@dimen/_5sdp">
+    android:layout_margin="@dimen/_8sdp">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/img_section"
@@ -13,8 +12,8 @@
         android:layout_height="@dimen/_160sdp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:padding="@dimen/_8sdp"
-        android:background="@color/white"
+        android:padding="@dimen/_13sdp"
+        android:background="#F9F9F9"
         android:src="@drawable/main_board" />
 
 </androidx.cardview.widget.CardView>

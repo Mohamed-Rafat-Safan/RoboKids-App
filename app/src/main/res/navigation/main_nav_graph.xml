@@ -388,6 +388,12 @@
         <action
             android:id="@+id/action_mainQuizzesFragment2_to_mathQuiz1Fragment"
             app:destination="@id/mathQuiz1Fragment" />
+        <action
+            android:id="@+id/action_mainQuizzesFragment2_to_quizSoundLittersFragment"
+            app:destination="@id/quizSoundLittersFragment" />
+        <argument
+            android:name="sectionType"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/englishQuiz1Fragment"
@@ -408,5 +414,19 @@
         <action
             android:id="@+id/action_mathQuiz1Fragment_self"
             app:destination="@id/mathQuiz1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizSoundLittersFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.QuizSoundLittersFragment"
+        android:label="fragment_quiz_sound_litters"
+        tools:layout="@layout/fragment_quiz_sound_litters" >
+        <action
+            android:id="@+id/action_quizSoundLittersFragment_self"
+            app:destination="@id/quizSoundLittersFragment"
+            app:popUpTo="@id/quizSoundLittersFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="language"
+            app:argType="string" />
     </fragment>
 </navigation>

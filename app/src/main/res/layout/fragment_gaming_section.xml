@@ -30,11 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="@dimen/_6ssp"
-            android:text="child name"
+            android:gravity="center"
+            android:text="Games"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp" />
+            android:textSize="@dimen/_25ssp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/gaming_section_imageChild"

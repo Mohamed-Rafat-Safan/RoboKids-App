@@ -14,6 +14,8 @@ class MainQuizzesFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
 
+    private lateinit var typeQuiz:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
@@ -26,14 +28,21 @@ class MainQuizzesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentMainQuizzesBinding.inflate(inflater, container, false)
 
+        typeQuiz = arguments?.getString("sectionType")!!
+
         binding.mainQuizzesQuiz1.setOnClickListener {
             val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToEnglishQuiz1Fragment()
             mNavController.navigate(action)
         }
 
         binding.mainQuizzesQuiz2.setOnClickListener {
-            val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToMathQuiz1Fragment()
-            mNavController.navigate(action)
+            if(typeQuiz == "Arabic" || typeQuiz == "English"){
+                val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToQuizSoundLittersFragment(typeQuiz)
+                mNavController.navigate(action)
+            }else{
+                val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToMathQuiz1Fragment()
+                mNavController.navigate(action)
+            }
         }
 
         binding.mainQuizzesBack.setOnClickListener {
