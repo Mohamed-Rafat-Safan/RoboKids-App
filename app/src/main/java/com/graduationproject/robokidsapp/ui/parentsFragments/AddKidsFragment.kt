@@ -82,8 +82,8 @@ class AddKidsFragment : Fragment() {
 
     private fun checkOperation(){
         if(operation == "editKids"){
-            binding.tvAddKidsTitle.text = "Edit Kids"
-            binding.btnAddKids.text = "Update"
+            binding.tvAddKidsTitle.text = getString(R.string.edit_kids)
+            binding.btnAddKids.text = getString(R.string.update_kids)
         }
     }
 

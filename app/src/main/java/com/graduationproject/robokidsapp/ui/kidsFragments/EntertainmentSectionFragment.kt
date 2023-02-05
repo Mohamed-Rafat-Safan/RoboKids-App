@@ -18,6 +18,7 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
     private lateinit var videoList:ArrayList<Videos>
+    private lateinit var sectionName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,13 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
         // Inflate the layout for this fragment
         _binding = FragmentEntertainmentSectionBinding.inflate(inflater, container, false)
 
+        sectionName = arguments?.getString("section_name")!!
+
+        if(sectionName == "Stories"){
+            binding.tvSectionName.text = getString(R.string.Stories)
+        }else{
+            binding.tvSectionName.text = getString(R.string.Music)
+        }
 
         videoList = ArrayList()
         videoList.add(Videos("", R.drawable.image0))
@@ -39,7 +47,6 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
         videoList.add(Videos("", R.drawable.image3))
         videoList.add(Videos("", R.drawable.image4))
         videoList.add(Videos("", R.drawable.image5))
-
 
         val adapter = VideoAdapter(requireContext(),videoList,this)
         binding.rvEntertainmentSection.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)

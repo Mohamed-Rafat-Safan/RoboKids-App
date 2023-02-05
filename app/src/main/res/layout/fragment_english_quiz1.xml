@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect"
+        android:text="@string/connect"
         android:textColor="#EB455F"
         android:textSize="@dimen/_25ssp"
         android:textStyle="bold"

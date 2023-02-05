@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.model.Canvas
 import com.graduationproject.robokidsapp.model.WhiteBoardContent
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
 import java.lang.String.format
@@ -45,11 +46,25 @@ class WhiteboardAdapter(val context: Context , val listData:ArrayList<WhiteBoard
             }else{
                 WhiteboardFragment.binding.tvText.text = data.letter
             }
+            WhiteboardFragment.binding.animationCorrect.visibility = View.GONE
+            Canvas.pathList.clear()
+            Canvas.colorList.clear()
+            Canvas.sizeList.clear()
+            WhiteboardFragment.path.reset()
+
             mTextViewCountDown.setTextColor(Color.parseColor("#009688"))
             mCountDownTimer?.cancel()
             mTimeLeftInMillis = START_TIME_IN_MILLIS;
             updateCountDownText()
             itemTimer()
+        }
+        WhiteboardFragment.binding.whiteboardCheckAnswer.setOnClickListener {
+            mCountDownTimer?.cancel()
+            mTimeLeftInMillis = START_TIME_IN_MILLIS;
+            updateCountDownText()
+            WhiteboardFragment.binding.animationCorrect.visibility = View.VISIBLE
+//            val bmp = WhiteboardFragment.binding.mCanvas.getBitmap()
+//            WhiteboardFragment.binding.whiteboardImageContent.setImageBitmap(bmp)
         }
     }
 

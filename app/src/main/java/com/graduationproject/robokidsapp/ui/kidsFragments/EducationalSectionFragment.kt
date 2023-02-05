@@ -63,8 +63,13 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
         binding.rvEducationSection.adapter = adapter
         binding.rvEducationSection.setHasFixedSize(true)
 
-
-        binding.educationalSectionContentName.text = sectionData
+        if (sectionData == "Pronunciation"){
+            binding.educationalSectionContentName.text = getString(R.string.Pronunciation)
+        }else if (sectionData == "Board"){
+            binding.educationalSectionContentName.text = getString(R.string.Board)
+        }else{
+            binding.educationalSectionContentName.text = getString(R.string.Questions)
+        }
 
         binding.educationalContentBack.setOnClickListener {
             mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
@@ -79,7 +84,7 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
         val section = listSection[position]
         when(sectionData){
             "Pronunciation"->{
-                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToPronunciationLettersFragment()
+                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToPronunciationLettersFragment(section.sectionName)
                 mNavController.navigate(action)
             }
             "Board"->{

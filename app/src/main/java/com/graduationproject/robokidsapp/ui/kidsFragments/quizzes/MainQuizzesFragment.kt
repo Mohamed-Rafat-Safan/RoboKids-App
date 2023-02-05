@@ -31,7 +31,7 @@ class MainQuizzesFragment : Fragment() {
         typeQuiz = arguments?.getString("sectionType")!!
 
         binding.mainQuizzesQuiz1.setOnClickListener {
-            val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToEnglishQuiz1Fragment()
+            val action = MainQuizzesFragmentDirections.actionMainQuizzesFragment2ToEnglishQuiz1Fragment(typeQuiz)
             mNavController.navigate(action)
         }
 

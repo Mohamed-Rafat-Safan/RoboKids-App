@@ -88,7 +88,7 @@
     <string name="fatherMotherName">Father/Mother Name</string>
     <string name="yearBirth">Year of Birth</string>
     <string name="nextStep">Next Step</string>
-    <string name="enterConfirmPassword">Enter Confirm Password</string>
+    <string name="enterConfirmPassword">Confirm Password</string>
     <string name="register">Register</string>
     <string name="youHaveAccount">You have an account?</string>
     <string name="setting">Setting</string>
@@ -120,6 +120,30 @@
     <string name="reports">Reports</string>
     <string name="more_questions">More Questions</string>
     <string name="date_of_birth">Date of Birth</string>
+    <string name="read_more">..read more</string>
+    <string name="check">Check</string>
+    <string name="very_good">Very Good</string>
+    <string name="del">DEL</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="try_again">Try Again</string>
+    <string name="Stories">Stories</string>
+    <string name="Music">Music</string>
+    <string name="games">Games</string>
+    <string name="you_won">You Won!</string>
+    <string name="you_lost">You Lost!</string>
+    <string name="it_draw">It\'s a Draw!</string>
+    <string name="Pronunciation">Pronunciation</string>
+    <string name="Board">Board</string>
+    <string name="Questions">Questions</string>
+    <string name="Gaming">Gaming</string>
+    <string name="arabic_letters">Arabic Letters</string>
+    <string name="english_letters">English Letters</string>
+    <string name="numbers">Numbers</string>
+    <string name="photo">Animals Photos</string>
+    <string name="connect">Connect</string>
+    <string name="letter_test">Letter test</string>
+    <string name="edit_kids">Edit Kids</string>
+    <string name="update_kids">Update</string>
 
 
     <!-- Strings used for fragments for navigation -->
