@@ -85,7 +85,7 @@
     <string name="fatherMotherName">اسم الأب / الأم</string>
     <string name="yearBirth">سنة الميلاد</string>
     <string name="nextStep">الخطوة التالية</string>
-    <string name="enterConfirmPassword">أدخل تأكيد كلمة المرور</string>
+    <string name="enterConfirmPassword">تأكيد كلمة المرور</string>
     <string name="register">تسجيل</string>
     <string name="youHaveAccount">لديك حساب؟</string>
     <string name="setting">الاعدادات</string>
@@ -117,5 +117,29 @@
     <string name="reports">تقارير</string>
     <string name="more_questions">المزيد من الأسئلة</string>
     <string name="date_of_birth">تاريخ الميلاد</string>
+    <string name="read_more">..قراءة المزيد</string>
+    <string name="check">فحص</string>
+    <string name="very_good">ممتاز</string>
+    <string name="del">مسح</string>
+    <string name="very_bad">سئ جدا</string>
+    <string name="try_again">حاول مره اخري</string>
+    <string name="Stories">حكايات</string>
+    <string name="Music">اغاني</string>
+    <string name="games">العاب</string>
+    <string name="you_won">لقد ربحت</string>
+    <string name="you_lost">لقد خسرت</string>
+    <string name="it_draw">لم يربح احد</string>
+    <string name="Pronunciation">تعلم النطق</string>
+    <string name="Board">السبورة</string>
+    <string name="Questions">الاختبارات</string>
+    <string name="Gaming">الالعاب</string>
+    <string name="arabic_letters">الحروف العربية</string>
+    <string name="english_letters">الحروف الانجليزية</string>
+    <string name="numbers">الارقام</string>
+    <string name="photo">صور حيوانات</string>
+    <string name="connect">التوصيل</string>
+    <string name="letter_test">اختبار الحروف</string>
+    <string name="edit_kids">تعديل الطفل</string>
+    <string name="update_kids">تحديث</string>
 
 </resources>

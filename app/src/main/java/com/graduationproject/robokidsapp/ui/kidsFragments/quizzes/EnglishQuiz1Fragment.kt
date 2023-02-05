@@ -2,9 +2,6 @@ package com.graduationproject.robokidsapp.ui.kidsFragments.quizzes
 
 import android.content.ClipData
 import android.content.ClipDescription
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +27,7 @@ class EnglishQuiz1Fragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
     private lateinit var listImage:ArrayList<Images>
+    private lateinit var contentType:String
     companion object{
         lateinit var idCorrect:View
         lateinit var idLayout:View
@@ -51,10 +49,54 @@ class EnglishQuiz1Fragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentEnglishQuiz1Binding.inflate(inflater, container, false)
 
-        listImage.add(Images(R.drawable.ananas,"Pineapple"))
-        listImage.add(Images(R.drawable.orange,"Orange"))
-        listImage.add(Images(R.drawable.grape,"Grape"))
-        listImage.add(Images(R.drawable.lemon,"Lemon"))
+        contentType = arguments?.getString("content_type")!!
+
+        if (contentType == "Arabic"){
+            listImage.add(Images(R.drawable.ananas,"اناناس"))
+            listImage.add(Images(R.drawable.orange,"برتقال"))
+            listImage.add(Images(R.drawable.grape,"عنب"))
+            listImage.add(Images(R.drawable.lemon,"ليمون"))
+            listImage.add(Images(R.drawable.apple,"تفاح"))
+            listImage.add(Images(R.drawable.strawberry,"فروله"))
+            listImage.add(Images(R.drawable.banana,"موز"))
+            listImage.add(Images(R.drawable.carrot,"خزرة"))
+            listImage.add(Images(R.drawable.mango,"مانجو"))
+            listImage.add(Images(R.drawable.figs,"تين"))
+            listImage.add(Images(R.drawable.peach,"خوخ"))
+            listImage.add(Images(R.drawable.tomatoes,"طماطم"))
+        }else if (contentType == "English"){
+            listImage.add(Images(R.drawable.ananas,"Pineapple"))
+            listImage.add(Images(R.drawable.orange,"Orange"))
+            listImage.add(Images(R.drawable.grape,"Grape"))
+            listImage.add(Images(R.drawable.lemon,"Lemon"))
+            listImage.add(Images(R.drawable.apple,"Apple"))
+            listImage.add(Images(R.drawable.strawberry,"Strawberry"))
+            listImage.add(Images(R.drawable.banana,"Banana"))
+            listImage.add(Images(R.drawable.carrot,"Carrot"))
+            listImage.add(Images(R.drawable.mango,"Mango"))
+            listImage.add(Images(R.drawable.figs,"Figs"))
+            listImage.add(Images(R.drawable.peach,"Peach"))
+            listImage.add(Images(R.drawable.tomatoes,"Tomatoes"))
+        }else{
+            listImage.add(Images(R.drawable.count_1,"1"))
+            listImage.add(Images(R.drawable.count_2,"2"))
+            listImage.add(Images(R.drawable.count_3,"3"))
+            listImage.add(Images(R.drawable.count_4,"4"))
+            listImage.add(Images(R.drawable.count_5,"5"))
+            listImage.add(Images(R.drawable.count_6,"6"))
+            listImage.add(Images(R.drawable.count_7,"7"))
+            listImage.add(Images(R.drawable.count_8,"8"))
+            listImage.add(Images(R.drawable.count_9,"9"))
+            listImage.add(Images(R.drawable.count_10,"10"))
+            listImage.add(Images(R.drawable.count_11,"11"))
+            listImage.add(Images(R.drawable.count_12,"12"))
+            binding.tvWord1.textSize = 40f
+            binding.tvWord2.textSize = 40f
+            binding.tvWord3.textSize = 40f
+            binding.tvWord4.textSize = 40f
+        }
+
+
 
         listImage.shuffle()
         val list:MutableList<Images> = mutableListOf()
@@ -65,7 +107,7 @@ class EnglishQuiz1Fragment : Fragment() {
             listName.add(listImage[i].name)
         }
         listName.shuffle()
-
+        listName.shuffle()
         binding.img1.setImageResource(list[0].photo)
         binding.img2.setImageResource(list[1].photo)
         binding.img3.setImageResource(list[2].photo)
@@ -197,7 +239,7 @@ class EnglishQuiz1Fragment : Fragment() {
                     return true
                 }else{
                     if(v.allViews.count() < 3){
-                        mediaPlayer = MediaPlayer.create(requireContext() , R.raw.error)
+                        mediaPlayer = MediaPlayer.create(requireContext() , R.raw.soundincorrect)
                         mediaPlayer.start()
                         v.setBackgroundResource(0)
                     }
@@ -224,17 +266,7 @@ class EnglishQuiz1Fragment : Fragment() {
 
         val dialog = AlertDialog.Builder(requireContext())
         dialog.setView(view)
-        dialog.setTitle("Very Good")
         val alert = dialog.create()
-
-
-        // To make title of dialog in center
-        alert.setOnShowListener {
-            val titleText = alert.findViewById<TextView>(androidx.appcompat.R.id.alertTitle)
-            if (titleText != null) {
-                titleText.gravity = Gravity.CENTER
-            }
-        }
 
         alert.setOnDismissListener {
             if(!flag) showWinDialog()
@@ -245,7 +277,7 @@ class EnglishQuiz1Fragment : Fragment() {
         val button = view.findViewById<Button>(R.id.btn_moreQuestions)
 
         button.setOnClickListener {
-            val action = EnglishQuiz1FragmentDirections.actionEnglishQuiz1FragmentSelf()
+            val action = EnglishQuiz1FragmentDirections.actionEnglishQuiz1FragmentSelf(contentType)
             mNavController.navigate(action)
 
 

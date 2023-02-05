@@ -25,7 +25,7 @@
             android:src="@drawable/back" />
 
         <TextView
-            android:id="@+id/tv_child_name"
+            android:id="@+id/tv_section_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"

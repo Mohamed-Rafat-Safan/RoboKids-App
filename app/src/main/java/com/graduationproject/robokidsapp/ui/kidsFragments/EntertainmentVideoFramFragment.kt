@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.navigation.NavController
+import com.graduationproject.robokidsapp.R
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentVideoFramBinding
 
@@ -30,15 +31,15 @@ class EntertainmentVideoFramFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentEntertainmentVideoFramBinding.inflate(inflater, container, false)
 
-        val videoUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
-
-        // Uri object to refer the
-        // resource from the videoUrl
-        val uri = Uri.parse(videoUrl)
-        // sets the resource from the
-        // videoUrl to the videoView
-        binding.vvVideoContent.setVideoURI(uri)
-//        binding.vvVideoContent.setVideoPath("android.resource://"+activity?.packageName+"/"+R.raw.mo)
+//        val videoUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1"
+//
+//        // Uri object to refer the
+//        // resource from the videoUrl
+//        val uri = Uri.parse(videoUrl)
+//        // sets the resource from the
+//        // videoUrl to the videoView
+//        binding.vvVideoContent.setVideoURI(uri)
+        binding.vvVideoContent.setVideoPath("android.resource://"+activity?.packageName+"/"+R.raw.v1)
         // creating object of
         // media controller class
         val mediaController = MediaController(requireContext())

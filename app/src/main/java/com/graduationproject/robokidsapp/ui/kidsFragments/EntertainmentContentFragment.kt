@@ -67,7 +67,7 @@ class EntertainmentContentFragment : Fragment() , ContentAdapter.OnItemClickList
             val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToGamingSectionFragment()
             mNavController.navigate(action)
         }else{
-            val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToIntertainmentSectionFragment()
+            val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToIntertainmentSectionFragment(listContent[position].contentName)
             mNavController.navigate(action)
         }
     }

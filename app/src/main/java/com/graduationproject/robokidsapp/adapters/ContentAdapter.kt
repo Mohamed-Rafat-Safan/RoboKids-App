@@ -29,7 +29,7 @@ class ContentAdapter(val context: Context , val listContent:ArrayList<Content>, 
 
 
 
-    class ContentViewHolder(itemView: View, onItemClickListener: OnItemClickListener):ViewHolder(itemView){
+    inner class ContentViewHolder(itemView: View, onItemClickListener: OnItemClickListener):ViewHolder(itemView){
         init {
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(adapterPosition)
@@ -39,7 +39,21 @@ class ContentAdapter(val context: Context , val listContent:ArrayList<Content>, 
         val nameContent = itemView.findViewById<TextView>(R.id.tv_content_name)!!
         val imageContent = itemView.findViewById<GifImageView>(R.id.img_content)!!
         fun bind(content: Content){
-            nameContent.text = content.contentName
+            if(content.contentName == "Pronunciation"){
+                nameContent.text = context.getString(R.string.Pronunciation)
+            }else if(content.contentName == "Board"){
+                nameContent.text = context.getString(R.string.Board)
+            }else if(content.contentName == "Questions"){
+                nameContent.text = context.getString(R.string.Questions)
+            }else if(content.contentName == "Stories"){
+                nameContent.text = context.getString(R.string.Stories)
+            }else if(content.contentName == "Music"){
+                nameContent.text = context.getString(R.string.Music)
+            }else if(content.contentName == "Gaming"){
+                nameContent.text = context.getString(R.string.Gaming)
+            } else{
+                nameContent.text = content.contentName
+            }
             imageContent.setImageResource(content.contentImage)
         }
 

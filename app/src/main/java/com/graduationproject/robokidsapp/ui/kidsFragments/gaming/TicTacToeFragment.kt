@@ -9,10 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentTicTacToeBinding
 import com.graduationproject.robokidsapp.modelGaming.Board
 import com.graduationproject.robokidsapp.modelGaming.BoardState
 import com.graduationproject.robokidsapp.modelGaming.Cell
+import kotlin.properties.Delegates
 
 
 class TicTacToeFragment : Fragment() {
@@ -21,7 +23,7 @@ class TicTacToeFragment : Fragment() {
     private lateinit var mNavController: NavController
 
     val vm: MainActivityViewModel by viewModels()
-
+    private var flag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,15 +63,18 @@ class TicTacToeFragment : Fragment() {
         when (board.boardState) {
             BoardState.STAR_WON -> {
                 setupBoard(true)
-                showWinningMessage("You Won!")
+                flag = true
+                showWinningMessage(getString(R.string.you_won))
             }
             BoardState.CIRCLE_WON -> {
                 setupBoard(true)
-                showWinningMessage("You Lost!")
+                flag = false
+                showWinningMessage(getString(R.string.you_lost))
             }
             BoardState.DRAW -> {
                 setupBoard(true)
-                showWinningMessage("It's a Draw!")
+                flag = false
+                showWinningMessage(getString(R.string.it_draw))
             }
             BoardState.INCOMPLETE -> {
                 setupBoard()
@@ -120,7 +125,7 @@ class TicTacToeFragment : Fragment() {
     private fun showWinningMessage(message: String) {
         binding.textWinningMessage.visibility = View.VISIBLE
         binding.textWinningMessage.text = message
-        if(message=="You Won!")
+        if(flag)
             binding.animationView.visibility = View.VISIBLE
     }
 

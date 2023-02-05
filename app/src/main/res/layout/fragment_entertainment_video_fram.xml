@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/entertainment_video_back"
-        android:layout_width="@dimen/_50sdp"
+        android:layout_width="@dimen/_56sdp"
         android:layout_height="@dimen/_50sdp"
         android:src="@drawable/back_video"
-        android:layout_marginTop="-10dp"
-        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginLeft="@dimen/_5sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

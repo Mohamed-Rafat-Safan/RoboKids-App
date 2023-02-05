@@ -49,37 +49,37 @@ class KidsReportsFragment : Fragment() {
 
         getBarChartData()  // this add data to bar chart
 
-        val barDataset1 = BarDataSet(list1, "Sat")
+        val barDataset1 = BarDataSet(list1, getString(R.string.sat))
         barDataset1.setColor(Color.GREEN)
         barDataset1.valueTextSize = 16f
         barDataset1.valueTextColor = R.color.black
 
-        val barDataset2 = BarDataSet(list2, "Sun")
+        val barDataset2 = BarDataSet(list2, getString(R.string.sun))
         barDataset2.setColor(Color.RED)
         barDataset2.valueTextSize = 16f
         barDataset2.valueTextColor = R.color.black
 
-        val barDataset3 = BarDataSet(list3, "Mon")
+        val barDataset3 = BarDataSet(list3, getString(R.string.mon))
         barDataset3.setColor(Color.YELLOW)
         barDataset3.valueTextSize = 16f
         barDataset3.valueTextColor = R.color.black
 
-        val barDataset4 = BarDataSet(list4, "Tues")
+        val barDataset4 = BarDataSet(list4, getString(R.string.tues))
         barDataset4.setColor(Color.CYAN)
         barDataset4.valueTextSize = 16f
         barDataset4.valueTextColor = R.color.black
 
-        val barDataset5 = BarDataSet(list5, "Wed")
+        val barDataset5 = BarDataSet(list5, getString(R.string.wed))
         barDataset5.setColor(Color.DKGRAY)
         barDataset5.valueTextSize = 16f
         barDataset5.valueTextColor = R.color.black
 
-        val barDataset6 = BarDataSet(list6, "Thurs")
+        val barDataset6 = BarDataSet(list6, getString(R.string.thurs))
         barDataset6.setColor(Color.BLUE)
         barDataset6.valueTextSize = 16f
         barDataset6.valueTextColor = R.color.black
 
-        val barDataset7 = BarDataSet(list7, "Fri")
+        val barDataset7 = BarDataSet(list7, getString(R.string.fri))
         barDataset7.setColor(Color.MAGENTA)
         barDataset7.valueTextSize = 16f
         barDataset7.valueTextColor = R.color.black

@@ -142,11 +142,10 @@ class WhiteboardFragment : Fragment() {
             mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
 
-
         return binding.root
     }
 
-    // get image of whiteBoard
+    // get image of whiteBoard and save in local device
     public fun savePhoto() {
         val bmp = binding.mCanvas.getBitmap()
         var imageOutStream: OutputStream? = null
@@ -154,18 +153,14 @@ class WhiteboardFragment : Fragment() {
         val cv = ContentValues()
 
         // name of the file
-        // name of the file
         cv.put(MediaStore.Images.Media.DISPLAY_NAME, "drawing.png")
 
-        // type of the file
         // type of the file
         cv.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
 
         // location of the file to be saved
-        // location of the file to be saved
         cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
 
-        // get the Uri of the file which is to be created in the storage
         // get the Uri of the file which is to be created in the storage
         val uri: Uri = activity?.getContentResolver()?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv)!!
         try {
