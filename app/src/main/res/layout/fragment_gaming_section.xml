@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.kidsFragments.gaming.GamingSectionFragment">
 
@@ -38,9 +39,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/gaming_section_imageChild"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/boye" />
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/boy" />
 
     </LinearLayout>
 

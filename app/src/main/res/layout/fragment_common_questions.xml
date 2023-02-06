@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layoutDirection="ltr"
-        android:layout_margin="@dimen/_16sdp" >
+        android:layout_margin="@dimen/_12sdp" >
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_26sdp"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
             android:src="@drawable/left_back"/>
 
         <TextView
@@ -37,8 +38,9 @@
         android:id="@+id/elv_commonQuestions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/_3sdp"
         android:divider="#ddd"
         android:dividerHeight="@dimen/_1sdp" />
 
-
 </LinearLayout>
+

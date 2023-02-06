@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/baby_blue"
     tools:context=".ui.parentsFragments.ParentsHomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         android:src="@drawable/ic_add"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

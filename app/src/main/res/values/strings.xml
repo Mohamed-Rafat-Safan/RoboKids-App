@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">RoboKids App</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="welcome_back"><u>Welcome Back</u></string>
+    <string name="welcome_back">&#x0020;<u>Welcome Back</u></string>
     <string name="sign_up_now"><u>Sign Up Now</u></string>
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
     <string name="add_kids"><u>add kids</u></string>
+    <string name="sign_up_title">Sign up</string>
 
 
     <string name="question1">Is the app free ?</string>
@@ -38,7 +39,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="addKids">Add Kids</string>
-    <string name="isYourChild">Is Your Child</string>
+    <string name="isYourChild">Is Your Child...</string>
     <string name="or">OR</string>
     <string name="childName">Child Name</string>
     <string name="enterName">Enter Name</string>
@@ -57,13 +58,13 @@
     <string name="linkToResetPassword">We sent you link to reset my password on your email :</string>
     <string name="infoEmail">Browse your email and follow the steps again to reset your password again by typing your new email and password.</string>
     <string name="signIn">sign in</string>
-    <string name="forgotPassword">Forgot Password</string>
+    <string name="forgotPassword"><u>Forgot Password</u></string>
     <string name="forgotYourPassword">Forgot your password? do not worry</string>
     <string name="forgotInfo">Please enter the email you previously registered with and we will send you a link to create a new password.</string>
     <string name="enterEmail">Enter Email</string>
     <string name="send">Send</string>
     <string name="knowApp">Get to know the app</string>
-    <string name="appInfo">The application provides a continuous journey that the parents share with the child, as it allows the child a useful screen time to develop his behavior through games and activities that the child does after watching the interesting and varied educational content between series and stories.</string>
+    <string name="appInfo">The application provides a continuous journey that the parents share with the child, as it allows the child a useful screen time to develop his behavior through games and activities that the child does after watching the interesting and varied educational content between series, stories and games.</string>
     <string name="parentEntry">Parent Entry</string>
     <string name="reportsFrom">Reports From</string>
     <string name="evenToday">Even today</string>
@@ -76,8 +77,8 @@
     <string name="fri">Fri</string>
     <string name="enterPassword">Enter Your Password</string>
     <string name="rememberMe">Remember Me</string>
-    <string name="login">Login</string>
-    <string name="haveAccount">Don\'t Have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="haveAccount">Don\'t Have an account? </string>
     <string name="quiz1">Quiz 1</string>
     <string name="quiz2">Quiz 2</string>
     <string name="checkAnswer">Check Answer</string>
@@ -89,7 +90,7 @@
     <string name="yearBirth">Year of Birth</string>
     <string name="nextStep">Next Step</string>
     <string name="enterConfirmPassword">Confirm Password</string>
-    <string name="register">Register</string>
+    <string name="sign_up">Sign up</string>
     <string name="youHaveAccount">You have an account?</string>
     <string name="setting">Setting</string>
     <string name="updateAccount">Update Account</string>
@@ -144,6 +145,9 @@
     <string name="letter_test">Letter test</string>
     <string name="edit_kids">Edit Kids</string>
     <string name="update_kids">Update</string>
+    <string name="home">Home</string>
+    <string name="timer">00:00</string>
+
 
 
     <!-- Strings used for fragments for navigation -->

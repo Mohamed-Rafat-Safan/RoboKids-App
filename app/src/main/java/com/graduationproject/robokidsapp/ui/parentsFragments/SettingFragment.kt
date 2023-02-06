@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.TextUtilsCompat
+import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentSettingBinding
+import java.util.*
 
 class SettingFragment : Fragment() {
     private lateinit var mNavController: NavController
@@ -27,6 +31,13 @@ class SettingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
+
+        val isLeftToRight = TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_LTR
+
+        if(!isLeftToRight){
+            binding.ivAcountArrow.setImageResource(R.drawable.left_arrow)
+            binding.ivPasswordArrow.setImageResource(R.drawable.left_arrow)
+        }
 
         binding.goToUpdateAccount.setOnClickListener {
             val action = SettingFragmentDirections.actionSettingFragmentToUpdateAccountFragment()

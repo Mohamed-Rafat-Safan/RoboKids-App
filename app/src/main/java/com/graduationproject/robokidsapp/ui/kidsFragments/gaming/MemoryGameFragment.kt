@@ -136,7 +136,6 @@ class MemoryGameFragment : Fragment() {
 
     private fun checkForMatch(position1: Int, position2: Int) {
         if (cards[position1].identifier == cards[position2].identifier) {
-            Toast.makeText(requireContext(), "Match found!!", Toast.LENGTH_SHORT).show()
             count += 1
             cards[position1].isMatched = true
             cards[position2].isMatched = true

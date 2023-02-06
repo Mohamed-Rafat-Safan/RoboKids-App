@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/_10sdp"
     tools:context=".ui.parentsFragments.ParentsDataFragment">
 
 
@@ -20,28 +19,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="@dimen/_10sdp"
         android:orientation="vertical">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal">
 
-           <de.hdodenhof.circleimageview.CircleImageView
-               android:id="@+id/iv_logo"
-               android:layout_width="@dimen/_50sdp"
-               android:layout_height="@dimen/_50sdp"
-               android:src="@drawable/logo" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="@string/parents"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold" />
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/parents"
-               android:textSize="@dimen/_22ssp"
-               android:textColor="@color/black"
-               android:gravity="center"
-               android:layout_gravity="center"/>
-       </LinearLayout>
+        <View
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="#2196F3"/>
 
 
         <TextView
@@ -50,14 +48,14 @@
             android:text="@string/areYou"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/black"
-            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_30sdp" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginStart="@dimen/_10sdp">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -75,9 +73,10 @@
                 android:layout_below="@+id/iv_father"
                 android:layout_alignStart="@+id/iv_father"
                 android:layout_alignEnd="@+id/iv_father"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/father"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="#2196F3"
                 android:textSize="@dimen/_18ssp" />
 
             <TextView
@@ -85,18 +84,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/or"
-                android:textStyle="bold"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20ssp"
                 android:layout_toEndOf="@+id/iv_father"
-                android:layout_centerVertical="true"
-                android:layout_marginHorizontal="@dimen/_10sdp"  />
+                android:layout_alignBottom="@id/iv_father"
+                android:layout_alignTop="@id/iv_father"
+                android:layout_marginHorizontal="@dimen/_16sdp"  />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_mother"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:padding="3dp"
+                android:background="@drawable/bg_select_gender_default"
                 android:src="@drawable/mother"
                 android:layout_toEndOf="@+id/tv_or"/>
 
@@ -107,6 +108,7 @@
                 android:text="@string/mother"
                 android:layout_alignStart="@+id/iv_mother"
                 android:layout_alignEnd="@+id/iv_mother"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
@@ -121,7 +123,7 @@
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp" />
+            android:layout_marginTop="@dimen/_26sdp" />
 
         <EditText
             android:id="@+id/et_parentsName"
@@ -129,10 +131,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/enterName"
             android:textSize="@dimen/_15ssp"
-            android:paddingHorizontal="@dimen/_8sdp"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_8sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/bg_parents_name" />
 
         <TextView
@@ -141,6 +143,7 @@
             android:text="@string/yearBirth"
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
+            android:fontFamily="@font/light"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_20sdp" />
 
@@ -151,7 +154,7 @@
             android:orientation="horizontal"
             android:paddingVertical="@dimen/_6sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/bg_parents_name" >
 
             <TextView
@@ -159,8 +162,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/yearBirth"
+                android:paddingStart="@dimen/_6sdp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:layout_weight="1"
                 android:textSize="@dimen/_16ssp" />
@@ -178,20 +182,18 @@
         <Button
             android:id="@+id/btn_parentData"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/nextStep"
             android:textSize="@dimen/_20ssp"
+            android:gravity="center"
             android:textAllCaps="false"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/_50sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:background="@drawable/bg_btn_parent_data"/>
 
-
-
     </LinearLayout>
-
-
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

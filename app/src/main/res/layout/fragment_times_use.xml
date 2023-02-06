@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_10sdp"
-    android:background="@color/white"
+    android:background="@color/baby_blue"
     tools:context=".ui.parentsFragments.TimesUseFragment">
 
     <LinearLayout
@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/todayDate"
+            android:layout_marginEnd="@dimen/_8sdp"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
@@ -28,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20/6/2023"
+            android:text="7/2/2023"
             android:textSize="@dimen/_18ssp" />
 
     </LinearLayout>
@@ -48,7 +49,7 @@
             android:layout_height="@dimen/_150sdp"
             android:layout_margin="@dimen/_6sdp"
             android:layout_weight="1"
-            android:backgroundTint="@color/baby_blue"
+            android:backgroundTint="@color/white"
             android:elevation="@dimen/_2sdp"
             app:cardCornerRadius="@dimen/_16sdp">
 
@@ -63,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:lineHeight="@dimen/_25sdp"
                     android:text="@string/useEntertainment"
                     android:textSize="@dimen/_16ssp" />
 
@@ -90,7 +92,7 @@
             android:layout_height="@dimen/_150sdp"
             android:layout_margin="@dimen/_6sdp"
             android:layout_weight="1"
-            android:backgroundTint="@color/baby_blue"
+            android:backgroundTint="@color/white"
             android:elevation="@dimen/_2sdp"
             app:cardCornerRadius="@dimen/_16sdp">
 
@@ -105,6 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:lineHeight="@dimen/_25sdp"
                     android:text="@string/useEducational"
                     android:textSize="@dimen/_16ssp" />
 

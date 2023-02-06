@@ -29,9 +29,6 @@ class ParentsHomeFragment : Fragment() , ReportsKidsAdapter.OnItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
-
-
-        MainActivity.binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 
 
@@ -50,10 +47,10 @@ class ParentsHomeFragment : Fragment() , ReportsKidsAdapter.OnItemClickListener{
 
         listChild = ArrayList()
         listChild.add(Child("محمد" , R.drawable.boy2))
-        listChild.add(Child("سلمي" , R.drawable.boy2))
-        listChild.add(Child("أحمد" , R.drawable.boy2))
+        listChild.add(Child("سلمي" , R.drawable.girl))
+        listChild.add(Child("أحمد" , R.drawable.boy))
         listChild.add(Child("علي" , R.drawable.boy2))
-        listChild.add(Child("شروق" , R.drawable.boy2))
+        listChild.add(Child("شروق" , R.drawable.girl))
 
 
         val adapter = ReportsKidsAdapter(requireContext() , listChild , this)
@@ -72,9 +69,12 @@ class ParentsHomeFragment : Fragment() , ReportsKidsAdapter.OnItemClickListener{
 
         //show status bar
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
+//        activity?.window!!.statusBarColor = this.resources.getColor(R.color.statusBar_color)
 
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        // open navigation drawer
+        MainActivity.binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 
     override fun onDestroyView() {

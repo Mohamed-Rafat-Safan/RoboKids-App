@@ -67,22 +67,27 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.myKids -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToHomeKidsFragment()
                 navController.navigate(action)
+                binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.knowApp -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToGetToKnowTheAppFragment2()
                 navController.navigate(action)
+                binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.commonQuestions -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToCommonQuestionsFragment()
                 navController.navigate(action)
+                binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.setting -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToSettingFragment()
                 navController.navigate(action)
+                binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.signOut -> {
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
                 navController.navigate(action)
+                binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
 
         }

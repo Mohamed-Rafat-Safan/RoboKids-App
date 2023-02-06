@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
+    android:background="@drawable/background"
     tools:context=".ui.kidsFragments.PronunciationLettersFragment">
 
 
@@ -102,7 +103,7 @@
         android:id="@+id/cardView"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_220sdp"
-        android:backgroundTint="#B5CEF1"
+        android:backgroundTint="#FEDEFF"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

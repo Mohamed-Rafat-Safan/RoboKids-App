@@ -53,6 +53,7 @@ class WhiteboardFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentWhiteboardBinding.inflate(inflater, container, false)
 
+
         Canvas.pathList.clear()
         Canvas.colorList.clear()
         Canvas.sizeList.clear()
@@ -202,6 +203,7 @@ class WhiteboardFragment : Fragment() {
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
+                binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_RTL
             }
             "English"->{
                 for(i in 'A'..'Z'){
@@ -209,6 +211,7 @@ class WhiteboardFragment : Fragment() {
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
+                binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
             "Math"->{
                 for(i in 0..100){
@@ -216,6 +219,7 @@ class WhiteboardFragment : Fragment() {
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
+                binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
             "Photo"->{
                 binding.knowImageLayout.visibility = View.VISIBLE
@@ -229,6 +233,7 @@ class WhiteboardFragment : Fragment() {
                 listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.cat,"cat"))
                 listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.dog,"dog"))
                 isImage = true
+                binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
             else -> println("invalid type")
         }

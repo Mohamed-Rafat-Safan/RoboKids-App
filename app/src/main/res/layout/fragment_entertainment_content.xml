@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ui.kidsFragments.EntertainmentContentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,10 +41,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_child"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_gravity="end"
-            android:src="@drawable/boye"
+            android:src="@drawable/boy"
             android:layout_marginRight="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

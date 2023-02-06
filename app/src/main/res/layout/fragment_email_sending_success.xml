@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/linkToResetPassword"
             android:textColor="@color/black"
+            android:lineHeight="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_28sdp"
             android:textSize="@dimen/_16ssp" />
 
@@ -30,10 +31,10 @@
             android:id="@+id/email_to_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="email"
+            android:text="mohamed@gmail.com"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="#2196F3"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,6 +42,7 @@
             android:text="@string/infoEmail"
             android:textSize="@dimen/_16ssp"
             android:textColor="#9A9A9A"
+            android:lineHeight="@dimen/_22sdp"
             android:layout_marginVertical="@dimen/_10sdp"
             android:gravity="center"/>
 

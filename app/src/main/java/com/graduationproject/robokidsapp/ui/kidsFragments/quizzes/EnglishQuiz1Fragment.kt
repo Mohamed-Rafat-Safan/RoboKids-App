@@ -59,7 +59,7 @@ class EnglishQuiz1Fragment : Fragment() {
             listImage.add(Images(R.drawable.apple,"تفاح"))
             listImage.add(Images(R.drawable.strawberry,"فروله"))
             listImage.add(Images(R.drawable.banana,"موز"))
-            listImage.add(Images(R.drawable.carrot,"خزرة"))
+            listImage.add(Images(R.drawable.carrot,"جزر"))
             listImage.add(Images(R.drawable.mango,"مانجو"))
             listImage.add(Images(R.drawable.figs,"تين"))
             listImage.add(Images(R.drawable.peach,"خوخ"))

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ui.kidsFragments.WhiteboardFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_50sdp"
             android:layout_marginRight="@dimen/_30sdp"
-            android:text="00:00"
+            android:text="@string/timer"
             android:textColor="#009688"
             android:textSize="@dimen/_25ssp" />
 
@@ -171,6 +172,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_whiteboard"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -181,6 +183,7 @@
         android:id="@+id/animation_correct"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_70sdp"
+        android:layoutDirection="ltr"
         android:visibility="gone"
         android:layout_marginLeft="@dimen/_100sdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,6 +194,7 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_incorrect"
+        android:layoutDirection="ltr"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_70sdp"
         android:visibility="gone"

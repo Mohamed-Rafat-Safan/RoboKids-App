@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.kidsFragments.quizzes.MathQuiz1Fragment"
-    android:background="#CEEDC7"
+    android:background="@drawable/background"
     android:layoutDirection="ltr"
     android:padding="@dimen/_10sdp">
-
 
     <ImageView
         android:id="@+id/mathQuiz1_exit"

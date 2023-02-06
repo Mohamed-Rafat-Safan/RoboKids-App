@@ -28,7 +28,6 @@ class KidsReportsFragment : Fragment() {
 
         //show status bar
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
     }
 
 

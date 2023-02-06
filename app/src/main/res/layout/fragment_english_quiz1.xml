@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:background="#FCFFE7"
+    android:background="@drawable/background"
     android:padding="@dimen/_10sdp"
     tools:context=".ui.kidsFragments.quizzes.EnglishQuiz1Fragment">
 
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/connect"
-        android:textColor="#EB455F"
+        android:textColor="#051468"
         android:textSize="@dimen/_25ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

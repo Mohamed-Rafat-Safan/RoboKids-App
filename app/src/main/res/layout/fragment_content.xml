@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroup"
     tools:context=".ui.kidsFragments.ContentFragment">
 
     <LinearLayout
@@ -14,6 +13,7 @@
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
         android:layoutDirection="ltr"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -39,9 +39,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_child"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/boye" />
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/boy" />
 
     </LinearLayout>
 

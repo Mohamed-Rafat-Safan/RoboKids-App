@@ -1,5 +1,6 @@
 package com.graduationproject.robokidsapp.ui.parentsFragments
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,12 +51,16 @@ class ParentsDataFragment : Fragment() {
 
         binding.ivFather.setOnClickListener {
             binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
-            binding.ivMother.setBackgroundResource(0)
+            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvNameFather.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvNameMother.setTextColor(resources.getColor(R.color.black))
         }
 
         binding.ivMother.setOnClickListener {
-            binding.ivFather.setBackgroundResource(0)
+            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender_default)
             binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender)
+            binding.tvNameMother.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvNameFather.setTextColor(resources.getColor(R.color.black))
         }
 
         binding.selectYearBirth.setOnClickListener {
@@ -72,7 +77,7 @@ class ParentsDataFragment : Fragment() {
         val dialog = AlertDialog.Builder(requireContext())
 
 
-        val calenderBirth = customView.findViewById<CalendarView>(R.id.calenderBirth!!)
+        val calenderBirth = customView.findViewById<CalendarView>(R.id.calenderBirth)
         calenderBirth.setOnDateChangeListener(object : CalendarView.OnDateChangeListener {
             override fun onSelectedDayChange(p0: CalendarView, year: Int, month: Int, dayOfMonth: Int) {
                 UpdateAccountFragment.mDay = dayOfMonth

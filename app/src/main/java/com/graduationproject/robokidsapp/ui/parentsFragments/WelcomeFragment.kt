@@ -25,7 +25,7 @@ class WelcomeFragment : Fragment() {
         super.onResume()
         //show status bar
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        activity?.window!!.statusBarColor = this.resources.getColor(R.color.teal_700)
+        activity?.window!!.statusBarColor = this.resources.getColor(R.color.statusBar_color)
 
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }

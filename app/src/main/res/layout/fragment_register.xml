@@ -29,17 +29,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_logo"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_gravity="center"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/logo"
                 android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/logo"
+                app:civ_border_width="@dimen/_2sdp"
+                app:civ_border_color="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
 
             <RelativeLayout
@@ -57,13 +72,13 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enterEmail"
                     android:textColorHint="#FF737373"
-                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeColor="#03A9F4"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_email"
-                    app:startIconTint="#2196F3">
+                    app:startIconTint="#03A9F4">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -85,12 +100,14 @@
                     android:layout_below="@id/register_email"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:hint="@string/enterPassword"
-                    app:boxStrokeColor="@color/black"
+                    android:textColorHint="#FF737373"
+                    app:boxStrokeColor="#03A9F4"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="#2196F3"
+                    app:endIconTint="#03A9F4"
+                    app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_lock"
-                    app:startIconTint="#2196F3">
+                    app:startIconTint="#03A9F4">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -112,13 +129,13 @@
                     android:layout_marginTop="@dimen/_16sdp"
                     android:hint="@string/enterConfirmPassword"
                     android:textColorHint="#FF737373"
-                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeColor="#03A9F4"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="#2196F3"
+                    app:endIconTint="#03A9F4"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_lock"
-                    app:startIconTint="#2196F3">
+                    app:startIconTint="#03A9F4">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -157,10 +174,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/selectCountry"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginHorizontal="@dimen/_12sdp"                    android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/btn_background_login"
-                    android:text="@string/register"
+                    android:text="@string/sign_up"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20ssp" />
@@ -189,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:background="#00000000"
                         android:text="@string/welcome_back"
-                        android:textColor="#ED75AD"
+                        android:textColor="#03A9F4"
                         android:textSize="@dimen/_16ssp"
                         android:textStyle="bold" />
 

@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/iv_reports_kidsImage"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:src="@drawable/boy2" />
@@ -40,7 +40,7 @@
                 android:gravity="start"
                 android:text="Mohamed"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_16ssp" />
 
 
             <ImageView
@@ -61,11 +61,11 @@
             android:background="@drawable/bg_text_reports"
             android:text="@string/reports"
             android:textColor="@color/black"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
             android:gravity="center"
             android:paddingVertical="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

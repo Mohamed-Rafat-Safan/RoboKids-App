@@ -41,12 +41,16 @@ class AddKidsFragment : Fragment() {
 
         binding.ivSelectBoy.setOnClickListener {
             binding.ivSelectBoy.setBackgroundResource(R.drawable.bg_select_gender)
-            binding.ivSelectGirl.setBackgroundResource(0)
+            binding.ivSelectGirl.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvBoyName.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvGirlName.setTextColor(resources.getColor(R.color.black))
         }
 
         binding.ivSelectGirl.setOnClickListener {
             binding.ivSelectGirl.setBackgroundResource(R.drawable.bg_select_gender)
-            binding.ivSelectBoy.setBackgroundResource(0)
+            binding.ivSelectBoy.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvBoyName.setTextColor(resources.getColor(R.color.black))
+            binding.tvGirlName.setTextColor(resources.getColor(R.color.nameParent_color))
         }
 
 

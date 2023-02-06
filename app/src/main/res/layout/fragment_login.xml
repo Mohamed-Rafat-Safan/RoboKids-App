@@ -36,11 +36,24 @@
                 android:layout_height="@dimen/_100sdp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:padding="@dimen/_5sdp"
                 android:src="@drawable/logo"
+                app:civ_border_width="@dimen/_2sdp"
+                app:civ_border_color="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
 
             <RelativeLayout
@@ -59,11 +72,12 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enterEmail"
                     android:textColorHint="#737373"
+                    app:boxStrokeColor="#03A9F4"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="clear_text"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_email"
-                    app:startIconTint="#2196F3">
+                    app:startIconTint="#03A9F4">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -87,13 +101,13 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     android:hint="@string/enterPassword"
                     android:textColorHint="#FF737373"
-                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeColor="#03A9F4"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="#2196F3"
+                    app:endIconTint="#03A9F4"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_lock"
-                    app:startIconTint="#2196F3">
+                    app:startIconTint="#03A9F4">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -120,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:buttonTint="#2196F3"
+                        android:buttonTint="#03A9F4"
                         android:text="@string/rememberMe"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12ssp" />
@@ -134,7 +148,7 @@
                         android:layout_centerVertical="true"
                         android:background="#00000000"
                         android:text="@string/forgotPassword"
-                        android:textColor="@color/black"
+                        android:textColor="#03A9F4"
                         android:textSize="@dimen/_12ssp" />
 
                 </RelativeLayout>
@@ -144,11 +158,12 @@
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_below="@id/forget_password_block"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_32sdp"
                     android:background="@drawable/btn_background_login"
-                    android:text="@string/login"
+                    android:text="@string/sign_in"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20ssp" />
@@ -176,7 +191,7 @@
                         android:layout_height="match_parent"
                         android:background="#00000000"
                         android:text="@string/sign_up_now"
-                        android:textColor="#ED75AD"
+                        android:textColor="#03A9F4"
                         android:textSize="@dimen/_16ssp"
                         android:textStyle="bold" />
                 </LinearLayout>

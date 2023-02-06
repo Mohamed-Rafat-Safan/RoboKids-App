@@ -103,7 +103,7 @@ class MathQuiz1Fragment : Fragment() {
 
 
         binding.mathQuiz1CheckAnswer.setOnClickListener {
-            if (binding.tvMathQuiz1Result.text.isNotEmpty()){
+            if (binding.tvMathQuiz1Result.text.isNotEmpty() && binding.tvMathQuiz1Result.text != "-"){
                 val answer:Int = binding.tvMathQuiz1Result.text.trim().toString().toInt()
                 val operator = binding.tvOperator.text.trim().toString()
                 val result:Int

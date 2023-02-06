@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RoboKids App</string>
-    <string name="welcome_back"><u>مرحبًا بعودتك</u></string>
-    <string name="sign_up_now"><u>أنشاء حساب الأن</u></string>
+    <string name="welcome_back">&#x0020;<u>مرحبًا بعودتك</u></string>
+    <string name="sign_up_now">&#x0020;<u>أنشاء حساب الأن</u></string>
+    <string name="sign_up_title">حساب جديد</string>
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
     <string name="add_kids"><u>اضافة اطفال</u></string>
@@ -35,13 +36,13 @@
                               \n- انقر فوق "تسجيل الدخول".</string>
     <string name="hello_blank_fragment">مرحبا جزء فارغ</string>
     <string name="addKids">أضف الاطفال</string>
-    <string name="isYourChild">هل طفلك</string>
-    <string name="or">أو</string>
-    <string name="childName">اسم الطفل</string>
+    <string name="isYourChild">هل طفلك...</string>
+    <string name="or">أم</string>
+    <string name="childName">ما اسمه؟</string>
     <string name="enterName">أدخل الاسم</string>
-    <string name="childAge">عمر الطفل</string>
-    <string name="boy">صبي</string>
-    <string name="girl">فتاة</string>
+    <string name="childAge">سن الطفل</string>
+    <string name="boy">ولد</string>
+    <string name="girl">بنت</string>
     <string name="createNewPassword">إنشاء كلمة مرور جديدة</string>
     <string name="infoPassword">قم بتعيين كلمة المرور الجديدة حتى تتمكن من تسجيل الدخول والوصول إلى RoboKids</string>
     <string name="oldPassword">كلمة المرور القديمة</string>
@@ -54,13 +55,13 @@
     <string name="linkToResetPassword">لقد أرسلنا لك رابطًا لإعادة تعيين كلمة المرور الخاصة بي على بريدك الإلكتروني:</string>
     <string name="infoEmail">تصفح بريدك الإلكتروني واتبع الخطوات مرة أخرى لإعادة تعيين كلمة مرورك مرة أخرى عن طريق كتابة بريدك الإلكتروني الجديد وكلمة المرور.</string>
     <string name="signIn">تسجيل الدخول</string>
-    <string name="forgotPassword">هل نسيت كلمة السر</string>
+    <string name="forgotPassword"><u>هل نسيت كلمة السر</u></string>
     <string name="forgotYourPassword">نسيت رقمك السري؟ لا تقلق</string>
     <string name="forgotInfo">الرجاء إدخال البريد الإلكتروني الذي قمت بالتسجيل به مسبقًا وسنرسل لك رابطًا لإنشاء كلمة مرور جديدة.</string>
     <string name="enterEmail">أدخل البريد الإلكتروني</string>
     <string name="send">إرسال</string>
     <string name="knowApp">تعرف على التطبيق</string>
-    <string name="appInfo">يوفر التطبيق رحلة مستمرة يشاركها الوالدان مع الطفل ، حيث يتيح للطفل وقتًا مفيدًا على الشاشة لتنمية سلوكه من خلال الألعاب والأنشطة التي يقوم بها الطفل بعد مشاهدة المحتوى التعليمي الشيق والمحتوي الترفيهي المتنوع بين الاناشيد والقصص.</string>
+    <string name="appInfo">يوفر التطبيق رحلة مستمرة يشاركها الوالدان مع الطفل ، حيث يتيح للطفل وقتًا مفيدًا على الشاشة لتنمية سلوكه من خلال الألعاب والأنشطة التي يقوم بها الطفل بعد مشاهدة المحتوى التعليمي الشيق والمحتوي الترفيهي المتنوع بين الاناشيد والقصص والالعاب.</string>
     <string name="parentEntry">دخول الوالدين</string>
     <string name="reportsFrom">تقارير من</string>
     <string name="evenToday">حتى اليوم</string>
@@ -73,12 +74,12 @@
     <string name="fri">الجمعه</string>
     <string name="enterPassword">ادخل كلمة المرور</string>
     <string name="rememberMe">تذكرنى</string>
-    <string name="login">تسجيل الدخول</string>
+    <string name="sign_in">تسجيل الدخول</string>
     <string name="haveAccount">ليس لديك حساب؟</string>
     <string name="quiz1">الاختبار١</string>
     <string name="quiz2">الاختبار٢</string>
     <string name="checkAnswer">تحقق من الجواب</string>
-    <string name="parents">الاباء</string>
+    <string name="parents">الوالدين</string>
     <string name="areYou">هل أنت</string>
     <string name="father">الأب</string>
     <string name="mother">الأم</string>
@@ -86,7 +87,7 @@
     <string name="yearBirth">سنة الميلاد</string>
     <string name="nextStep">الخطوة التالية</string>
     <string name="enterConfirmPassword">تأكيد كلمة المرور</string>
-    <string name="register">تسجيل</string>
+    <string name="sign_up">تسجيل</string>
     <string name="youHaveAccount">لديك حساب؟</string>
     <string name="setting">الاعدادات</string>
     <string name="updateAccount">تحديث الحساب</string>
@@ -94,7 +95,7 @@
     <string name="useEntertainment">مدة الاستخدام في المحتوى الترفيهي</string>
     <string name="useEducational">مدة الاستخدام في المحتوى التعليمي</string>
     <string name="minutes">دقائق</string>
-    <string name="country">الدوله</string>
+    <string name="country">الدوله؟</string>
     <string name="save">حفظ</string>
     <string name="welcomeRobokids">مرحبا بكم في RoboKids!</string>
     <string name="createNewAccount">انشاء حساب جديد</string>
@@ -141,5 +142,7 @@
     <string name="letter_test">اختبار الحروف</string>
     <string name="edit_kids">تعديل الطفل</string>
     <string name="update_kids">تحديث</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="timer">٠٠:٠٠</string>
 
 </resources>
