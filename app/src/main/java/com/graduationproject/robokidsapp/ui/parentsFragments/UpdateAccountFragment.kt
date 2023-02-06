@@ -52,11 +52,11 @@ class UpdateAccountFragment : Fragment() {
             binding.tvNameMother.setTextColor(resources.getColor(R.color.black))
         }
 
-        binding.ivFather.setOnClickListener {
-            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
-            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender_default)
-            binding.tvNameFather.setTextColor(resources.getColor(R.color.nameParent_color))
-            binding.tvNameMother.setTextColor(resources.getColor(R.color.black))
+        binding.ivMother.setOnClickListener {
+            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender)
+            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvNameMother.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvNameFather.setTextColor(resources.getColor(R.color.black))
         }
 
         binding.ivLeftBack.setOnClickListener {
