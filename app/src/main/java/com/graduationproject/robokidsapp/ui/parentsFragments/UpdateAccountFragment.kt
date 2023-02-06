@@ -45,9 +45,24 @@ class UpdateAccountFragment : Fragment() {
 
         binding.btnSaveParentData.setOnClickListener {  }
 
+        binding.ivFather.setOnClickListener {
+            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
+            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvNameFather.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvNameMother.setTextColor(resources.getColor(R.color.black))
+        }
+
+        binding.ivFather.setOnClickListener {
+            binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
+            binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender_default)
+            binding.tvNameFather.setTextColor(resources.getColor(R.color.nameParent_color))
+            binding.tvNameMother.setTextColor(resources.getColor(R.color.black))
+        }
+
         binding.ivLeftBack.setOnClickListener {
             mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
         }
+
 
         return binding.root
     }
