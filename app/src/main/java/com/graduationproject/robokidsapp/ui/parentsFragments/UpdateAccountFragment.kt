@@ -45,7 +45,7 @@ class UpdateAccountFragment : Fragment() {
 
         binding.btnSaveParentData.setOnClickListener {  }
 
-        binding.ivFather.setOnClickListener {
+        binding.ivMother.setOnClickListener {
             binding.ivFather.setBackgroundResource(R.drawable.bg_select_gender)
             binding.ivMother.setBackgroundResource(R.drawable.bg_select_gender_default)
             binding.tvNameFather.setTextColor(resources.getColor(R.color.nameParent_color))

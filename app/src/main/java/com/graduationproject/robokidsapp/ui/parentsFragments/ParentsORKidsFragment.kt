@@ -11,6 +11,7 @@ import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentParentsORKidsBinding
 import java.util.*
@@ -21,6 +22,7 @@ class ParentsORKidsFragment : Fragment() {
 
     private lateinit var mNavController: NavController
 
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onResume() {
         super.onResume()
@@ -55,8 +57,13 @@ class ParentsORKidsFragment : Fragment() {
         }
 
         binding.parentsEntry.setOnClickListener {
-            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToWelcomeFragment()
-            mNavController.navigate(action)
+            if(auth.currentUser != null){
+                val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToParentsHomeFragment()
+                mNavController.navigate(action)
+            }else{
+                val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToWelcomeFragment()
+                mNavController.navigate(action)
+            }
         }
 
         return binding.root
@@ -66,13 +73,6 @@ class ParentsORKidsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToWelcomeFragment()
-//        mNavController.navigate(action)
-//    }
 
 
 }

@@ -14,6 +14,8 @@ class EmailSendingSuccessFragment : Fragment() {
     private var _binding: FragmentEmailSendingSuccessBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var sentEmail:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
@@ -24,6 +26,10 @@ class EmailSendingSuccessFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEmailSendingSuccessBinding.inflate(inflater, container, false)
+
+        sentEmail = arguments?.getString("sent_email")!!
+
+        binding.emailToSend.text = sentEmail
 
         binding.btnLoginEmailSent.setOnClickListener {
             val action = EmailSendingSuccessFragmentDirections.actionEmailSendingSuccessFragmentToLoginFragment()

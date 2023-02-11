@@ -128,17 +128,6 @@
                     android:layout_below="@id/login_password"
                     android:layout_marginTop="@dimen/_10sdp">
 
-                    <CheckBox
-                        android:id="@+id/remember_me"
-                        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:buttonTint="#03A9F4"
-                        android:text="@string/rememberMe"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12ssp" />
-
                     <TextView
                         android:id="@+id/tv_forgetPassword"
                         android:layout_width="wrap_content"
@@ -164,6 +153,7 @@
                     android:layout_marginTop="@dimen/_32sdp"
                     android:background="@drawable/btn_background_login"
                     android:text="@string/sign_in"
+                    android:enabled="false"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20ssp" />
@@ -202,14 +192,14 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:background="@color/white"
-                    android:elevation="@dimen/_8sdp"
-                    android:padding="@dimen/_20sdp"
+                    android:elevation="@dimen/_10sdp"
                     android:visibility="gone">
 
-                    <ProgressBar
-                        android:layout_width="@dimen/_30sdp"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_centerInParent="true" />
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/loading" />
 
                 </RelativeLayout>
 

@@ -7,6 +7,7 @@
     <string name="draw_close">Close</string>
     <string name="add_kids"><u>add kids</u></string>
     <string name="sign_up_title">Sign up</string>
+    <string name="skip"><u>Skip</u></string>
 
 
     <string name="question1">Is the app free ?</string>
@@ -147,6 +148,15 @@
     <string name="update_kids">Update</string>
     <string name="home">Home</string>
     <string name="timer">00:00</string>
+
+
+    <string name="email_error">Please Enter Valid E-mail</string>
+    <string name="password_error">Please Enter 6 Char Required</string>
+    <string name="confirmPass_error">ConfirmPassword Not Equal Password</string>
+    <string name="email_not_found">Email not found</string>
+    <string name="password_match">Old password not match</string>
+    <string name="password_update">Parent password updated successfully.</string>
+    <string name="different_password">Enter different new Password</string>
 
 
 

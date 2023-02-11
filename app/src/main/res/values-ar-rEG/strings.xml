@@ -7,6 +7,7 @@
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
     <string name="add_kids"><u>اضافة اطفال</u></string>
+    <string name="skip"><u>تخطي</u></string>
     <string name="question1">هل التطبيق مجاني؟</string>
     <string name="question2">ما هو السن المناسب للاستفادة من التطبيق؟</string>
     <string name="question3">هل يجب أن أكون متصلاً بالإنترنت أثناء استخدام التطبيق؟</string>
@@ -48,7 +49,7 @@
     <string name="oldPassword">كلمة المرور القديمة</string>
     <string name="newPassword">كلمة مرور جديدة</string>
     <string name="confirmNewPassword">تأكيد كلمة المرور الجديدة</string>
-    <string name="changePassword">تغير كلمة السر</string>
+    <string name="changePassword">تغير كلمة المرور</string>
     <string name="commonQuestions">الأسئلة الشائعة</string>
     <string name="educational">تعليمي</string>
     <string name="entertainment">ترفيهي</string>
@@ -144,5 +145,15 @@
     <string name="update_kids">تحديث</string>
     <string name="home">الصفحة الرئيسية</string>
     <string name="timer">٠٠:٠٠</string>
+
+
+    <string name="email_error">ادخل بريد الكتروني صحيح</string>
+    <string name="password_error">ادخل ٦ حروف علي الاقل</string>
+    <string name="confirmPass_error">كلمةالمرور غير متطابق</string>
+    <string name="email_not_found">البريد الالكتروني غير موجود</string>
+    <string name="password_match">كلمة المرور القديم غير متطابق</string>
+    <string name="password_update">تم تعديل كلمة المرور بنجاح</string>
+    <string name="different_password">أدخل كلمة مرور جديدة مختلفة</string>
+
 
 </resources>

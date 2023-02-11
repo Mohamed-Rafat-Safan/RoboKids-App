@@ -50,7 +50,8 @@ class SettingFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+            val action = SettingFragmentDirections.actionSettingFragmentToParentsHomeFragment()
+            mNavController.navigate(action)
         }
 
         return binding.root

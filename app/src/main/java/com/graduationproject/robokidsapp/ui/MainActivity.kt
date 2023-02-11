@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
 import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragmentDirections
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         lateinit var binding:ActivityMainBinding
     }
     private lateinit var navController: NavController
+
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.signOut -> {
+                auth.signOut()  // this sign out for parent
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
                 navController.navigate(action)
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

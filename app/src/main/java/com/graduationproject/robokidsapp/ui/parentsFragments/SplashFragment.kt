@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import kotlinx.coroutines.*
 
 class SplashFragment : Fragment() {
-
     private lateinit var mNavController:NavController
+
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
 
     override fun onResume() {
@@ -45,10 +48,21 @@ class SplashFragment : Fragment() {
         GlobalScope.launch {
             delay(2000)
             withContext(Dispatchers.Main){
-                val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
-                mNavController.navigate(action)
+                if (checkLoggedIn()){
+                    val action = SplashFragmentDirections.actionSplashFragmentToHomeKidsFragment()
+                    mNavController.navigate(action)
+                }else{
+                    val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+                    mNavController.navigate(action)
+                }
+
             }
         }
+    }
+
+
+    private fun checkLoggedIn():Boolean {
+        return auth.currentUser != null
     }
 
 }

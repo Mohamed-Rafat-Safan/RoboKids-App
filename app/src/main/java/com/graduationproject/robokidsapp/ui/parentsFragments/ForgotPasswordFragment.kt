@@ -1,18 +1,31 @@
 package com.graduationproject.robokidsapp.ui.parentsFragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentForgotPasswordBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-class ForgotPasswordFragment : Fragment() {
+class ForgotPasswordFragment : Fragment(), TextWatcher {
     private lateinit var mNavController: NavController
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
+
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +38,22 @@ class ForgotPasswordFragment : Fragment() {
     ): View? {
         _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 
+        binding.etEmailForgotPassword.addTextChangedListener(this@ForgotPasswordFragment)
+
         binding.btnSendEmail.setOnClickListener {
-            val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToEmailSendingSuccessFragment()
-            mNavController.navigate(action)
+            if(checkInputsStatus()){
+                val email = binding.etEmailForgotPassword.text.toString().trim()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    auth.sendPasswordResetEmail(email).addOnSuccessListener {
+                        val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToEmailSendingSuccessFragment(email)
+                        mNavController.navigate(action)
+                    }.addOnFailureListener {
+                        binding.tvEmialNotFound.visibility = View.VISIBLE
+                    }
+                }
+
+            }
         }
 
         binding.ivBack.setOnClickListener {
@@ -36,6 +62,34 @@ class ForgotPasswordFragment : Fragment() {
 
         return binding.root
     }
+
+
+    private fun checkInputsStatus(): Boolean {
+        binding.apply {
+            if (btnSendEmail.isEnabled) {
+                val email = etEmailForgotPassword.text.toString().trim()
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmailForgotPassword.error = getString(R.string.email_error)
+                    etEmailForgotPassword.requestFocus()
+                    return false //function ديه معناها انه لو الشرط ده اتنفذ .. كده هو هيخرج من ال
+                }
+
+                return true
+            }
+        }
+        return false
+    }
+
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+    override fun afterTextChanged(p0: Editable?) {
+        binding.apply {
+            btnSendEmail.isEnabled = etEmailForgotPassword.text!!.trim().isNotEmpty()
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
