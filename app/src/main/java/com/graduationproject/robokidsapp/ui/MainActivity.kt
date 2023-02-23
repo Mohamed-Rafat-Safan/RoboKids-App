@@ -1,31 +1,48 @@
 package com.graduationproject.robokidsapp.ui
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
-import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragmentDirections
+import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragmentDirections
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 //                              بسم الله الرحمن الرحيم
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     companion object{
         lateinit var binding:ActivityMainBinding
     }
     private lateinit var navController: NavController
+
+    private val authViewModel: AuthViewModel by viewModels()
+    private lateinit var infoViewModel:InfoViewModel
+
 
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
@@ -33,6 +50,30 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        if(authViewModel.currentUser != null){
+            infoViewModel = ViewModelProvider(this).get(InfoViewModel::class.java)
+            infoViewModel.getParentData()
+            lifecycleScope.launch {
+                infoViewModel.getParent.observe(this@MainActivity){resource->
+                    when (resource) {
+                        is Resource.Loading -> {}
+                        is Resource.Failure -> {
+                            showToast(""+ resource.error)
+                        }
+                        is Resource.Success -> {
+                            val view = binding.navigationView.getHeaderView(0)
+                            val name = view.findViewById<TextView>(R.id.tv_userName)
+                            val email = view.findViewById<TextView>(R.id.tv_email)
+                            name.text = resource.data.name
+                            email.text = resource.data.email
+                        }
+                    }
+                }
+            }
+        }
+
 
         // this code is Permission
         if (ContextCompat.checkSelfPermission(this,
@@ -47,7 +88,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         setSupportActionBar(binding.customToolbarMainActivity)
-
         binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
 
@@ -60,8 +100,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.string.draw_open , R.string.draw_close)
 
         binding.drawLayout.addDrawerListener(actionToggle)
-
         actionToggle.syncState()
+
 
     }
 
@@ -88,9 +128,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.signOut -> {
-                auth.signOut()  // this sign out for parent
+                authViewModel.logout {}
                 val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
                 navController.navigate(action)
+
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
 
@@ -99,12 +140,16 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         return true
     }
 
-    fun showToast(str:String){
-        Toast.makeText(this, str ,Toast.LENGTH_LONG).show()
-    }
+
+
+
 
     fun closeDrawer(){
         binding.drawLayout.closeDrawer(GravityCompat.START)
+    }
+
+    fun showToast(str:String){
+        Toast.makeText(this, str ,Toast.LENGTH_LONG).show()
     }
 
     // هذه الدله علشان لو انت كنت فاتح ال navigation drawer ضغط علي زر الرجوع ميخرجش من التطبيق كاكل

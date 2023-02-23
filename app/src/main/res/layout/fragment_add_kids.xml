@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.parentsFragments.AddKidsFragment">
+    tools:context=".ui.parentsFragments.info.AddKidsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                 android:text="@string/or"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
-                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_select_boy"
                 app:layout_constraintStart_toEndOf="@+id/iv_select_boy"
                 app:layout_constraintTop_toTopOf="@+id/iv_select_boy" />
 
@@ -140,13 +140,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_boyName" />
 
             <EditText
-                android:id="@+id/et_parentsName"
+                android:id="@+id/et_childName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/enterName"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textSize="@dimen/_15ssp"
-                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_12sdp"
                 android:paddingVertical="@dimen/_8sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -165,7 +165,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_parentsName" />
+                app:layout_constraintTop_toBottomOf="@+id/et_childName" />
 
             <LinearLayout
                 android:id="@+id/linearLayout12"
@@ -232,6 +232,27 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
+
+            <LinearLayout
+                android:id="@+id/progressBar_addKids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/white"
+                android:elevation="@dimen/_10sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/loading" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

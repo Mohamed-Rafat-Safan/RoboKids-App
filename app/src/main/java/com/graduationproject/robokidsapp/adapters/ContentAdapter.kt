@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.model.Content
+import com.graduationproject.robokidsapp.data.model.Content
 import pl.droidsonroids.gif.GifImageView
 
-class ContentAdapter(val context: Context , val listContent:ArrayList<Content>, val onItemClickListener: OnItemClickListener):
+class ContentAdapter(val context: Context, val listContent:ArrayList<Content>, val onItemClickListener: OnItemClickListener):
     Adapter<ContentAdapter.ContentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {

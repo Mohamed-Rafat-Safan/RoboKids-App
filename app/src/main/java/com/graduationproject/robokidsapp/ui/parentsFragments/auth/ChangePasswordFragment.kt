@@ -1,35 +1,37 @@
-package com.graduationproject.robokidsapp.ui.parentsFragments
+package com.graduationproject.robokidsapp.ui.parentsFragments.auth
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentChangePasswordBinding
-import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class ChangePasswordFragment : Fragment(), TextWatcher {
     private var _binding: FragmentChangePasswordBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var mNavController: NavController
 
-    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private val authViewModel: AuthViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,48 +52,48 @@ class ChangePasswordFragment : Fragment(), TextWatcher {
             etConfirmNewPassword.addTextChangedListener(this@ChangePasswordFragment)
         }
 
-
-        binding.btnChangePassword.setOnClickListener {
-            val oldPassword = binding.etOldPassword.text.toString().trim()
-            val newPassword = binding.etNewPassword.text.toString().trim()
-
-            if (checkInputsStatus()) {
-                val parent = auth.currentUser!!
-                if (parent != null && parent.email != null) {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val credential = EmailAuthProvider.getCredential(parent.email!!, oldPassword)
-
-                        parent.reauthenticate(credential).addOnSuccessListener {
-                            if(newPassword != oldPassword){
-                                parent.updatePassword(newPassword).addOnSuccessListener {
-                                    Toast.makeText(activity, ""+getString(R.string.password_update) , Toast.LENGTH_SHORT).show()
-
-                                    auth.signOut()
-
-                                    val action = ChangePasswordFragmentDirections.actionChangePasswordFragmentToLoginFragment()
-                                    mNavController.navigate(action)
-
-                                }.addOnFailureListener {
-                                    Toast.makeText(activity, "Failure"+ it.message , Toast.LENGTH_SHORT).show()
-                                }
-                            }else{
-                                Toast.makeText(activity, ""+getString(R.string.different_password) , Toast.LENGTH_SHORT).show()
-                            }
-                        }.addOnFailureListener {
-                            Toast.makeText(activity, "" + getString(R.string.password_match), Toast.LENGTH_SHORT).show()
-                        }
-
-                    }
-                }
-            }
-        }
-
-
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private fun checkInputsStatus(): Boolean {
+        // this listen to live data in viewModel (changePassword)
+        observer()
+
+        binding.btnChangePassword.setOnClickListener {
+            if (inputsValidation()) {
+                val oldPassword = binding.etOldPassword.text.toString().trim()
+                val newPassword = binding.etNewPassword.text.toString().trim()
+                authViewModel.changePassword(oldPassword, newPassword, requireContext())
+            }
+        }
+
+    }
+
+    private fun observer() {
+        authViewModel.changePassword.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    binding.progressBarChangePass.show()
+                }
+                is Resource.Failure -> {
+                    binding.progressBarChangePass.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    binding.progressBarChangePass.hide()
+                    toast(resource.data)
+
+                    val action = ChangePasswordFragmentDirections.actionChangePasswordFragmentToLoginFragment()
+                    mNavController.navigate(action)
+                }
+            }
+        }
+    }
+
+
+    private fun inputsValidation(): Boolean {
         binding.apply {
             if (btnChangePassword.isEnabled) {
                 val newPassword = etNewPassword.text.toString().trim()
@@ -108,7 +110,6 @@ class ChangePasswordFragment : Fragment(), TextWatcher {
                     etConfirmNewPassword.requestFocus()
                     return false
                 }
-
                 return true
             }
         }
@@ -122,8 +123,8 @@ class ChangePasswordFragment : Fragment(), TextWatcher {
         binding.apply {
             btnChangePassword.isEnabled =
                 etOldPassword.text!!.trim().isNotEmpty() &&
-                etNewPassword.text!!.trim().isNotEmpty() &&
-                etConfirmNewPassword.text!!.trim().isNotEmpty()
+                        etNewPassword.text!!.trim().isNotEmpty() &&
+                        etConfirmNewPassword.text!!.trim().isNotEmpty()
         }
     }
 

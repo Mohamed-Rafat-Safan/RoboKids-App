@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.model.EducationalSections
+import com.graduationproject.robokidsapp.data.model.EducationalSections
 import pl.droidsonroids.gif.GifImageView
 
 class EducationalSectionsAdapter (val context: Context, val listSection:ArrayList<EducationalSections>, val onItemClickListener: OnItemClickListener):

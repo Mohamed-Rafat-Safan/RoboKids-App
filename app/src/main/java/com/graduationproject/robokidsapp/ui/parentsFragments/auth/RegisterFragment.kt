@@ -1,35 +1,33 @@
-package com.graduationproject.robokidsapp.ui.parentsFragments
+package com.graduationproject.robokidsapp.ui.parentsFragments.auth
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.Parent
 import com.graduationproject.robokidsapp.databinding.FragmentRegisterBinding
+import com.graduationproject.robokidsapp.util.*
 import com.hbb20.countrypicker.models.CPCountry
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment(), TextWatcher {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-    private var countryName = ""
+    private var countryCode = ""
 
     private lateinit var mNavController: NavController
 
-    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private val authViewModel: AuthViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,57 +48,79 @@ class RegisterFragment : Fragment(), TextWatcher {
             etConfirmPasswordRegister.addTextChangedListener(this@RegisterFragment)
         }
 
-        binding.btnRegister.setOnClickListener {
-            if (checkInputsStatus()) {
-                // create parent on firebase
-                createParent()
-            }
-
-        }
-
 
         binding.tvBackToLogin.setOnClickListener {
             val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
             mNavController.navigate(action)
         }
 
+
         binding.countryPicker.cpViewHelper.cpViewConfig.viewTextGenerator =
             { cpCountry: CPCountry ->
-                countryName = cpCountry.name
-//                Toast.makeText(activity, "${cpCountry.name} (${cpCountry.alpha2})", Toast.LENGTH_SHORT).show()
-                "${cpCountry.name} (${cpCountry.alpha2})"
+                countryCode = cpCountry.alpha2
+
+                cpCountry.name
             }
 
-        return binding.root
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // this listen to live data in viewModel (register)
+        observer()
+
+        binding.btnRegister.setOnClickListener {
+            if (inputsValidation()) {
+                val email = binding.etEmailRegister.text.toString()
+                val password = binding.etPasswordRegister.text.toString()
+                val parent = getParentObj()
+
+                // create parent on firebase
+                authViewModel.registerParent(email, password, parent)
+            }
+        }
     }
 
 
-    private fun createParent() {
-        binding.apply {
-            progressBarRegister.visibility = View.VISIBLE
-            val email = etEmailRegister.text.toString().trim()
-            val password = etPasswordRegister.text.toString().trim()
+    fun getParentObj(): Parent {
+        return Parent(
+            id = "",
+            email = binding.etEmailRegister.text.toString(),
+            name = "",
+            profile_img = "",
+            gender = "",
+            countryCode = countryCode,
+            birth_date = ""
+        )
+    }
 
-            CoroutineScope(Dispatchers.IO).launch {
-                auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
-                    progressBarRegister.visibility = View.GONE
-                    val action = RegisterFragmentDirections.actionRegisterFragmentToParentsDataFragment(countryName)
+
+    private fun observer() {
+        authViewModel.register.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    binding.progressBarRegister.show()
+                }
+                is Resource.Failure -> {
+                    binding.progressBarRegister.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    binding.progressBarRegister.hide()
+                    toast(resource.data)
+
+                    val action = RegisterFragmentDirections.actionRegisterFragmentToParentsDataFragment(countryCode)
                     mNavController.navigate(action)
-                }.addOnFailureListener {
-                    progressBarRegister.visibility = View.GONE
-                    Toast.makeText(
-                        activity,
-                        "Register Is Failed : " + it.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
             }
         }
     }
 
 
-    private fun checkInputsStatus(): Boolean {
+    private fun inputsValidation(): Boolean {
         binding.apply {
             if (btnRegister.isEnabled) {
                 val email = etEmailRegister.text.toString().trim()
@@ -118,7 +138,6 @@ class RegisterFragment : Fragment(), TextWatcher {
                     etPasswordRegister.requestFocus()
                     return false
                 }
-
 
                 if (confirmPassword != password) {
                     etConfirmPasswordRegister.error = getString(R.string.confirmPass_error)
@@ -139,8 +158,8 @@ class RegisterFragment : Fragment(), TextWatcher {
         binding.apply {
             btnRegister.isEnabled =
                 etEmailRegister.text!!.trim().isNotEmpty() &&
-                etPasswordRegister.text!!.trim().isNotEmpty() &&
-                 etConfirmPasswordRegister.text!!.trim().isNotEmpty()
+                        etPasswordRegister.text!!.trim().isNotEmpty() &&
+                        etConfirmPasswordRegister.text!!.trim().isNotEmpty()
         }
     }
 

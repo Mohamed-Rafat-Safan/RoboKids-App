@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/_10sdp"
     android:background="@color/baby_blue"
-    tools:context=".ui.parentsFragments.TimesUseFragment">
+    tools:context=".ui.parentsFragments.info.TimesUseFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -27,6 +27,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_dayDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7/2/2023"
@@ -38,7 +39,7 @@
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_22sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_height="@dimen/_160sdp"
             android:layout_margin="@dimen/_6sdp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
@@ -69,6 +70,7 @@
                     android:textSize="@dimen/_16ssp" />
 
                 <TextView
+                    android:id="@+id/tv_timeEntertainment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -89,7 +91,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_height="@dimen/_160sdp"
             android:layout_margin="@dimen/_6sdp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
@@ -112,6 +114,7 @@
                     android:textSize="@dimen/_16ssp" />
 
                 <TextView
+                    android:id="@+id/tv_timeEducational"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -136,12 +139,22 @@
         android:id="@+id/tv_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notification"
+        android:text="@string/day_events"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
+        android:layout_marginTop="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notification"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_notification" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

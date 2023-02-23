@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.LoginFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.RegisterFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/parentsDataFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.ParentsDataFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsDataFragment"
         android:label="fragment_parents_data"
         tools:layout="@layout/fragment_parents_data" >
         <action
@@ -103,12 +103,12 @@
             app:popUpTo="@id/parentsDataFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="countryName"
+            android:name="countryCode"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addKidsFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.AddKidsFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.AddKidsFragment"
         android:label="fragment_add_kids"
         tools:layout="@layout/fragment_add_kids" >
         <action
@@ -119,10 +119,14 @@
         <argument
             android:name="operation"
             app:argType="string" />
+        <argument
+            android:name="current_child"
+            app:argType="com.graduationproject.robokidsapp.data.model.Child"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/parentsHomeFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragment"
         android:label="fragment_parents_home"
         tools:layout="@layout/fragment_parents_home" >
         <action
@@ -138,9 +142,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_parentsHomeFragment_to_settingFragment"
-            app:destination="@id/settingFragment"
-            app:popUpTo="@id/parentsHomeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/settingFragment" />
         <action
             android:id="@+id/action_parentsHomeFragment_to_commonQuestionsFragment"
             app:destination="@id/commonQuestionsFragment" />
@@ -153,16 +155,29 @@
     </fragment>
     <fragment
         android:id="@+id/kidsReportsFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.KidsReportsFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.KidsReportsFragment"
         android:label="fragment_kids_reports"
         tools:layout="@layout/fragment_kids_reports" >
         <action
             android:id="@+id/action_kidsReportsFragment_to_timesUseFragment"
             app:destination="@id/timesUseFragment" />
+        <argument
+            android:name="childId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_kidsReportsFragment_to_parentsHomeFragment"
+            app:destination="@id/parentsHomeFragment"
+            app:popUpTo="@id/kidsReportsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_kidsReportsFragment_self"
+            app:destination="@id/kidsReportsFragment"
+            app:popUpTo="@id/kidsReportsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.ChangePasswordFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.auth.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" >
         <action
@@ -192,9 +207,15 @@
     </fragment>
     <fragment
         android:id="@+id/updateAccountFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.UpdateAccountFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.UpdateAccountFragment"
         android:label="fragment_update_account"
-        tools:layout="@layout/fragment_update_account" />
+        tools:layout="@layout/fragment_update_account" >
+        <action
+            android:id="@+id/action_updateAccountFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:popUpTo="@id/updateAccountFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/commonQuestionsFragment"
         android:name="com.graduationproject.robokidsapp.ui.parentsFragments.CommonQuestionsFragment"
@@ -215,7 +236,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.ForgotPasswordFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -229,7 +250,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailSendingSuccessFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.EmailSendingSuccessFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.auth.EmailSendingSuccessFragment"
         android:label="fragment_email_sending_success"
         tools:layout="@layout/fragment_email_sending_success" >
         <action
@@ -243,12 +264,12 @@
     </fragment>
     <fragment
         android:id="@+id/timesUseFragment"
-        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.TimesUseFragment"
+        android:name="com.graduationproject.robokidsapp.ui.parentsFragments.info.TimesUseFragment"
         android:label="fragment_times_use"
         tools:layout="@layout/fragment_times_use" >
         <argument
-            android:name="Day"
-            app:argType="string" />
+            android:name="dayReport"
+            app:argType="com.graduationproject.robokidsapp.data.model.Report" />
     </fragment>
     <fragment
         android:id="@+id/contentFragment"
@@ -269,8 +290,7 @@
             app:destination="@id/intertainmentContentFragment" />
         <argument
             android:name="currentChild"
-            app:argType="com.graduationproject.robokidsapp.model.Child"
-            app:nullable="true" />
+            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
     <fragment
         android:id="@+id/homeKidsFragment"
@@ -297,6 +317,9 @@
         <action
             android:id="@+id/action_educationalContentFragment_to_educationalSectionFragment"
             app:destination="@id/educationalSectionFragment" />
+        <argument
+            android:name="currentChild"
+            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentVidoFramFragment"
@@ -321,6 +344,9 @@
         <action
             android:id="@+id/action_intertainmentContentFragment_to_gamingSectionFragment"
             app:destination="@id/gamingSectionFragment" />
+        <argument
+            android:name="currentChild"
+            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentSectionFragment"

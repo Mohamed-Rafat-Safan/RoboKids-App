@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.VideoAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentSectionBinding
-import com.graduationproject.robokidsapp.model.Videos
+import com.graduationproject.robokidsapp.data.model.Videos
 
 class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListener {
     private var _binding: FragmentEntertainmentSectionBinding? = null

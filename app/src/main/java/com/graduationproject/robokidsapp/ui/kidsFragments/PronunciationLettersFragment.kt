@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
-import com.graduationproject.robokidsapp.model.Images
+import com.graduationproject.robokidsapp.data.model.Images
 import java.io.File
 import java.util.*
 import java.util.concurrent.ExecutorService

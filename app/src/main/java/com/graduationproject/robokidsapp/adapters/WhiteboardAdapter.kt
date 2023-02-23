@@ -12,14 +12,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.model.Canvas
-import com.graduationproject.robokidsapp.model.WhiteBoardContent
+import com.graduationproject.robokidsapp.data.model.Canvas
+import com.graduationproject.robokidsapp.data.model.WhiteBoardContent
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
 import java.lang.String.format
 import java.util.Locale
 
 
-class WhiteboardAdapter(val context: Context , val listData:ArrayList<WhiteBoardContent>,val isImage:Boolean):Adapter<WhiteboardAdapter.WhiteboardViewHolder>() {
+class WhiteboardAdapter(val context: Context, val listData:ArrayList<WhiteBoardContent>, val isImage:Boolean):Adapter<WhiteboardAdapter.WhiteboardViewHolder>() {
 
     private val START_TIME_IN_MILLIS: Long = 60000
     private var mCountDownTimer: CountDownTimer? = null

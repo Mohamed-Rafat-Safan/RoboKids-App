@@ -8,30 +8,33 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.model.Child
-import com.graduationproject.robokidsapp.ui.kidsFragments.HomeKidsFragment
-import com.graduationproject.robokidsapp.ui.kidsFragments.HomeKidsFragmentDirections
-import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragment
-import com.graduationproject.robokidsapp.ui.parentsFragments.ParentsHomeFragmentDirections
+import com.graduationproject.robokidsapp.data.model.Child
+import com.graduationproject.robokidsapp.databinding.CustomLayoutReportsKidsBinding
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragment
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragmentDirections
+import com.graduationproject.robokidsapp.util.Constants.Companion.EDIT_KIDS
 
 
 class ReportsKidsAdapter(
     val context: Context,
-    val listChild: ArrayList<Child>,
-    val onItemClickListener: OnItemClickListener
+    val onItemClickListener: OnItemClickListener,
+    val onDeleteClicked: (Int, Child) -> Unit
 ) : Adapter<ReportsKidsAdapter.ReportsViewHolder>() {
 
+    var listChild: MutableList<Child> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportsViewHolder {
         return ReportsViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.custom_layout_reports_kids, parent, false), onItemClickListener)
+            CustomLayoutReportsKidsBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ), onItemClickListener
+        )
     }
 
     override fun onBindViewHolder(holder: ReportsViewHolder, position: Int) {
@@ -39,12 +42,13 @@ class ReportsKidsAdapter(
 
         holder.bind(child)
 
+
         holder.optionChild.setOnClickListener {
-            showOptionKids(it)
+            showOptionKids(it,position, child)
         }
 
-        holder.btn_reports.setOnClickListener {
-            val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToKidsReportsFragment()
+        holder.btnReports.setOnClickListener {
+            val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToKidsReportsFragment(child.id)
             ParentsHomeFragment.mNavController.navigate(action)
         }
     }
@@ -54,45 +58,54 @@ class ReportsKidsAdapter(
     }
 
 
-    private fun showOptionKids(v:View){
-        val popup = PopupMenu(context, v)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.option_kids_menu , popup.menu)
-
-        popup.setOnMenuItemClickListener {item ->
-            when(item.itemId){
-                R.id.editKids ->{
-                    val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment("editKids")
-                    ParentsHomeFragment.mNavController.navigate(action)
-                }
-                R.id.deleteKids ->{
-
-                }
-            }
-            true
-        }
-
-        popup.show()
-    }
-
-
-    class ReportsViewHolder(itemView: View, onItemClickListener: OnItemClickListener) :
-        RecyclerView.ViewHolder(itemView) {
+    class ReportsViewHolder(
+        val binding: CustomLayoutReportsKidsBinding,
+        onItemClickListener: OnItemClickListener
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
-                onItemClickListener.onItemClick(adapterPosition)
+                onItemClickListener.onItemClick(bindingAdapterPosition)
             }
         }
 
-        val nameChild = itemView.findViewById<TextView>(R.id.tv_reports_kidsName)!!
-        val imageChild = itemView.findViewById<ImageView>(R.id.iv_reports_kidsImage)!!
-        val optionChild = itemView.findViewById<ImageView>(R.id.iv_kids_options)
-        val btn_reports = itemView.findViewById<TextView>(R.id.tv_reports_kids)
+        val nameChild = binding.tvReportsKidsName
+        val imageChild = binding.ivReportsKidsImage
+        val optionChild = binding.ivKidsOptions
+        val btnReports = binding.tvReportsKids
+
 
         fun bind(child: Child) {
             nameChild.text = child.childName
             imageChild.setImageResource(child.childImage)
         }
+    }
+
+
+    fun updateList(list: MutableList<Child>) {
+        this.listChild = list
+        notifyDataSetChanged()
+    }
+
+
+    private fun showOptionKids(v: View, position: Int, child: Child) {
+        val popup = PopupMenu(context, v)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.option_kids_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.editKids -> {
+                    val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment(EDIT_KIDS,child)
+                    ParentsHomeFragment.mNavController.navigate(action)
+                }
+                R.id.deleteKids -> {
+                    onDeleteClicked.invoke(position, child)
+                }
+            }
+            true
+        }
+        popup.show()
     }
 
 

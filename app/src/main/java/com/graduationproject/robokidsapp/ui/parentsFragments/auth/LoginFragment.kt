@@ -1,31 +1,36 @@
-package com.graduationproject.robokidsapp.ui.parentsFragments
+package com.graduationproject.robokidsapp.ui.parentsFragments.auth
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentLoginBinding
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 
+@AndroidEntryPoint
 class LoginFragment : Fragment(), TextWatcher {
     private lateinit var mNavController: NavController
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private val authViewModel: AuthViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,46 +56,57 @@ class LoginFragment : Fragment(), TextWatcher {
         }
 
 
-
         binding.forgetPasswordBlock.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
             mNavController.navigate(action)
-        }
-
-        binding.btnLogin.setOnClickListener {
-            if(checkInputsStatus()){
-                // function to sign in parent in firebase
-                loginParent()
-            }
-
         }
 
         return binding.root
     }
 
 
-    private fun loginParent() {
-        binding.apply {
-            progressBarSignIn.visibility = View.VISIBLE
-            val email = etEmailLogin.text.toString().trim()
-            val password = etPasswordLogin.text.toString().trim()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                auth.signInWithEmailAndPassword(email, password) .addOnSuccessListener {
-                    progressBarSignIn.visibility = View.GONE
-                    val action = LoginFragmentDirections.actionLoginFragmentToParentsHomeFragment()
-                    mNavController.navigate(action)
-                }.addOnFailureListener {
-                    progressBarSignIn.visibility = View.GONE
-                    Toast.makeText(activity, "Login Is Failed : "+it.message, Toast.LENGTH_SHORT).show()
-                }
+        // this listen to live data in viewModel (login)
+        observer()
 
+        binding.btnLogin.setOnClickListener {
+            if (inputsValidation()) {
+                val email = binding.etEmailLogin.text.toString().trim()
+                val password = binding.etPasswordLogin.text.toString().trim()
+
+                // function to sign in parent in firebase
+                authViewModel.loginParent(email, password)
             }
         }
     }
 
 
-    private fun checkInputsStatus(): Boolean {
+    private fun observer() {
+        authViewModel.login.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    binding.progressBarSignIn.show()
+                }
+                is Resource.Failure -> {
+                    binding.progressBarSignIn.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    binding.progressBarSignIn.hide()
+                    toast(resource.data)
+
+                    val action = LoginFragmentDirections.actionLoginFragmentToParentsHomeFragment()
+                    mNavController.navigate(action)
+                }
+            }
+        }
+    }
+
+
+
+    private fun inputsValidation(): Boolean {
         binding.apply {
             if (btnLogin.isEnabled) {
                 val email = etEmailLogin.text.toString().trim()
@@ -121,7 +137,7 @@ class LoginFragment : Fragment(), TextWatcher {
         binding.apply {
             btnLogin.isEnabled =
                 etEmailLogin.text!!.trim().isNotEmpty() &&
-                etPasswordLogin.text!!.trim().isNotEmpty()
+                        etPasswordLogin.text!!.trim().isNotEmpty()
         }
     }
 

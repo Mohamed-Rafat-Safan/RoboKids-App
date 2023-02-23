@@ -16,4 +16,13 @@
 
     <color name="statusBar_color">#2196F3</color>
 
+    <color name="sat">#48489e</color>
+    <color name="fri">#f05e22</color>
+    <color name="thurs">#c7262c</color>
+    <color name="wed">#891d82</color>
+    <color name="tues">#00adef</color>
+    <color name="mon">#41b24a</color>
+    <color name="sun">#ffcd02</color>
+
+
 </resources>

@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.kidsFragments.ContentFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
         android:layoutDirection="ltr"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,28 +21,35 @@
             android:id="@+id/back"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="start"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_content_child_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="end"
             android:paddingEnd="@dimen/_6ssp"
             android:text="child name"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp" />
+            android:textSize="@dimen/_18ssp"
+            android:layout_marginRight="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_child"
+            app:layout_constraintEnd_toStartOf="@+id/iv_child"
+            app:layout_constraintTop_toTopOf="@+id/iv_child" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_child"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/boy" />
+            android:src="@drawable/boy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

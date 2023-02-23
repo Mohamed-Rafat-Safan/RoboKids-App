@@ -17,7 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentEnglishQuiz1Binding
-import com.graduationproject.robokidsapp.model.Images
+import com.graduationproject.robokidsapp.data.model.Images
 
 
 

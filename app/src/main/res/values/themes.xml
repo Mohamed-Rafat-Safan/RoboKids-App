@@ -18,6 +18,11 @@
         <item name="android:itemTextAppearance">@style/myCustomMenuTextAppearance</item>
         <item name="android:itemBackground">@color/white</item>
 
+
+<!--         hide scrollview stick from fragment-->
+        <item name="android:scrollbarThumbVertical">@null</item>
+
+
     </style>
 
 
@@ -36,5 +41,6 @@
     <style name="BoardLines" parent="Theme.RoboKidsApp">
         <item name="android:background">@color/black</item>
     </style>
+
 
 </resources>

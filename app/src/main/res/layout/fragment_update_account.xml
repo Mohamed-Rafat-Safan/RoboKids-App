@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.parentsFragments.UpdateAccountFragment">
+    tools:context=".ui.parentsFragments.info.UpdateAccountFragment">
 
 
     <LinearLayout
@@ -174,7 +174,6 @@
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:paddingVertical="@dimen/_5sdp">
 
-
                 <com.hbb20.CountryPickerView
                     android:id="@+id/countryPicker"
                     android:layout_width="match_parent"
@@ -189,7 +188,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/light"
-                android:text="@string/yearBirth"
+                android:text="@string/birthDate"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15ssp" />
 
@@ -211,7 +210,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:paddingStart="@dimen/_6sdp"
-                    android:text="@string/yearBirth"
+                    android:text="@string/birthDate"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_16ssp" />
 
@@ -240,7 +239,26 @@
                 android:textSize="@dimen/_20ssp" />
 
         </LinearLayout>
-
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/progressBar_updateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:elevation="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/loading" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

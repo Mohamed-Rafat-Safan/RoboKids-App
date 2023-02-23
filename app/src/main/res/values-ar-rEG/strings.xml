@@ -84,8 +84,10 @@
     <string name="areYou">هل أنت</string>
     <string name="father">الأب</string>
     <string name="mother">الأم</string>
+    <string name="select_name">ادخل الاسم</string>
     <string name="fatherMotherName">اسم الأب / الأم</string>
-    <string name="yearBirth">سنة الميلاد</string>
+    <string name="birthDate">تاريخ الميلاد</string>
+    <string name="select_birthDate">اختار تاريخ الميلاد</string>
     <string name="nextStep">الخطوة التالية</string>
     <string name="enterConfirmPassword">تأكيد كلمة المرور</string>
     <string name="sign_up">تسجيل</string>
@@ -154,6 +156,9 @@
     <string name="password_match">كلمة المرور القديم غير متطابق</string>
     <string name="password_update">تم تعديل كلمة المرور بنجاح</string>
     <string name="different_password">أدخل كلمة مرور جديدة مختلفة</string>
-
+    <string name="child_deleted">تم حذف الطفل بنجاح</string>
+    <string name="undo_snackbar">الغاء</string>
+    <string name="days_reports">تقارير الايام</string>
+    <string name="day_events">احداث اليوم</string>
 
 </resources>

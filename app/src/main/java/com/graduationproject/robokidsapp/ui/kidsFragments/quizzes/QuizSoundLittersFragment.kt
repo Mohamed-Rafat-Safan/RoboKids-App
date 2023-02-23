@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentQuizSoundLittersBinding
-import com.graduationproject.robokidsapp.model.Images
+import com.graduationproject.robokidsapp.data.model.Images
 import com.graduationproject.robokidsapp.ui.kidsFragments.EducationalSectionFragmentDirections
 import org.intellij.lang.annotations.Language
 
@@ -25,7 +25,7 @@ class QuizSoundLittersFragment : Fragment() {
 
     private lateinit var listImages: ArrayList<Images>
     private lateinit var listSelectedImages:MutableList<Images>
-    private lateinit var targetLetter:Images
+    private lateinit var targetLetter: Images
 
     private lateinit var mediaPlayer: MediaPlayer
 

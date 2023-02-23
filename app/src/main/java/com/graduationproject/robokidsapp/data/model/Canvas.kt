@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.model
+package com.graduationproject.robokidsapp.data.model
 
 import android.content.Context
 import android.graphics.*

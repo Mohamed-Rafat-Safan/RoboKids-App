@@ -8,17 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
-    private lateinit var mNavController:NavController
+    private lateinit var mNavController: NavController
 
-    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private val authViewModel: AuthViewModel by viewModels()
 
+    private var isLoggedIn = false
 
     override fun onResume() {
         super.onResume()
@@ -39,7 +45,11 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
+        // check is logged in or not
+        if (authViewModel.currentUser != null)
+            isLoggedIn = true
+
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
@@ -47,12 +57,13 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch {
             delay(2000)
-            withContext(Dispatchers.Main){
-                if (checkLoggedIn()){
+            withContext(Dispatchers.Main) {
+                if (isLoggedIn) {
                     val action = SplashFragmentDirections.actionSplashFragmentToHomeKidsFragment()
                     mNavController.navigate(action)
-                }else{
-                    val action = SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
+                } else {
+                    val action =
+                        SplashFragmentDirections.actionSplashFragmentToParentsORKidsFragment()
                     mNavController.navigate(action)
                 }
 
@@ -60,9 +71,5 @@ class SplashFragment : Fragment() {
         }
     }
 
-
-    private fun checkLoggedIn():Boolean {
-        return auth.currentUser != null
-    }
 
 }

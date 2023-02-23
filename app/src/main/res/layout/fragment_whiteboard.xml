@@ -159,7 +159,7 @@
 
         </LinearLayout>
 
-        <com.graduationproject.robokidsapp.model.Canvas
+        <com.graduationproject.robokidsapp.data.model.Canvas
             android:id="@+id/mCanvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

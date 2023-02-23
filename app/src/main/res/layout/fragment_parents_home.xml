@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/baby_blue"
-    tools:context=".ui.parentsFragments.ParentsHomeFragment">
+    android:padding="@dimen/_8sdp"
+    tools:context=".ui.parentsFragments.info.ParentsHomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_reportsKids"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_reportsKids"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_new_kids"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:src="@drawable/ic_add"
-        android:backgroundTint="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_new_kids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_add"
+            android:backgroundTint="#03A9F4"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/progressBar_parentHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:elevation="@dimen/_10sdp"
+            android:visibility="gone">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/loading" />
+        </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

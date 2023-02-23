@@ -19,8 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
-import com.graduationproject.robokidsapp.model.Canvas
-import com.graduationproject.robokidsapp.model.WhiteBoardContent
+import com.graduationproject.robokidsapp.data.model.Canvas
+import com.graduationproject.robokidsapp.data.model.WhiteBoardContent
 import java.io.OutputStream
 
 

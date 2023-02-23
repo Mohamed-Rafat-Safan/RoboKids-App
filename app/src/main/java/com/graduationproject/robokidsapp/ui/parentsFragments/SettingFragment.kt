@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentSettingBinding
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragment
 import java.util.*
 
 class SettingFragment : Fragment() {
@@ -50,8 +51,9 @@ class SettingFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            val action = SettingFragmentDirections.actionSettingFragmentToParentsHomeFragment()
-            mNavController.navigate(action)
+            ParentsHomeFragment.mNavController.currentBackStackEntry?.let { backEntry ->
+                ParentsHomeFragment.mNavController.popBackStack(backEntry.destination.id, true)
+            }
         }
 
         return binding.root

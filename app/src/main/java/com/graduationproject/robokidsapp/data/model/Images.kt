@@ -1,4 +1,4 @@
-package com.graduationproject.robokidsapp.model
+package com.graduationproject.robokidsapp.data.model
 
 data class Images(val photo:Int,val name:String, val imageVoice:Int=0) {
 

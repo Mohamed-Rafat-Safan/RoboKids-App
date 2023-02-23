@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.Child
 import com.graduationproject.robokidsapp.databinding.FragmentParentsORKidsBinding
 import java.util.*
 
@@ -52,7 +53,7 @@ class ParentsORKidsFragment : Fragment() {
         }
 
         binding.kidsEntry.setOnClickListener {
-            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentFragment(null)
+            val action = ParentsORKidsFragmentDirections.actionParentsORKidsFragmentToContentFragment(Child())
             mNavController.navigate(action)
         }
 

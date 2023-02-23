@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mohamed"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="@color/white"/>
 
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="mohamed@gmail.com"
                 android:layout_marginTop="-5dp"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_10ssp"
                 android:textColor="#ddd"/>
 
         </LinearLayout>

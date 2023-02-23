@@ -7,21 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ChildsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentHomeKidsBinding
-import com.graduationproject.robokidsapp.model.Child
+import com.graduationproject.robokidsapp.data.model.Child
+import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
 
     private var _binding: FragmentHomeKidsBinding? = null
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
-    private lateinit var childList:ArrayList<Child>
+
+    val adapter by lazy { ChildsAdapter(requireContext(), this) }
+
+    private val infoViewModel: InfoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,17 +59,66 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
             goToParentHome()
         }
 
-        childList = ArrayList<Child>()
-        childList.add(Child("mohamed",R.drawable.boy2))
-        childList.add(Child("Ali",R.drawable.boy2))
-        childList.add(Child("Ahmed",R.drawable.boy2))
-
-        val adapter = ChildsAdapter(requireContext(),childList,this)
-        binding.rvKids.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-        binding.rvKids.adapter = adapter
-        binding.rvKids.setHasFixedSize(true)
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            rvKids.adapter = adapter
+            rvKids.setHasFixedSize(true)
+        }
+
+
+        // this listen to live data in viewModel (getParent)
+        observerGetParent()
+        infoViewModel.getParentData()
+
+
+        observerGetChild()
+        infoViewModel.getChildren()
+
+    }
+
+    private fun observerGetParent() {
+        infoViewModel.getParent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    binding.progressBarHomeKids.show()
+                }
+                is Resource.Failure -> {
+                    binding.progressBarHomeKids.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    binding.progressBarHomeKids.hide()
+
+                    val image = resource.data.profile_img
+
+                    binding.imgParent.setImageResource(R.drawable.dad)
+                }
+            }
+        }
+    }
+
+    private fun observerGetChild() {
+        infoViewModel.getChildren.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    binding.progressBarHomeKids.show()
+                }
+                is Resource.Failure -> {
+                    binding.progressBarHomeKids.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    binding.progressBarHomeKids.hide()
+
+                    adapter.updateList(resource.data.toMutableList())
+                }
+            }
+        }
     }
 
     fun goToParentHome(){
@@ -72,10 +131,10 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
         _binding = null
     }
 
-    override fun onItemClick(position: Int) {
-        val child = childList[position]
+    override fun onItemClick(child: Child) {
         val action = HomeKidsFragmentDirections.actionHomeKidsFragmentToContentFragment(child)
         mNavController.navigate(action)
     }
 
 }
+

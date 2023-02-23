@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.EducationalSectionsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
-import com.graduationproject.robokidsapp.model.EducationalSections
+import com.graduationproject.robokidsapp.data.model.EducationalSections
 
 
 class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItemClickListener {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.model.Videos
+import com.graduationproject.robokidsapp.data.model.Videos
 import com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
 
 class VideoAdapter(val context: Context, val listVideos:ArrayList<Videos>, val onItemClickListener: OnItemClickListener):Adapter<VideoAdapter.VideoViewHolder>() {
@@ -25,7 +25,6 @@ class VideoAdapter(val context: Context, val listVideos:ArrayList<Videos>, val o
     override fun getItemCount(): Int {
         return listVideos.size
     }
-
 
 
     class VideoViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView) {

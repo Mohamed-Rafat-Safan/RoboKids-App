@@ -67,7 +67,7 @@
     <string name="knowApp">Get to know the app</string>
     <string name="appInfo">The application provides a continuous journey that the parents share with the child, as it allows the child a useful screen time to develop his behavior through games and activities that the child does after watching the interesting and varied educational content between series, stories and games.</string>
     <string name="parentEntry">Parent Entry</string>
-    <string name="reportsFrom">Reports From</string>
+    <string name="reportsFrom">Reports from</string>
     <string name="evenToday">Even today</string>
     <string name="sat">Sat</string>
     <string name="sun">Sun</string>
@@ -87,8 +87,10 @@
     <string name="areYou">Are you</string>
     <string name="father">Father</string>
     <string name="mother">Mother</string>
+    <string name="select_name">Enter name</string>
     <string name="fatherMotherName">Father/Mother Name</string>
-    <string name="yearBirth">Year of Birth</string>
+    <string name="birthDate">Birth Date</string>
+    <string name="select_birthDate">Select birth date</string>
     <string name="nextStep">Next Step</string>
     <string name="enterConfirmPassword">Confirm Password</string>
     <string name="sign_up">Sign up</string>
@@ -157,6 +159,11 @@
     <string name="password_match">Old password not match</string>
     <string name="password_update">Parent password updated successfully.</string>
     <string name="different_password">Enter different new Password</string>
+    <string name="child_deleted">Successfully Deleted Child!</string>
+    <string name="undo_snackbar">Undo</string>
+    <string name="days_reports">Days reports</string>
+    <string name="day_events">Day Events</string>
+
 
 
 
