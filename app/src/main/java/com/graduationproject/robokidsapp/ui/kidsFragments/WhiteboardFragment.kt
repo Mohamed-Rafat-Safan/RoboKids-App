@@ -13,6 +13,7 @@ import android.view.*
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,16 +21,27 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
 import com.graduationproject.robokidsapp.data.model.Canvas
+import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.data.model.WhiteBoardContent
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-
+@AndroidEntryPoint
 class WhiteboardFragment : Fragment() {
     private lateinit var mNavController: NavController
-    lateinit var listWhiteBoardContent:ArrayList<WhiteBoardContent>
+    lateinit var listWhiteBoardContent:ArrayList<ImageContent>
     lateinit var typeLetter:String
     var isImage:Boolean = false
-
+    private lateinit var startDate: Date
+    private val contentViewModel: ContentViewModel by viewModels()
+    private lateinit var adapter:WhiteboardAdapter
     companion object{
         var path:Path = Path()
         var paint_brush = Paint()
@@ -44,6 +56,7 @@ class WhiteboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+        startDate = Date()
     }
 
     override fun onCreateView(
@@ -122,10 +135,11 @@ class WhiteboardFragment : Fragment() {
         setDataInArrayList(typeLetter)
 
 
-        val adapter = WhiteboardAdapter(requireContext() , listWhiteBoardContent,isImage)
+        adapter = WhiteboardAdapter(requireContext(),isImage)
         binding.rvWhiteboard.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.rvWhiteboard.adapter = adapter
         binding.rvWhiteboard.setHasFixedSize(true)
+        adapter.updateList(listWhiteBoardContent)
 
 
         binding.seekBarSize.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
@@ -196,10 +210,10 @@ class WhiteboardFragment : Fragment() {
         when(type){
             "Arabic"->{
                 for(i in 1569..1594){
-                    listWhiteBoardContent.add(WhiteBoardContent(""+ i.toChar(),0,""))
+                    listWhiteBoardContent.add(ImageContent("",""+ i.toChar(),""))
                 }
                 for(i in 1601..1610){
-                    listWhiteBoardContent.add(WhiteBoardContent(""+ i.toChar(),0,""))
+                    listWhiteBoardContent.add(ImageContent("",""+ i.toChar(),""))
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
@@ -207,7 +221,7 @@ class WhiteboardFragment : Fragment() {
             }
             "English"->{
                 for(i in 'A'..'Z'){
-                    listWhiteBoardContent.add(WhiteBoardContent(""+ i,0,""))
+                    listWhiteBoardContent.add(ImageContent("",""+ i,""))
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
@@ -215,7 +229,7 @@ class WhiteboardFragment : Fragment() {
             }
             "Math"->{
                 for(i in 0..100){
-                    listWhiteBoardContent.add(WhiteBoardContent(""+ i,0,""))
+                    listWhiteBoardContent.add(ImageContent("",""+ i,""))
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
@@ -223,15 +237,8 @@ class WhiteboardFragment : Fragment() {
             }
             "Photo"->{
                 binding.knowImageLayout.visibility = View.VISIBLE
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.rabbit,"rabbit"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.line,"lion"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.tiger,"tiger"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.bird,"bird"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.panda,"panda"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.giraffe,"giraffe"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.deer,"deer"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.cat,"cat"))
-                listWhiteBoardContent.add(WhiteBoardContent("",R.drawable.dog,"dog"))
+                contentViewModel.getWhiteboardContent()
+                observerGetWhiteboardContent()
                 isImage = true
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
@@ -239,7 +246,40 @@ class WhiteboardFragment : Fragment() {
         }
     }
 
+    private fun observerGetWhiteboardContent() {
+        contentViewModel.whiteboardContent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+//                    binding.progressBarEntertainmentSection.show()
+                }
+                is Resource.Failure -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    adapter.updateList(resource.data)
+                }
+            }
+        }
+    }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val simpleDateFormat = SimpleDateFormat("HH:mm")
+        val endTime = simpleDateFormat.format(Date())
+        val startTime = simpleDateFormat.format(startDate)
+        if(typeLetter=="Arabic"){
+            ContentFragment.listOfNotifications.add(getString(R.string.boardArabic)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else if (typeLetter=="English"){
+            ContentFragment.listOfNotifications.add(getString(R.string.boardEnglish)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else if (typeLetter=="Math"){
+            ContentFragment.listOfNotifications.add(getString(R.string.boardMath)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else{
+            ContentFragment.listOfNotifications.add(getString(R.string.boardPhoto)+ " $startTime ${getString(R.string.out)} $endTime")
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

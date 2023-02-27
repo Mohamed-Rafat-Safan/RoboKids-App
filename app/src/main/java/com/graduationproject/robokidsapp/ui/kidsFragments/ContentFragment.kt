@@ -31,9 +31,14 @@ class ContentFragment : Fragment() {
     private lateinit var mNavController: NavController
     private val args by navArgs<ContentFragmentArgs>()
 
-    private lateinit var listReports: ArrayList<Report>
+    companion object{
+        var listOfNotifications = ArrayList<String>()
+    }
 
     private var contentFlag = ""
+    private var counterUpdated = 0
+
+    private lateinit var listReports: java.util.ArrayList<Report>
 
     private val infoViewModel: InfoViewModel by viewModels()
 
@@ -44,7 +49,6 @@ class ContentFragment : Fragment() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-
 
         // get all reports from firebase
         infoViewModel.getReports(args.currentChild.id)
@@ -66,7 +70,6 @@ class ContentFragment : Fragment() {
 
         listReports = ArrayList()
 
-
         //get data from Home_Kids
         binding.tvContentChildName.text = args.currentChild.childName
         binding.ivChild.setImageResource(args.currentChild.childImage)
@@ -76,6 +79,7 @@ class ContentFragment : Fragment() {
             val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment(args.currentChild)
             mNavController.navigate(action)
             contentFlag = EDUCATIONAL_FLAG
+            counterUpdated = 0
         }
 
         binding.entertainmentContent.setOnClickListener {
@@ -83,6 +87,7 @@ class ContentFragment : Fragment() {
                 ContentFragmentDirections.actionContentFragmentToIntertainmentContentFragment(args.currentChild)
             mNavController.navigate(action)
             contentFlag = ENTERTAINMENT_FLAG
+            counterUpdated = 0
         }
 
         binding.back.setOnClickListener {
@@ -94,6 +99,7 @@ class ContentFragment : Fragment() {
             }
         }
 
+
         return binding.root
     }
 
@@ -103,6 +109,23 @@ class ContentFragment : Fragment() {
 
     }
 
+
+    private fun checkContent(report: Report, isEqual: Boolean) {
+        if (contentFlag == EDUCATIONAL_FLAG) {
+            listOfNotifications.addAll(report.notifications)
+            val reportUpdated = getObjReport(isEqual, report)
+            infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
+            observeUpdateReport()
+        } else if(contentFlag == ENTERTAINMENT_FLAG) {
+            listOfNotifications.addAll(report.notifications)
+            val reportUpdated = getObjReport(isEqual, report)
+            infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
+            observeUpdateReport()
+        }
+        EducationalContentFragment.educationalTime = 0
+        EntertainmentContentFragment.entertainmentTime = 0
+        listOfNotifications.clear()
+    }
 
     private fun updateReportsForContents() {
         val date = Date()
@@ -126,32 +149,16 @@ class ContentFragment : Fragment() {
         }
     }
 
-
-    private fun checkContent(report: Report, isEqual: Boolean) {
-        if (contentFlag == EDUCATIONAL_FLAG) {
-            val reportUpdated = getObjReport(isEqual, report)
-            infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
-            observeUpdateReport()
-        } else if(contentFlag == ENTERTAINMENT_FLAG) {
-            val reportUpdated = getObjReport(isEqual, report)
-            infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
-            observeUpdateReport()
-        }
-        EducationalContentFragment.educationalTime = 0
-        EntertainmentContentFragment.entertainmentTime = 0
-    }
-
-
     private fun getObjReport(isEqual: Boolean, report: Report): Report {
         if (isEqual && contentFlag == EDUCATIONAL_FLAG) {
             return Report(
                 id = report.id,
                 dayName = report.dayName,
                 dayDate = report.dayDate,
-                educationalTime = EducationalContentFragment.educationalTime.toString(),
+                educationalTime = (EducationalContentFragment.educationalTime+report.educationalTime.toInt()).toString(),
                 entertainmentTime = report.entertainmentTime,
-                totalTime = report.totalTime,
-                notifications = report.notifications
+                totalTime = (EducationalContentFragment.educationalTime+report.totalTime.toInt()).toString(),
+                notifications = listOfNotifications
             )
         } else if (!isEqual && contentFlag == EDUCATIONAL_FLAG) {
             return Report(
@@ -159,9 +166,9 @@ class ContentFragment : Fragment() {
                 dayName = report.dayName,
                 dayDate = Date(),
                 educationalTime = EducationalContentFragment.educationalTime.toString(),
-                entertainmentTime = "",
-                totalTime = "",
-                notifications = arrayListOf()
+                entertainmentTime = "0",
+                totalTime = EducationalContentFragment.educationalTime.toString(),
+                notifications = listOfNotifications
             )
         } else if (isEqual && contentFlag == ENTERTAINMENT_FLAG) {
             return Report(
@@ -169,23 +176,38 @@ class ContentFragment : Fragment() {
                 dayName = report.dayName,
                 dayDate = report.dayDate,
                 educationalTime = report.educationalTime,
-                entertainmentTime = EntertainmentContentFragment.entertainmentTime.toString(),
-                totalTime = report.totalTime,
-                notifications = report.notifications
+                entertainmentTime = (EntertainmentContentFragment.entertainmentTime+report.entertainmentTime.toInt()).toString(),
+                totalTime = (report.totalTime.toInt()+EntertainmentContentFragment.entertainmentTime).toString(),
+                notifications = listOfNotifications
             )
         } else {
             return Report(
                 id = report.id,
                 dayName = report.dayName,
                 dayDate = Date(),
-                educationalTime = "",
+                educationalTime = "0",
                 entertainmentTime = EntertainmentContentFragment.entertainmentTime.toString(),
-                totalTime = "",
-                notifications = arrayListOf()
+                totalTime = EntertainmentContentFragment.entertainmentTime.toString(),
+                notifications = listOfNotifications
             )
         }
     }
 
+
+    private fun observeUpdateReport() {
+        infoViewModel.updateReports.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {}
+                is Resource.Failure -> {
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+                    //toast(resource.data)
+                    counterUpdated = 1
+                }
+            }
+        }
+    }
 
     private fun observerGetReports() {
         infoViewModel.getReports.observe(viewLifecycleOwner) { resource ->
@@ -196,24 +218,9 @@ class ContentFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     listReports = resource.data
-
-                    toast(""+listReports.size)
-                    // this get new reports and update in firebase
-                    updateReportsForContents()
-                }
-            }
-        }
-    }
-
-    private fun observeUpdateReport() {
-        infoViewModel.updateReports.observe(viewLifecycleOwner) { resource ->
-            when (resource) {
-                is Resource.Loading -> {}
-                is Resource.Failure -> {
-                    toast(resource.error)
-                }
-                is Resource.Success -> {
-                    toast(resource.data)
+                    if (counterUpdated == 0){
+                        updateReportsForContents()
+                    }
                 }
             }
         }

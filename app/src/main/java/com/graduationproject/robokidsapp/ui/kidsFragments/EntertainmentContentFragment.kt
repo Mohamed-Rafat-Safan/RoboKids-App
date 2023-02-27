@@ -50,7 +50,7 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
 
 
         listContent = ArrayList()
-        listContent.add(Content("Stories", R.drawable.stories))
+        listContent.add(Content("Films", R.drawable.stories))
         listContent.add(Content("Music", R.drawable.music))
         listContent.add(Content("Gaming", R.drawable.games_icon))
 

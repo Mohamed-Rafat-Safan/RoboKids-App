@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -15,14 +14,8 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
 import com.graduationproject.robokidsapp.data.model.Content
-import com.graduationproject.robokidsapp.data.model.Report
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
-import com.graduationproject.robokidsapp.util.Resource
-import com.graduationproject.robokidsapp.util.hide
-import com.graduationproject.robokidsapp.util.show
-import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -81,7 +74,6 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
 
         return binding.root
     }
-
 
 
     override fun onItemClick(position: Int) {

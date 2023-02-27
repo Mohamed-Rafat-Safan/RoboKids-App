@@ -11,15 +11,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.Canvas
+import com.graduationproject.robokidsapp.data.model.ImageContent
+import com.graduationproject.robokidsapp.data.model.Videos
 import com.graduationproject.robokidsapp.data.model.WhiteBoardContent
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
 import java.lang.String.format
 import java.util.Locale
 
 
-class WhiteboardAdapter(val context: Context, val listData:ArrayList<WhiteBoardContent>, val isImage:Boolean):Adapter<WhiteboardAdapter.WhiteboardViewHolder>() {
+class WhiteboardAdapter(val context: Context, val isImage:Boolean):Adapter<WhiteboardAdapter.WhiteboardViewHolder>() {
+
+    var listData: MutableList<ImageContent> = arrayListOf()
 
     private val START_TIME_IN_MILLIS: Long = 60000
     private var mCountDownTimer: CountDownTimer? = null
@@ -35,16 +40,22 @@ class WhiteboardAdapter(val context: Context, val listData:ArrayList<WhiteBoardC
         }
 
     }
+
+    fun updateList(list: MutableList<ImageContent>) {
+        this.listData = list
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: WhiteboardViewHolder, position: Int) {
         val data = listData[position]
         holder.bind(data)
 
         holder.itemView.setOnClickListener {
             if(isImage){
-                WhiteboardFragment.binding.whiteboardImageContent.setImageResource(data.image)
+                Glide.with(context).load(data.imageUrl).into(WhiteboardFragment.binding.whiteboardImageContent)
                 WhiteboardFragment.binding.tvNameImage.text = data.imageName
             }else{
-                WhiteboardFragment.binding.tvText.text = data.letter
+                WhiteboardFragment.binding.tvText.text = data.imageName
             }
             WhiteboardFragment.binding.animationCorrect.visibility = View.GONE
             Canvas.pathList.clear()
@@ -98,13 +109,13 @@ class WhiteboardAdapter(val context: Context, val listData:ArrayList<WhiteBoardC
 
 
     inner class WhiteboardViewHolder(itemView: View) : ViewHolder(itemView){
-        fun bind(content: WhiteBoardContent){
+        fun bind(content: ImageContent){
             if (isImage){
                 val image = itemView.findViewById<ImageView>(R.id.iv_imgKnow)
-                image.setImageResource(content.image)
+                Glide.with(context).load(content.imageUrl).into(image)
             }else{
                 val textView = itemView.findViewById<TextView>(R.id.tv_letter)
-                textView.text = content.letter
+                textView.text = content.imageName
             }
 
         }

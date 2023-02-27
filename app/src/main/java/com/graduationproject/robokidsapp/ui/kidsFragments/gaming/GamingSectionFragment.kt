@@ -10,7 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentGamingSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentParentsDataBinding
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.parentsFragments.SplashFragmentDirections
+import com.graduationproject.robokidsapp.util.toast
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class GamingSectionFragment : Fragment() {
@@ -19,10 +23,13 @@ class GamingSectionFragment : Fragment() {
 
     private lateinit var mNavController: NavController
 
+    private lateinit var startDate: Date
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+        startDate = Date()
     }
 
     override fun onCreateView(
@@ -50,9 +57,15 @@ class GamingSectionFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
 
+        val simpleDateFormat = SimpleDateFormat("HH:mm")
+        val endTime = simpleDateFormat.format(Date())
+        val startTime = simpleDateFormat.format(startDate)
+        ContentFragment.listOfNotifications.add(getString(R.string.secGames)+ " $startTime ${getString(R.string.out)} $endTime")
 
-
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

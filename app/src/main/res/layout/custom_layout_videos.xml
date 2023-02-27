@@ -10,7 +10,7 @@
         android:layout_width="@dimen/_130sdp"
         android:layout_height="@dimen/_250sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/videos"
+        android:src="@drawable/films"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

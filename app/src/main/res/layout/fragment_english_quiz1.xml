@@ -51,7 +51,7 @@
                 android:id="@+id/img_1"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/lemon" />
+                android:src="@drawable/load" />
 
         </LinearLayout>
 
@@ -68,7 +68,7 @@
                 android:id="@+id/img_2"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/ananas" />
+                android:src="@drawable/load" />
 
         </LinearLayout>
 
@@ -85,7 +85,7 @@
                 android:id="@+id/img_3"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/grape" />
+                android:src="@drawable/load" />
 
         </LinearLayout>
 
@@ -101,7 +101,7 @@
                 android:id="@+id/img_4"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/orange" />
+                android:src="@drawable/load" />
 
         </LinearLayout>
 

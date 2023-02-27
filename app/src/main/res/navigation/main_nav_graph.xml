@@ -329,6 +329,9 @@
         <action
             android:id="@+id/action_intertainmentVidoFramFragment_to_intertainmentSectionFragment"
             app:destination="@id/intertainmentSectionFragment" />
+        <argument
+            android:name="video"
+            app:argType="com.graduationproject.robokidsapp.data.model.Videos" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentContentFragment"

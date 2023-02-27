@@ -103,7 +103,6 @@
         android:id="@+id/cardView"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_220sdp"
-        android:backgroundTint="#FEDEFF"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +113,7 @@
             android:id="@+id/letter_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/char_a"
+            android:src="@drawable/load"
             android:scaleType="fitXY"/>
 
     </androidx.cardview.widget.CardView>

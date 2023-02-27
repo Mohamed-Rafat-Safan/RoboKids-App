@@ -13,21 +13,32 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.allViews
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.databinding.FragmentEnglishQuiz1Binding
+import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.databinding.FragmentEnglishQuiz1Binding
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
+import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
-
-
+@AndroidEntryPoint
 class EnglishQuiz1Fragment : Fragment() {
 
-    private var _binding: FragmentEnglishQuiz1Binding ? = null
+    private var _binding: FragmentEnglishQuiz1Binding? = null
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
-    private lateinit var listImage:ArrayList<Images>
+    private lateinit var listImage:ArrayList<ImageContent>
     private lateinit var contentType:String
+    private val contentViewModel: ContentViewModel by viewModels()
     companion object{
         lateinit var idCorrect:View
         lateinit var idLayout:View
@@ -52,81 +63,20 @@ class EnglishQuiz1Fragment : Fragment() {
         contentType = arguments?.getString("content_type")!!
 
         if (contentType == "Arabic"){
-            listImage.add(Images(R.drawable.ananas,"اناناس"))
-            listImage.add(Images(R.drawable.orange,"برتقال"))
-            listImage.add(Images(R.drawable.grape,"عنب"))
-            listImage.add(Images(R.drawable.lemon,"ليمون"))
-            listImage.add(Images(R.drawable.apple,"تفاح"))
-            listImage.add(Images(R.drawable.strawberry,"فروله"))
-            listImage.add(Images(R.drawable.banana,"موز"))
-            listImage.add(Images(R.drawable.carrot,"جزر"))
-            listImage.add(Images(R.drawable.mango,"مانجو"))
-            listImage.add(Images(R.drawable.figs,"تين"))
-            listImage.add(Images(R.drawable.peach,"خوخ"))
-            listImage.add(Images(R.drawable.tomatoes,"طماطم"))
+            contentViewModel.getQuizContent(contentType)
+            observerGetImages()
+
         }else if (contentType == "English"){
-            listImage.add(Images(R.drawable.ananas,"Pineapple"))
-            listImage.add(Images(R.drawable.orange,"Orange"))
-            listImage.add(Images(R.drawable.grape,"Grape"))
-            listImage.add(Images(R.drawable.lemon,"Lemon"))
-            listImage.add(Images(R.drawable.apple,"Apple"))
-            listImage.add(Images(R.drawable.strawberry,"Strawberry"))
-            listImage.add(Images(R.drawable.banana,"Banana"))
-            listImage.add(Images(R.drawable.carrot,"Carrot"))
-            listImage.add(Images(R.drawable.mango,"Mango"))
-            listImage.add(Images(R.drawable.figs,"Figs"))
-            listImage.add(Images(R.drawable.peach,"Peach"))
-            listImage.add(Images(R.drawable.tomatoes,"Tomatoes"))
+            contentViewModel.getQuizContent(contentType)
+            observerGetImages()
         }else{
-            listImage.add(Images(R.drawable.count_1,"1"))
-            listImage.add(Images(R.drawable.count_2,"2"))
-            listImage.add(Images(R.drawable.count_3,"3"))
-            listImage.add(Images(R.drawable.count_4,"4"))
-            listImage.add(Images(R.drawable.count_5,"5"))
-            listImage.add(Images(R.drawable.count_6,"6"))
-            listImage.add(Images(R.drawable.count_7,"7"))
-            listImage.add(Images(R.drawable.count_8,"8"))
-            listImage.add(Images(R.drawable.count_9,"9"))
-            listImage.add(Images(R.drawable.count_10,"10"))
-            listImage.add(Images(R.drawable.count_11,"11"))
-            listImage.add(Images(R.drawable.count_12,"12"))
+            contentViewModel.getQuizContent(contentType)
+            observerGetImages()
             binding.tvWord1.textSize = 40f
             binding.tvWord2.textSize = 40f
             binding.tvWord3.textSize = 40f
             binding.tvWord4.textSize = 40f
         }
-
-
-
-        listImage.shuffle()
-        val list:MutableList<Images> = mutableListOf()
-        val listName:MutableList<String> = mutableListOf()
-
-        for (i in 0..3){
-            list.add(listImage[i])
-            listName.add(listImage[i].name)
-        }
-        listName.shuffle()
-        listName.shuffle()
-        binding.img1.setImageResource(list[0].photo)
-        binding.img2.setImageResource(list[1].photo)
-        binding.img3.setImageResource(list[2].photo)
-        binding.img4.setImageResource(list[3].photo)
-
-        binding.tvWord1.text = listName[0]
-        binding.tvWord2.text = listName[1]
-        binding.tvWord3.text = listName[2]
-        binding.tvWord4.text = listName[3]
-
-        binding.layout1.tag = ""+list[0].name
-        binding.layout2.tag = ""+list[1].name
-        binding.layout3.tag = ""+list[2].name
-        binding.layout4.tag = ""+list[3].name
-
-        binding.tvWord1.tag = ""+binding.tvWord1.text
-        binding.tvWord2.tag = ""+binding.tvWord2.text
-        binding.tvWord3.tag = ""+binding.tvWord3.text
-        binding.tvWord4.tag = ""+binding.tvWord4.text
 
         binding.tvWord1.setOnLongClickListener {
             idCorrect = binding.correct1
@@ -168,6 +118,57 @@ class EnglishQuiz1Fragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun disPlayData() {
+        listImage.shuffle()
+        val list:MutableList<ImageContent> = mutableListOf()
+        val listName:MutableList<String> = mutableListOf()
+
+        for (i in 0..3){
+            list.add(listImage[i])
+            listName.add(listImage[i].imageName)
+        }
+        listName.shuffle()
+        listName.shuffle()
+        Glide.with(this).load(list[0].imageUrl).into(binding.img1)
+        Glide.with(this).load(list[1].imageUrl).into(binding.img2)
+        Glide.with(this).load(list[2].imageUrl).into(binding.img3)
+        Glide.with(this).load(list[3].imageUrl).into(binding.img4)
+
+        binding.tvWord1.text = listName[0]
+        binding.tvWord2.text = listName[1]
+        binding.tvWord3.text = listName[2]
+        binding.tvWord4.text = listName[3]
+
+        binding.layout1.tag = ""+list[0].imageName
+        binding.layout2.tag = ""+list[1].imageName
+        binding.layout3.tag = ""+list[2].imageName
+        binding.layout4.tag = ""+list[3].imageName
+
+        binding.tvWord1.tag = ""+binding.tvWord1.text
+        binding.tvWord2.tag = ""+binding.tvWord2.text
+        binding.tvWord3.tag = ""+binding.tvWord3.text
+        binding.tvWord4.tag = ""+binding.tvWord4.text
+    }
+
+    private fun observerGetImages() {
+        contentViewModel.quizContent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+//                    binding.progressBarEntertainmentSection.show()
+                }
+                is Resource.Failure -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    listImage = resource.data
+                    disPlayData()
+                }
+            }
+        }
     }
 
     fun onLongClick(v: View): Boolean {
@@ -284,6 +285,19 @@ class EnglishQuiz1Fragment : Fragment() {
             alert.dismiss()
             correctCount = 0
             flag = true
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        if(contentType == "Arabic"){
+            ContentFragment.listOfNotifications.add(getString(R.string.connectArabic))
+        }else if (contentType == "English"){
+            ContentFragment.listOfNotifications.add(getString(R.string.connectEnglish))
+        }else{
+            ContentFragment.listOfNotifications.add(getString(R.string.connectMath))
         }
 
     }
