@@ -130,7 +130,7 @@
     <string name="del">DEL</string>
     <string name="very_bad">Very Bad</string>
     <string name="try_again">Try Again</string>
-    <string name="Stories">Stories</string>
+    <string name="Stories">Films</string>
     <string name="Music">Music</string>
     <string name="games">Games</string>
     <string name="you_won">You Won!</string>
@@ -163,8 +163,28 @@
     <string name="undo_snackbar">Undo</string>
     <string name="days_reports">Days reports</string>
     <string name="day_events">Day Events</string>
+    <string name="isTrue">is true</string>
+    <string name="isFalse">is false</string>
 
+    <string name="connectArabic">Your child solved the <b>Arabic</b> word connect quiz</string>
+    <string name="connectEnglish">Your child solved the <b>English</b> word connect quiz</string>
+    <string name="connectMath">Your child solve the counting and connecting <b>numbers</b> quiz</string>
+    <string name="selectArabic">Your child solved the <b>Arabic</b> letters quiz by hearing the sound of the letter and select the correct answer</string>
+    <string name="selectEnglish">Your child solved the <b>English</b> letters quiz by hearing the sound of the letter and select the correct answer</string>
+    <string name="calcMath">Your child solve a <b>Math</b> quiz in addition and subtraction and the result is..</string>
+    <string name="secStories">Your child entered the stories section in time</string>
+    <string name="secSongs">Your child entered the Music section in time</string>
+    <string name="secGames">Your child entered the games section in time</string>
+    <string name="out">and out in time</string>
+    <string name="pronArabic">Your child entered the section of learning to pronounce Arabic letters in time</string>
+    <string name="pronEnglish">Your child entered the section of learning to pronounce English letters in time</string>
+    <string name="pronMath">Your child entered the section of learning to pronounce numbers in time</string>
+    <string name="pronPhoto">Your child entered the section of learning to pronounce the names of the pictures in time</string>
 
+    <string name="boardArabic">Your child entered the section of learning to write Arabic letters in time</string>
+    <string name="boardEnglish">Your child entered the section of learning to write English letters in time</string>
+    <string name="boardMath">Your child entered the section of learning to write numbers in time</string>
+    <string name="boardPhoto">Your child entered the section of learning to write the names of the pictures in time</string>
 
 
     <!-- Strings used for fragments for navigation -->

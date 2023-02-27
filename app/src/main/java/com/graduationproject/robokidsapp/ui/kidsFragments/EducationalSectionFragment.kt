@@ -45,7 +45,7 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
             listSection.add(EducationalSections("Arabic",R.drawable.speek_arapic))
             listSection.add(EducationalSections("English",R.drawable.speek_abc))
             listSection.add(EducationalSections("Math",R.drawable.speek_123))
-            listSection.add(EducationalSections("Photo",R.drawable.animals))
+            listSection.add(EducationalSections("ImageKnow",R.drawable.animals))
         }else if(sectionData=="Board"){
             listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
             listSection.add(EducationalSections("English",R.drawable.board_abc))

@@ -9,20 +9,29 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentMathQuiz1Binding
 import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MathQuiz1Fragment : Fragment() {
     private var _binding: FragmentMathQuiz1Binding? = null
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
-    private lateinit var listImage:ArrayList<Images>
+    private lateinit var listImage:ArrayList<ImageContent>
     private lateinit var listOperator:ArrayList<String>
     private lateinit var mediaPlayer: MediaPlayer
+    private val contentViewModel: ContentViewModel by viewModels()
     private var counter = 0
     private var numberTrue = 0
     private var numberFalse = 0
@@ -73,34 +82,8 @@ class MathQuiz1Fragment : Fragment() {
             }
         }
 
-        listImage.add(Images(R.drawable.count_1,"1"))
-        listImage.add(Images(R.drawable.count_2,"2"))
-        listImage.add(Images(R.drawable.count_3,"3"))
-        listImage.add(Images(R.drawable.count_4,"4"))
-        listImage.add(Images(R.drawable.count_5,"5"))
-        listImage.add(Images(R.drawable.count_6,"6"))
-        listImage.add(Images(R.drawable.count_7,"7"))
-        listImage.add(Images(R.drawable.count_8,"8"))
-        listImage.add(Images(R.drawable.count_9,"9"))
-        listImage.add(Images(R.drawable.count_10,"10"))
-        listImage.add(Images(R.drawable.count_11,"11"))
-        listImage.add(Images(R.drawable.count_12,"12"))
-
-        listOperator.add("+")
-        listOperator.add("+")
-        listOperator.add("-")
-        listOperator.add("-")
-        listOperator.add("+")
-        listOperator.add("-")
-
-        listImage.shuffle()
-        listOperator.shuffle()
-
-        binding.mathQuizImage1.setImageResource(listImage[counter++].photo)
-        binding.mathQuizImage2.setImageResource(listImage[counter++].photo)
-        binding.tvOperator.text = listOperator[(counter/2)-1]
-
-
+        contentViewModel.getQuizContent("Math")
+        observerGetImages()
 
         binding.mathQuiz1CheckAnswer.setOnClickListener {
             if (binding.tvMathQuiz1Result.text.isNotEmpty() && binding.tvMathQuiz1Result.text != "-"){
@@ -108,9 +91,9 @@ class MathQuiz1Fragment : Fragment() {
                 val operator = binding.tvOperator.text.trim().toString()
                 val result:Int
                 if (operator == "+"){
-                    result = listImage[counter-2].name.toInt() + listImage[counter-1].name.toInt()
+                    result = listImage[counter-2].imageName.toInt() + listImage[counter-1].imageName.toInt()
                 }else{
-                    result = listImage[counter-2].name.toInt() - listImage[counter-1].name.toInt()
+                    result = listImage[counter-2].imageName.toInt() - listImage[counter-1].imageName.toInt()
                 }
                 if (answer == result){
                     if(mediaPlayer.isPlaying){
@@ -125,8 +108,8 @@ class MathQuiz1Fragment : Fragment() {
                     if (counter < 12){
                         binding.tvMathQuiz1Result.text = ""
                         textNumber = ""
-                        binding.mathQuizImage1.setImageResource(listImage[counter++].photo)
-                        binding.mathQuizImage2.setImageResource(listImage[counter++].photo)
+                        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage1)
+                        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage2)
                         binding.tvOperator.text = listOperator[(counter/2)-1]
                     }
                 }else{
@@ -156,6 +139,40 @@ class MathQuiz1Fragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun observerGetImages() {
+        contentViewModel.quizContent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+//                    binding.progressBarEntertainmentSection.show()
+                }
+                is Resource.Failure -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    listImage = resource.data
+                    disPlayData()
+                }
+            }
+        }
+    }
+
+    private fun disPlayData() {
+        listOperator.add("+")
+        listOperator.add("+")
+        listOperator.add("-")
+        listOperator.add("-")
+        listOperator.add("+")
+        listOperator.add("-")
+
+        listImage.shuffle()
+        listOperator.shuffle()
+        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage1)
+        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage2)
+        binding.tvOperator.text = listOperator[(counter/2)-1]
     }
 
     private fun changeNumber(num: String) {
@@ -193,6 +210,8 @@ class MathQuiz1Fragment : Fragment() {
         tvTrue.text = numberTrue.toString()
         tvFalse.text = numberFalse.toString()
 
+        ContentFragment.listOfNotifications.add(getString(R.string.calcMath)+" $numberTrue ${getString(R.string.isTrue)}, $numberFalse ${getString(R.string.isFalse)} (${getString(R.string.very_good)})")
+
         button.setOnClickListener {
             binding.tvMathQuiz1Result.text = ""
             textNumber = ""
@@ -214,6 +233,7 @@ class MathQuiz1Fragment : Fragment() {
             if(!flag) showBadDialog()
         }
 
+        ContentFragment.listOfNotifications.add(getString(R.string.calcMath)+" $numberTrue ${getString(R.string.isTrue)}, $numberFalse ${getString(R.string.isFalse)} (${getString(R.string.very_bad)})")
         alert.show()
 
         val button = view.findViewById<Button>(R.id.btn_tryAgain)

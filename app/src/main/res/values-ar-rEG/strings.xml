@@ -127,7 +127,7 @@
     <string name="del">مسح</string>
     <string name="very_bad">سئ جدا</string>
     <string name="try_again">حاول مره اخري</string>
-    <string name="Stories">حكايات</string>
+    <string name="Stories">افلام</string>
     <string name="Music">اغاني</string>
     <string name="games">العاب</string>
     <string name="you_won">لقد ربحت</string>
@@ -160,5 +160,27 @@
     <string name="undo_snackbar">الغاء</string>
     <string name="days_reports">تقارير الايام</string>
     <string name="day_events">احداث اليوم</string>
+    <string name="isTrue">صح</string>
+    <string name="isFalse">خطأ</string>
+
+    <string name="connectArabic">طفلك حل اختبار توصيل كلمات اللغة العرية</string>
+    <string name="connectEnglish">طفلك حل اختبار توصيل كلمات اللغة الانجليزية</string>
+    <string name="connectMath">طفلك حل اختبار عد وتوصيل الارقام </string>
+    <string name="selectArabic">طفلك حل اختبار الحروف العربية عن طريق سماع صوت الحرف وتحديد الاجابة الصحيحة</string>
+    <string name="selectEnglish">طفلك حل اختبار الحروف الانجليزية عن طريق سماع صوت الحرف وتحديد الاجابة الصحيحة</string>
+    <string name="calcMath"> ..طفلك حل اختبار الرياضيات في الجمع والطرح والنتيجة هي</string>
+    <string name="secStories">طفلك دخل قسم الحكايات في الوقت</string>
+    <string name="secSongs">طفلك دخل قسم الاغاني في الوقت</string>
+    <string name="secGames">طفلك دخل قسم الالعاب في الوقت</string>
+    <string name="out">وخرج في الوقت</string>
+    <string name="pronArabic">طفلك دخل في قسم تعلم نطق الحروف العربية في الوقت </string>
+    <string name="pronEnglish">طفلك دخل في قسم تعلم نطق الحروف الانجليزية في الوقت </string>
+    <string name="pronMath">طفلك دخل في قسم تعلم نطق الارقام في الوقت </string>
+    <string name="pronPhoto">طفلك دخل في قسم تعلم نطق اسماء الصور في الوقت</string>
+
+    <string name="boardArabic">طفلك دخل في قسم تعلم كتابة الحروف العربية في الوقت </string>
+    <string name="boardEnglish">طفلك دخل في قسم تعلم كتابة الحروف الانجليزية في الوقت </string>
+    <string name="boardMath">طفلك دخل في قسم تعلم كتابة الارقام في الوقت </string>
+    <string name="boardPhoto">طفلك دخل في قسم تعلم كتابة اسماء الصور في الوقت</string>
 
 </resources>

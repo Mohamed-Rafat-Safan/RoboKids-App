@@ -2,27 +2,35 @@ package com.graduationproject.robokidsapp.ui.kidsFragments
 
 
 import android.content.ContextWrapper
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
-import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-
+@AndroidEntryPoint
 class PronunciationLettersFragment : Fragment() {
     private var _binding: FragmentPronunciationLettersBinding? = null
     private val binding get() = _binding!!
@@ -39,8 +47,12 @@ class PronunciationLettersFragment : Fragment() {
     lateinit var handler: Handler
     var executor: ExecutorService = Executors.newSingleThreadExecutor()
 
+    private val contentViewModel: ContentViewModel by viewModels()
+
+    private lateinit var startDate: Date
+
     private lateinit var contentType:String
-    private lateinit var listImages: ArrayList<Images>
+    private lateinit var listImages: ArrayList<ImageContent>
     private var imageCounter = 0
 
 
@@ -50,6 +62,7 @@ class PronunciationLettersFragment : Fragment() {
 
         mediaPlayer = MediaPlayer()
         handler = Handler()
+        startDate = Date()
     }
 
     override fun onCreateView(
@@ -62,47 +75,8 @@ class PronunciationLettersFragment : Fragment() {
         contentType = arguments?.getString("content_type")!!
         listImages = ArrayList()
 
-        if(contentType=="Arabic"){
-            listImages.add(Images(R.drawable.alif, "alif", R.raw.alif))
-            listImages.add(Images(R.drawable.baa, "baa", R.raw.baa))
-            listImages.add(Images(R.drawable.taa, "taa", R.raw.taa))
-            listImages.add(Images(R.drawable.haa, "haa", R.raw.haa))
-            listImages.add(Images(R.drawable.raa, "raa", R.raw.raa))
-            listImages.add(Images(R.drawable.yaa, "yaa", R.raw.yaa))
-            binding.letterImage.setImageResource(listImages[imageCounter].photo)
-            binding.pronunciationLettersTitle.text = getString(R.string.arabic_letters)
-            playSound()
-        }else if (contentType=="English"){
-            listImages.add(Images(R.drawable.char_a, "a", R.raw.char_a))
-            listImages.add(Images(R.drawable.char_b, "b", R.raw.char_b))
-            listImages.add(Images(R.drawable.char_c, "c", R.raw.char_c))
-            listImages.add(Images(R.drawable.char_d, "d", R.raw.char_d))
-            listImages.add(Images(R.drawable.char_e, "e", R.raw.char_e))
-            listImages.add(Images(R.drawable.char_f, "f", R.raw.char_f))
-            binding.letterImage.setImageResource(listImages[imageCounter].photo)
-            binding.pronunciationLettersTitle.text = getString(R.string.english_letters)
-            playSound()
-        }else if (contentType=="Math"){
-            listImages.add(Images(R.drawable.num_1, "1", R.raw.num1))
-            listImages.add(Images(R.drawable.num_2, "2", R.raw.num2))
-            listImages.add(Images(R.drawable.num_3, "3", R.raw.num3))
-            listImages.add(Images(R.drawable.num_4, "4", R.raw.num4))
-            listImages.add(Images(R.drawable.num_5, "5", R.raw.num5))
-            listImages.add(Images(R.drawable.num_6, "6", R.raw.num6))
-            binding.letterImage.setImageResource(listImages[imageCounter].photo)
-            binding.pronunciationLettersTitle.text = getString(R.string.numbers)
-            playSound()
-        }else{
-            listImages.add(Images(R.drawable.cat_img, "cat", R.raw.cat))
-            listImages.add(Images(R.drawable.dog_img, "dog", R.raw.dog))
-            listImages.add(Images(R.drawable.donkey_img, "donkey", R.raw.donkey))
-            listImages.add(Images(R.drawable.elephant_img, "elephant", R.raw.elephant))
-            listImages.add(Images(R.drawable.lion_img, "lion", R.raw.lion))
-            listImages.add(Images(R.drawable.tiger_img, "tiger", R.raw.tiger))
-            binding.letterImage.setImageResource(listImages[imageCounter].photo)
-            binding.pronunciationLettersTitle.text = getString(R.string.photo)
-            playSound()
-        }
+        contentViewModel.getPronunciationContent(contentType)
+        observerGetPronunciation()
 
         binding.pronunciationLettersExit.setOnClickListener {
             val action = PronunciationLettersFragmentDirections.actionPronunciationLettersFragmentToEducationalSectionFragment("Pronunciation")
@@ -128,7 +102,7 @@ class PronunciationLettersFragment : Fragment() {
             if (imageCounter > 0){
                 imageCounter--
                 playSound()
-                binding.letterImage.setImageResource(listImages[imageCounter].photo)
+                Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             }
             if (imageCounter == 0){
                 binding.pronunciationLettersPrevious.visibility = View.GONE
@@ -141,7 +115,7 @@ class PronunciationLettersFragment : Fragment() {
             if (imageCounter < listImages.size-1){
                 imageCounter++
                 playSound()
-                binding.letterImage.setImageResource(listImages[imageCounter].photo)
+                Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             }
             if (imageCounter == listImages.size-1){
                 binding.pronunciationLettersNext.visibility = View.GONE
@@ -153,6 +127,45 @@ class PronunciationLettersFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun checkContentType(){
+        if(contentType=="Arabic"){
+            Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
+            binding.pronunciationLettersTitle.text = getString(R.string.arabic_letters)
+            playSound()
+        }else if (contentType=="English"){
+            Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
+            binding.pronunciationLettersTitle.text = getString(R.string.english_letters)
+            playSound()
+        }else if (contentType=="Math"){
+            Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
+            binding.pronunciationLettersTitle.text = getString(R.string.numbers)
+            playSound()
+        }else if (contentType=="ImageKnow"){
+            Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
+            binding.pronunciationLettersTitle.text = getString(R.string.photo)
+            playSound()
+        }
+    }
+
+    private fun observerGetPronunciation() {
+        contentViewModel.pronunciationContent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+//                    binding.progressBarEntertainmentSection.show()
+                }
+                is Resource.Failure -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    listImages = resource.data
+                    checkContentType()
+                }
+            }
+        }
     }
 
     // this method to recording of kids
@@ -274,13 +287,38 @@ class PronunciationLettersFragment : Fragment() {
     }
 
     fun playSound(){
+        mediaPlayer = MediaPlayer()
+        mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
         if(mediaPlayer?.isPlaying!!){
-            mediaPlayer?.pause()
             mediaPlayer?.stop()
+            mediaPlayer?.release()
+            mediaPlayer?.reset()
             mediaPlayer?.seekTo(0)
         }
-        mediaPlayer = MediaPlayer.create(requireContext() , listImages[imageCounter].imageVoice)
-        mediaPlayer?.start()
+        try {
+            mediaPlayer?.setDataSource(listImages[imageCounter].imageVoice)
+            mediaPlayer!!.prepare()
+            mediaPlayer!!.start()
+        } catch (e: Exception) {
+            toast(e.message)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val simpleDateFormat = SimpleDateFormat("HH:mm")
+        val endTime = simpleDateFormat.format(Date())
+        val startTime = simpleDateFormat.format(startDate)
+        if(contentType=="Arabic"){
+            ContentFragment.listOfNotifications.add(getString(R.string.pronArabic)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else if (contentType=="English"){
+            ContentFragment.listOfNotifications.add(getString(R.string.pronEnglish)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else if (contentType=="Math"){
+            ContentFragment.listOfNotifications.add(getString(R.string.pronMath)+ " $startTime ${getString(R.string.out)} $endTime")
+        }else{
+            ContentFragment.listOfNotifications.add(getString(R.string.pronPhoto)+ " $startTime ${getString(R.string.out)} $endTime")
+        }
+
     }
 
     override fun onDestroyView() {

@@ -15,12 +15,15 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ChildsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentHomeKidsBinding
 import com.graduationproject.robokidsapp.data.model.Child
+import com.graduationproject.robokidsapp.data.model.Report
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.hide
 import com.graduationproject.robokidsapp.util.show
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
@@ -74,7 +77,6 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
         // this listen to live data in viewModel (getParent)
         observerGetParent()
         infoViewModel.getParentData()
-
 
         observerGetChild()
         infoViewModel.getChildren()
@@ -132,6 +134,7 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(child: Child) {
+
         val action = HomeKidsFragmentDirections.actionHomeKidsFragmentToContentFragment(child)
         mNavController.navigate(action)
     }

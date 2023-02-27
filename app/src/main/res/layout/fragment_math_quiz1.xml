@@ -250,7 +250,7 @@
             android:id="@+id/mathQuiz_image1"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
-            android:src="@drawable/apple2" />
+            android:src="@drawable/load" />
 
         <TextView
             android:id="@+id/tv_operator"
@@ -268,7 +268,7 @@
             android:id="@+id/mathQuiz_image2"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
-            android:src="@drawable/apple1"
+            android:src="@drawable/load"
             app:layout_constraintStart_toEndOf="@+id/gridLayout"
             app:layout_constraintTop_toTopOf="parent" />
 

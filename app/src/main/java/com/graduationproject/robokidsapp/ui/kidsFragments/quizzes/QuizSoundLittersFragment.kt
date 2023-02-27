@@ -1,5 +1,6 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments.quizzes
 
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,33 +8,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentQuizSoundLittersBinding
 import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.ui.kidsFragments.EducationalSectionFragmentDirections
+import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 import org.intellij.lang.annotations.Language
 
-
+@AndroidEntryPoint
 class QuizSoundLittersFragment : Fragment() {
     private var _binding: FragmentQuizSoundLittersBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var mNavController: NavController
 
-    private lateinit var listImages: ArrayList<Images>
-    private lateinit var listSelectedImages:MutableList<Images>
-    private lateinit var targetLetter: Images
-
+    private lateinit var listImages: ArrayList<ImageContent>
+    private lateinit var listSelectedImages:ArrayList<ImageContent>
+    private lateinit var targetLetter: ImageContent
+    private val contentViewModel: ContentViewModel by viewModels()
     private lateinit var mediaPlayer: MediaPlayer
-
     private lateinit var language:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+        mediaPlayer = MediaPlayer()
     }
 
     override fun onCreateView(
@@ -43,32 +52,15 @@ class QuizSoundLittersFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentQuizSoundLittersBinding.inflate(inflater, container, false)
 
-        listImages = ArrayList()
+        listImages = arrayListOf()
 
         language = arguments?.getString("language")!!
 
-        if(language=="Arabic"){
-            listImages.add(Images(R.drawable.alif, "alif", R.raw.alif))
-            listImages.add(Images(R.drawable.baa, "baa", R.raw.baa))
-            listImages.add(Images(R.drawable.taa, "taa", R.raw.taa))
-            listImages.add(Images(R.drawable.haa, "haa", R.raw.haa))
-            listImages.add(Images(R.drawable.raa, "raa", R.raw.raa))
-            listImages.add(Images(R.drawable.yaa, "yaa", R.raw.yaa))
-        }else{
-            listImages.add(Images(R.drawable.char_a, "a", R.raw.char_a))
-            listImages.add(Images(R.drawable.char_b, "b", R.raw.char_b))
-            listImages.add(Images(R.drawable.char_c, "c", R.raw.char_c))
-            listImages.add(Images(R.drawable.char_d, "d", R.raw.char_d))
-            listImages.add(Images(R.drawable.char_e, "e", R.raw.char_e))
-            listImages.add(Images(R.drawable.char_f, "f", R.raw.char_f))
-        }
-
-
-        getThreeRandomImage()
-
+        contentViewModel.getPronunciationContent(language)
+        observerGetImages()
 
         binding.letter1.setOnClickListener {
-            if(listSelectedImages[0].name == targetLetter.name){
+            if(listSelectedImages[0].imageName == targetLetter.imageName){
                 binding.letter1.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -86,7 +78,7 @@ class QuizSoundLittersFragment : Fragment() {
         }
 
         binding.letter2.setOnClickListener {
-            if(listSelectedImages[1].name == targetLetter.name){
+            if(listSelectedImages[1].imageName == targetLetter.imageName){
                 binding.letter2.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -104,7 +96,7 @@ class QuizSoundLittersFragment : Fragment() {
         }
 
         binding.letter3.setOnClickListener {
-            if(listSelectedImages[2].name == targetLetter.name){
+            if(listSelectedImages[2].imageName == targetLetter.imageName){
                 binding.letter3.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -125,13 +117,20 @@ class QuizSoundLittersFragment : Fragment() {
             binding.animationWaves.playAnimation()
 
             mediaPlayer = MediaPlayer()
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
             if(mediaPlayer.isPlaying){
-                mediaPlayer.pause()
                 mediaPlayer.stop()
+                mediaPlayer.release()
+                mediaPlayer.reset()
                 mediaPlayer.seekTo(0)
             }
-            mediaPlayer = MediaPlayer.create(requireContext() , targetLetter.imageVoice)
-            mediaPlayer.start()
+            try {
+                mediaPlayer.setDataSource(targetLetter.imageVoice)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+            } catch (e: Exception) {
+                toast(e.message)
+            }
 
         }
 
@@ -164,22 +163,47 @@ class QuizSoundLittersFragment : Fragment() {
         return binding.root
     }
 
+    private fun observerGetImages() {
+        contentViewModel.pronunciationContent.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+//                    binding.progressBarEntertainmentSection.show()
+                }
+                is Resource.Failure -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    toast(resource.error)
+                }
+                is Resource.Success -> {
+//                    binding.progressBarEntertainmentSection.hide()
+                    listImages = resource.data
+                    getThreeRandomImage()
+                }
+            }
+        }
+    }
+
 
     fun getThreeRandomImage(){
         listImages.shuffle()
-        listSelectedImages = mutableListOf()
+        listSelectedImages = arrayListOf()
         for (i in 0..2){
             listSelectedImages.add(listImages[i])
         }
 
         targetLetter = listSelectedImages.random()
 
-        mediaPlayer = MediaPlayer.create(requireContext() , targetLetter.imageVoice)
-        mediaPlayer.start()
+        mediaPlayer = MediaPlayer()
+        try {
+            mediaPlayer.setDataSource(targetLetter.imageVoice)
+            mediaPlayer.prepare()
+            mediaPlayer.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
-        binding.letter1.setImageResource(listSelectedImages[0].photo)
-        binding.letter2.setImageResource(listSelectedImages[1].photo)
-        binding.letter3.setImageResource(listSelectedImages[2].photo)
+        Glide.with(this).load(listImages[0].imageUrl).into(binding.letter1)
+        Glide.with(this).load(listImages[1].imageUrl).into(binding.letter2)
+        Glide.with(this).load(listImages[2].imageUrl).into(binding.letter3)
 
         binding.letter1.setBackgroundResource(0)
         binding.letter2.setBackgroundResource(0)
@@ -189,7 +213,15 @@ class QuizSoundLittersFragment : Fragment() {
         binding.animationNext.pauseAnimation()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (language == "Arabic"){
+            ContentFragment.listOfNotifications.add(getString(R.string.selectArabic))
+        }else{
+            ContentFragment.listOfNotifications.add(getString(R.string.selectEnglish))
+        }
 
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

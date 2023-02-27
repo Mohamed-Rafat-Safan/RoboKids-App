@@ -108,5 +108,9 @@ dependencies {
     // carouselrecyclerview
     implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
 
+    //GlideImage
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    kapt 'com.github.bumptech.glide:compiler:4.13.2'
+
 
 }

@@ -61,7 +61,7 @@
             android:layout_height="@dimen/_140sdp"
             android:padding="3dp"
             android:scaleType="fitXY"
-            android:src="@drawable/alif" />
+            android:src="@drawable/load" />
 
         <ImageView
             android:id="@+id/letter2"
@@ -70,7 +70,7 @@
             android:padding="3dp"
             android:scaleType="fitXY"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:src="@drawable/haa" />
+            android:src="@drawable/load" />
 
         <ImageView
             android:id="@+id/letter3"
@@ -78,7 +78,7 @@
             android:layout_height="@dimen/_140sdp"
             android:padding="3dp"
             android:scaleType="fitXY"
-            android:src="@drawable/raa" />
+            android:src="@drawable/load" />
 
     </LinearLayout>
 
