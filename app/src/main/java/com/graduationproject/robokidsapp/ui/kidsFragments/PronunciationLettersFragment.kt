@@ -1,6 +1,5 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
-
 import android.content.ContextWrapper
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -17,6 +16,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
@@ -51,7 +52,7 @@ class PronunciationLettersFragment : Fragment() {
 
     private lateinit var startDate: Date
 
-    private lateinit var contentType:String
+    private lateinit var contentType: String
     private lateinit var listImages: ArrayList<ImageContent>
     private var imageCounter = 0
 
@@ -68,7 +69,7 @@ class PronunciationLettersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPronunciationLettersBinding.inflate(inflater, container, false)
 
@@ -79,7 +80,10 @@ class PronunciationLettersFragment : Fragment() {
         observerGetPronunciation()
 
         binding.pronunciationLettersExit.setOnClickListener {
-            val action = PronunciationLettersFragmentDirections.actionPronunciationLettersFragmentToEducationalSectionFragment("Pronunciation")
+            val action =
+                PronunciationLettersFragmentDirections.actionPronunciationLettersFragmentToEducationalSectionFragment(
+                    "Pronunciation"
+                )
             mNavController.navigate(action)
         }
 
@@ -96,15 +100,20 @@ class PronunciationLettersFragment : Fragment() {
             startRecording()
         }
 
+        //  check sound
+//        binding.ivCheckSound.setOnClickListener {
+//            checkRecording()
+//        }
+
         binding.pronunciationLettersPrevious.setOnClickListener {
             binding.pronunciationLettersNext.visibility = View.VISIBLE
             binding.pronunciationLettersEnableSpeaker.playAnimation()
-            if (imageCounter > 0){
+            if (imageCounter > 0) {
                 imageCounter--
                 playSound()
                 Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             }
-            if (imageCounter == 0){
+            if (imageCounter == 0) {
                 binding.pronunciationLettersPrevious.visibility = View.GONE
             }
         }
@@ -112,37 +121,42 @@ class PronunciationLettersFragment : Fragment() {
         binding.pronunciationLettersNext.setOnClickListener {
             binding.pronunciationLettersPrevious.visibility = View.VISIBLE
             binding.pronunciationLettersEnableSpeaker.playAnimation()
-            if (imageCounter < listImages.size-1){
+            if (imageCounter < listImages.size - 1) {
                 imageCounter++
                 playSound()
                 Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             }
-            if (imageCounter == listImages.size-1){
+            if (imageCounter == listImages.size - 1) {
                 binding.pronunciationLettersNext.visibility = View.GONE
             }
         }
 
         binding.pronunciationLettersExit.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+            mNavController.currentBackStackEntry?.let { backEntry ->
+                mNavController.popBackStack(
+                    backEntry.destination.id,
+                    true
+                )
+            }
         }
 
         return binding.root
     }
 
-    fun checkContentType(){
-        if(contentType=="Arabic"){
+    fun checkContentType() {
+        if (contentType == "Arabic") {
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.arabic_letters)
             playSound()
-        }else if (contentType=="English"){
+        } else if (contentType == "English") {
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.english_letters)
             playSound()
-        }else if (contentType=="Math"){
+        } else if (contentType == "Math") {
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.numbers)
             playSound()
-        }else if (contentType=="ImageKnow"){
+        } else if (contentType == "ImageKnow") {
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.photo)
             playSound()
@@ -170,7 +184,7 @@ class PronunciationLettersFragment : Fragment() {
 
     // this method to recording of kids
     fun startRecording() {
-        if(!isRecording){
+        if (!isRecording) {
             isRecording = true
             executor.execute {
                 mediaRecorder = MediaRecorder()
@@ -194,7 +208,7 @@ class PronunciationLettersFragment : Fragment() {
                     runTimer()
                 }
             }
-        }else{
+        } else {
             executor.execute {
                 mediaRecorder?.stop()
                 mediaRecorder?.release()
@@ -204,7 +218,7 @@ class PronunciationLettersFragment : Fragment() {
                 second = 0
                 isRecording = false
 
-                activity?.runOnUiThread{
+                activity?.runOnUiThread {
                     handler.removeCallbacksAndMessages(null)
                     //binding.pronunciationLettersSpeaker.isEnabled = true
                     binding.pronunciationLettersEnableSpeaker.isEnabled = true
@@ -216,57 +230,73 @@ class PronunciationLettersFragment : Fragment() {
     } // end method startRecording
 
 
-    fun playRecording() {
-        if (!isPlaying){
-            if (path!=null){
-                mediaPlayer!!.setDataSource(getRecordingFilePath())
-            }else{
+    fun checkRecording() {
+        if (!isPlaying) {
+            if (path != null) {
+//                mediaPlayer!!.setDataSource(getRecordingFilePath())
+
+                if (!Python.isStarted()) {
+                    Python.start(AndroidPlatform(requireContext()))
+                }
+
+                val py = Python.getInstance()
+                val module = py.getModule("PronunciationLetters")
+                val soundText = module.callAttr("recognize_from_en_audio", getRecordingFilePath())
+
+                if (soundText.toString() == "error") {
+                    toast("sound error")
+                } else {
+                    toast("" + soundText)
+                }
+
+            } else {
                 Toast.makeText(requireContext(), "No Recording", Toast.LENGTH_SHORT).show()
                 return
             }
-            mediaPlayer!!.prepare()
-            mediaPlayer!!.start()
-            isPlaying = true
-            //binding.pronunciationLettersSpeaker.isEnabled = true
-            binding.pronunciationLettersEnableSpeaker.isEnabled = true
-            //binding.pronunciationLettersSpeaker.visibility = View.INVISIBLE
-            binding.pronunciationLettersEnableSpeaker.visibility = View.VISIBLE
-            runTimer()
-        }else{
-            mediaPlayer!!.stop()
-            mediaPlayer!!.release()
-            mediaPlayer = null
-            mediaPlayer = MediaPlayer()
-            isPlaying = false
-            second = 0
-            handler.removeCallbacksAndMessages(null)
-            //binding.pronunciationLettersSpeaker.isEnabled = true
-            binding.pronunciationLettersEnableSpeaker.isEnabled = true
-            binding.pronunciationLettersEnableSpeaker.visibility = View.INVISIBLE
-            //binding.pronunciationLettersSpeaker.visibility = View.VISIBLE
+//            mediaPlayer!!.prepare()
+//            mediaPlayer!!.start()
+//            isPlaying = true
+//            //binding.pronunciationLettersSpeaker.isEnabled = true
+//            binding.pronunciationLettersEnableSpeaker.isEnabled = true
+//            //binding.pronunciationLettersSpeaker.visibility = View.INVISIBLE
+//            binding.pronunciationLettersEnableSpeaker.visibility = View.VISIBLE
+//            runTimer()
         }
+//        else {
+//            mediaPlayer!!.stop()
+//            mediaPlayer!!.release()
+//            mediaPlayer = null
+//            mediaPlayer = MediaPlayer()
+//            isPlaying = false
+//            second = 0
+//            handler.removeCallbacksAndMessages(null)
+//            //binding.pronunciationLettersSpeaker.isEnabled = true
+//            binding.pronunciationLettersEnableSpeaker.isEnabled = true
+//            binding.pronunciationLettersEnableSpeaker.visibility = View.INVISIBLE
+//            //binding.pronunciationLettersSpeaker.visibility = View.VISIBLE
+//        }
     }
 
     private fun getRecordingFilePath(): String {
         val contextWrapper = ContextWrapper(context)
         val music = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)
-        val file = File(music,"testFile"+".mp3")
+        val file = File(music, "testFile" + ".mp3")
         return file.path
     }
 
     private fun runTimer() {
         handler = Handler()
-        handler.post(object :Runnable{
+        handler.post(object : Runnable {
             override fun run() {
-                val minutes = (second%3600)/60
-                val secs = second%60
-                var time = String.format(Locale.getDefault(),"%02d:%02d",minutes,secs)
+                val minutes = (second % 3600) / 60
+                val secs = second % 60
+                var time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs)
 //                textview_sound_recorder_heading.text = time
 
-                if (isRecording || (isPlaying && playableSecond!=-1)){
+                if (isRecording || (isPlaying && playableSecond != -1)) {
                     second++
                     playableSecond--
-                    if (playableSecond == -1 && isPlaying){
+                    if (playableSecond == -1 && isPlaying) {
                         mediaPlayer!!.stop()
                         mediaPlayer!!.release()
                         mediaPlayer == null
@@ -280,16 +310,16 @@ class PronunciationLettersFragment : Fragment() {
                         return
                     }
                 }
-                handler.postDelayed(this,1000)
+                handler.postDelayed(this, 1000)
             }
 
         })
     }
 
-    fun playSound(){
+    fun playSound() {
         mediaPlayer = MediaPlayer()
         mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        if(mediaPlayer?.isPlaying!!){
+        if (mediaPlayer?.isPlaying!!) {
             mediaPlayer?.stop()
             mediaPlayer?.release()
             mediaPlayer?.reset()
@@ -309,14 +339,38 @@ class PronunciationLettersFragment : Fragment() {
         val simpleDateFormat = SimpleDateFormat("HH:mm")
         val endTime = simpleDateFormat.format(Date())
         val startTime = simpleDateFormat.format(startDate)
-        if(contentType=="Arabic"){
-            ContentFragment.listOfNotifications.add(getString(R.string.pronArabic)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else if (contentType=="English"){
-            ContentFragment.listOfNotifications.add(getString(R.string.pronEnglish)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else if (contentType=="Math"){
-            ContentFragment.listOfNotifications.add(getString(R.string.pronMath)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else{
-            ContentFragment.listOfNotifications.add(getString(R.string.pronPhoto)+ " $startTime ${getString(R.string.out)} $endTime")
+        if (contentType == "Arabic") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.pronArabic) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else if (contentType == "English") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.pronEnglish) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else if (contentType == "Math") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.pronMath) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.pronPhoto) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
         }
 
     }

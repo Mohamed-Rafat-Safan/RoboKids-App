@@ -74,6 +74,15 @@
         app:lottie_rawRes="@raw/enable_mic" />
 
     <ImageView
+        android:id="@+id/iv_checkSound"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@drawable/check_sound"
+        app:layout_constraintEnd_toEndOf="@+id/pronunciation_letters_mic"
+        app:layout_constraintStart_toStartOf="@+id/pronunciation_letters_mic"
+        app:layout_constraintTop_toBottomOf="@+id/pronunciation_letters_enableMic" />
+
+    <ImageView
         android:id="@+id/pronunciation_letters_previous"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"

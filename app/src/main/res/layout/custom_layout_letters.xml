@@ -11,10 +11,10 @@
         android:id="@+id/tv_letter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A"
-        android:textSize="@dimen/_26ssp"
-        android:textColor="@color/black"
         android:layout_gravity="center"
+        android:text="A"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_26ssp"
         android:textStyle="bold" />
 
 </androidx.cardview.widget.CardView>

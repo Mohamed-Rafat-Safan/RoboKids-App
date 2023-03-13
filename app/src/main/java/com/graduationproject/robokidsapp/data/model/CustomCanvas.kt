@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
 
 
-class Canvas : View {
+class CustomCanvas : View {
     companion object{
         val pathList = ArrayList<Path>()
         val colorList = ArrayList<Int>()

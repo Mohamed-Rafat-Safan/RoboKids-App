@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var infoViewModel:InfoViewModel
 
 
-    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +100,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         binding.drawLayout.addDrawerListener(actionToggle)
         actionToggle.syncState()
-
 
     }
 

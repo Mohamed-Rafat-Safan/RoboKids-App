@@ -20,12 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
-import com.graduationproject.robokidsapp.data.model.Canvas
+import com.graduationproject.robokidsapp.data.model.CustomCanvas
 import com.graduationproject.robokidsapp.data.model.ImageContent
-import com.graduationproject.robokidsapp.data.model.WhiteBoardContent
 import com.graduationproject.robokidsapp.util.Resource
-import com.graduationproject.robokidsapp.util.hide
-import com.graduationproject.robokidsapp.util.show
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.OutputStream
@@ -36,14 +33,16 @@ import kotlin.collections.ArrayList
 @AndroidEntryPoint
 class WhiteboardFragment : Fragment() {
     private lateinit var mNavController: NavController
-    lateinit var listWhiteBoardContent:ArrayList<ImageContent>
-    lateinit var typeLetter:String
-    var isImage:Boolean = false
+
+    lateinit var listWhiteBoardContent: ArrayList<ImageContent>
+    lateinit var typeLetter: String
+    var isImage: Boolean = false
     private lateinit var startDate: Date
     private val contentViewModel: ContentViewModel by viewModels()
-    private lateinit var adapter:WhiteboardAdapter
-    companion object{
-        var path:Path = Path()
+    private lateinit var adapter: WhiteboardAdapter
+
+    companion object {
+        var path: Path = Path()
         var paint_brush = Paint()
 
         private var _binding: FragmentWhiteboardBinding? = null
@@ -67,32 +66,32 @@ class WhiteboardFragment : Fragment() {
         _binding = FragmentWhiteboardBinding.inflate(inflater, container, false)
 
 
-        Canvas.pathList.clear()
-        Canvas.colorList.clear()
-        Canvas.sizeList.clear()
+        CustomCanvas.pathList.clear()
+        CustomCanvas.colorList.clear()
+        CustomCanvas.sizeList.clear()
         path.reset()
 
         binding.customToolbar.inflateMenu(R.menu.whiteboard_menu)
 
-        binding.customToolbar.setOnMenuItemClickListener{
+        binding.customToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.pencil -> {
                     currentColor(paint_brush.color)
                     true
                 }
                 R.id.eraser -> {
-                    Canvas.pathList.clear()
-                    Canvas.colorList.clear()
-                    Canvas.sizeList.clear()
+                    CustomCanvas.pathList.clear()
+                    CustomCanvas.colorList.clear()
+                    CustomCanvas.sizeList.clear()
                     path.reset()
                     true
                 }
-                R.id.undo ->{
+                R.id.undo -> {
                     binding.mCanvas.undo()
                     true
                 }
-                R.id.redo ->{
-                  binding.mCanvas.redo()
+                R.id.redo -> {
+                    binding.mCanvas.redo()
                     true
                 }
                 R.id.black -> {
@@ -135,17 +134,18 @@ class WhiteboardFragment : Fragment() {
         setDataInArrayList(typeLetter)
 
 
-        adapter = WhiteboardAdapter(requireContext(),isImage)
-        binding.rvWhiteboard.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        adapter = WhiteboardAdapter(requireContext(), isImage, contentViewModel.storageInstance)
+        binding.rvWhiteboard.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvWhiteboard.adapter = adapter
         binding.rvWhiteboard.setHasFixedSize(true)
         adapter.updateList(listWhiteBoardContent)
 
 
-        binding.seekBarSize.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+        binding.seekBarSize.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 seekBar_size = p1.toFloat()
-                 currentSize(seekBar_size)
+                currentSize(seekBar_size)
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -154,7 +154,12 @@ class WhiteboardFragment : Fragment() {
 
 
         binding.whiteboardBack.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+            mNavController.currentBackStackEntry?.let { backEntry ->
+                mNavController.popBackStack(
+                    backEntry.destination.id,
+                    true
+                )
+            }
         }
 
         return binding.root
@@ -177,7 +182,8 @@ class WhiteboardFragment : Fragment() {
         cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
 
         // get the Uri of the file which is to be created in the storage
-        val uri: Uri = activity?.getContentResolver()?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv)!!
+        val uri: Uri = activity?.getContentResolver()
+            ?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv)!!
         try {
             // open the output stream with the above uri
             imageOutStream = activity?.getContentResolver()!!.openOutputStream(uri)
@@ -193,49 +199,49 @@ class WhiteboardFragment : Fragment() {
     }
 
 
-    fun currentColor(c:Int){
-        Canvas.currentBrush = c
+    fun currentColor(c: Int) {
+        CustomCanvas.currentBrush = c
         path = Path()
     }
 
-    fun currentSize(size:Float){
-        Canvas.currentSize = size
+    fun currentSize(size: Float) {
+        CustomCanvas.currentSize = size
         path = Path()
     }
 
 
-
-    fun setDataInArrayList(type:String){
+    fun setDataInArrayList(type: String) {
         listWhiteBoardContent = ArrayList()
-        when(type){
-            "Arabic"->{
-                for(i in 1569..1594){
-                    listWhiteBoardContent.add(ImageContent("",""+ i.toChar(),""))
+        when (type) {
+            "Arabic" -> {
+                for (i in 1569..1594) {
+                    listWhiteBoardContent.add(ImageContent("", "" + i.toChar(), ""))
                 }
-                for(i in 1601..1610){
-                    listWhiteBoardContent.add(ImageContent("",""+ i.toChar(),""))
+                for (i in 1601..1610) {
+                    listWhiteBoardContent.add(ImageContent("", "" + i.toChar(), ""))
                 }
+
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_RTL
             }
-            "English"->{
-                for(i in 'A'..'Z'){
-                    listWhiteBoardContent.add(ImageContent("",""+ i,""))
+            "English" -> {
+                for (i in 'A'..'Z') {
+                    listWhiteBoardContent.add(ImageContent("", "" + i, ""))
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
-            "Math"->{
-                for(i in 0..100){
-                    listWhiteBoardContent.add(ImageContent("",""+ i,""))
+            "Math" -> {
+                for (i in 0..100) {
+                    listWhiteBoardContent.add(ImageContent("", "" + i, ""))
                 }
                 isImage = false
                 binding.tvText.visibility = View.VISIBLE
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
-            "Photo"->{
+            "Photo" -> {
                 binding.knowImageLayout.visibility = View.VISIBLE
                 contentViewModel.getWhiteboardContent()
                 observerGetWhiteboardContent()
@@ -270,14 +276,38 @@ class WhiteboardFragment : Fragment() {
         val simpleDateFormat = SimpleDateFormat("HH:mm")
         val endTime = simpleDateFormat.format(Date())
         val startTime = simpleDateFormat.format(startDate)
-        if(typeLetter=="Arabic"){
-            ContentFragment.listOfNotifications.add(getString(R.string.boardArabic)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else if (typeLetter=="English"){
-            ContentFragment.listOfNotifications.add(getString(R.string.boardEnglish)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else if (typeLetter=="Math"){
-            ContentFragment.listOfNotifications.add(getString(R.string.boardMath)+ " $startTime ${getString(R.string.out)} $endTime")
-        }else{
-            ContentFragment.listOfNotifications.add(getString(R.string.boardPhoto)+ " $startTime ${getString(R.string.out)} $endTime")
+        if (typeLetter == "Arabic") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.boardArabic) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else if (typeLetter == "English") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.boardEnglish) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else if (typeLetter == "Math") {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.boardMath) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
+        } else {
+            ContentFragment.listOfNotifications.add(
+                getString(R.string.boardPhoto) + " $startTime ${
+                    getString(
+                        R.string.out
+                    )
+                } $endTime"
+            )
         }
     }
 

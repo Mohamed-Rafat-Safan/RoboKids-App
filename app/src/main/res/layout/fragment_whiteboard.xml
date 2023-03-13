@@ -156,10 +156,9 @@
                 android:background="@drawable/bg_btn_math_quiz"
                 android:textColor="@color/white"
                 android:paddingHorizontal="@dimen/_12sdp" />
-
         </LinearLayout>
 
-        <com.graduationproject.robokidsapp.data.model.Canvas
+        <com.graduationproject.robokidsapp.data.model.CustomCanvas
             android:id="@+id/mCanvas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -204,5 +203,18 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/incorrect_answer" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_wait"
+        android:layoutDirection="ltr"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/_105sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customToolbar"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/wait" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
