@@ -14,6 +14,7 @@ import com.graduationproject.robokidsapp.databinding.FragmentTicTacToeBinding
 import com.graduationproject.robokidsapp.modelGaming.Board
 import com.graduationproject.robokidsapp.modelGaming.BoardState
 import com.graduationproject.robokidsapp.modelGaming.Cell
+import com.graduationproject.robokidsapp.ui.MainActivity
 import kotlin.properties.Delegates
 
 
@@ -28,6 +29,11 @@ class TicTacToeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainActivity.connectBluetooth.led_on_off("c")
     }
 
     override fun onCreateView(
@@ -65,16 +71,19 @@ class TicTacToeFragment : Fragment() {
                 setupBoard(true)
                 flag = true
                 showWinningMessage(getString(R.string.you_won))
+                MainActivity.connectBluetooth.led_on_off("w")
             }
             BoardState.CIRCLE_WON -> {
                 setupBoard(true)
                 flag = false
                 showWinningMessage(getString(R.string.you_lost))
+                MainActivity.connectBluetooth.led_on_off("y")
             }
             BoardState.DRAW -> {
                 setupBoard(true)
                 flag = false
                 showWinningMessage(getString(R.string.it_draw))
+                MainActivity.connectBluetooth.led_on_off("y")
             }
             BoardState.INCOMPLETE -> {
                 setupBoard()

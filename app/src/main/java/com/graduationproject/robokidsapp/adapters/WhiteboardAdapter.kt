@@ -106,7 +106,8 @@ class WhiteboardAdapter(
             updateCountDownText()
             val bmp = WhiteboardFragment.binding.mCanvas.getBitmap()
 
-            uploadImageAndGetText(bmp!!, imageContent)
+//            uploadImageAndGetText(bmp!!, imageContent)
+
         }
     }
 
@@ -208,7 +209,7 @@ class WhiteboardAdapter(
 
                 if (num == 0) {
                     val bmp = WhiteboardFragment.binding.mCanvas.getBitmap()
-                    uploadImageAndGetText(bmp!!, imageContent)
+//                    uploadImageAndGetText(bmp!!, imageContent)
                 }
 
                 updateCountDownText()

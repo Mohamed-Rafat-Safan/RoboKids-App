@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentGamingSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentParentsDataBinding
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.parentsFragments.SplashFragmentDirections
 import com.graduationproject.robokidsapp.util.toast

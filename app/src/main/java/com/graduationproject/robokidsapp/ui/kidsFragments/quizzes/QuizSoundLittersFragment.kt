@@ -17,6 +17,7 @@ import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentQuizSoundLittersBinding
 import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.ui.kidsFragments.EducationalSectionFragmentDirections
@@ -43,6 +44,13 @@ class QuizSoundLittersFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
         mediaPlayer = MediaPlayer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        MainActivity.connectBluetooth.led_on_off("v")
+
     }
 
     override fun onCreateView(

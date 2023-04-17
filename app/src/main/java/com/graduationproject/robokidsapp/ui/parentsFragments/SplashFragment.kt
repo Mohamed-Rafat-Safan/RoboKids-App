@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
 import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +40,7 @@ class SplashFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         mNavController = findNavController()
+
     }
 
     override fun onCreateView(
@@ -57,6 +59,7 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch {
             delay(2000)
+
             withContext(Dispatchers.Main) {
                 if (isLoggedIn) {
                     val action = SplashFragmentDirections.actionSplashFragmentToHomeKidsFragment()

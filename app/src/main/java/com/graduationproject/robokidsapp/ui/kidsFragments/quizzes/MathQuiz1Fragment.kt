@@ -17,6 +17,7 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentMathQuiz1Binding
 import com.graduationproject.robokidsapp.data.model.Images
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.util.Resource
@@ -42,6 +43,13 @@ class MathQuiz1Fragment : Fragment() {
         listImage = ArrayList()
         listOperator = ArrayList()
         mediaPlayer = MediaPlayer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        MainActivity.connectBluetooth.led_on_off("u")
+
     }
 
     companion object{

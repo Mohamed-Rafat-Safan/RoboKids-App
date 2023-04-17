@@ -21,6 +21,7 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.data.model.Images
 import com.graduationproject.robokidsapp.databinding.FragmentEnglishQuiz1Binding
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.ui.kidsFragments.WhiteboardFragment
@@ -51,6 +52,13 @@ class EnglishQuiz1Fragment : Fragment() {
         super.onCreate(savedInstanceState)
         listImage = ArrayList()
         mNavController = findNavController()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        MainActivity.connectBluetooth.led_on_off("o")
+
     }
 
     override fun onCreateView(

@@ -1,10 +1,12 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,7 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
 import com.graduationproject.robokidsapp.data.model.Content
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -45,6 +48,13 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
 
         startDate = Date()
         endDate = Date()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        MainActivity.connectBluetooth.led_on_off("d")
+
     }
 
     override fun onCreateView(

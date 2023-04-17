@@ -29,21 +29,23 @@ android {
 
         python {
             pip {
-                install "azure-cognitiveservices-vision-computervision"
-//                install "azure-cognitiveservices-speech==1.2.0"
+//                install "torch torchvision torchaudio"
+//                install "ffmpeg"
+//                install "openai-whisper"
+//                install "numpy"
             }
         }
 
 
         python {
-            version "3.8"
+            version "3.9"
         }
 
 
-//        python {
-//            buildPython "C:/Users/pc/AppData/Local/Programs/Python/Python311/python.exe"
-////          buildPython "C:/Users/pc/AppData/Local/Programs/Python/Python311/py.exe", "-3.11.2"
-//        }
+        python {
+            buildPython "C:/Users/DELL/AppData/Local/Programs/Python/Python39/python.exe"
+//            buildPython "C:/Users/DELL/AppData/Local/Programs/Python/Python39/python.exe", "-3.9.9"
+        }
 
 
     }
