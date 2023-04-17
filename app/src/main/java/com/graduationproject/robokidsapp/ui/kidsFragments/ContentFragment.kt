@@ -11,8 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
 import com.graduationproject.robokidsapp.data.model.Report
 import com.graduationproject.robokidsapp.databinding.FragmentContentBinding
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Constants.Companion.EDUCATIONAL_FLAG
 import com.graduationproject.robokidsapp.util.Constants.Companion.ENTERTAINMENT_FLAG
@@ -54,11 +56,14 @@ class ContentFragment : Fragment() {
         infoViewModel.getReports(args.currentChild.id)
         observerGetReports()
 
+        MainActivity.connectBluetooth.led_on_off("s")
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+
     }
 
     override fun onCreateView(

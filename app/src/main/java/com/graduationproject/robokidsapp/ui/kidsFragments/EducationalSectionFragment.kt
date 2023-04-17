@@ -12,6 +12,8 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.EducationalSectionsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.data.model.EducationalSections
+import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.util.toast
 
 
 class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItemClickListener {
@@ -42,16 +44,19 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
         listSection = ArrayList()
 
         if(sectionData=="Pronunciation"){
+            MainActivity.connectBluetooth.led_on_off("p")
             listSection.add(EducationalSections("Arabic",R.drawable.speek_arapic))
             listSection.add(EducationalSections("English",R.drawable.speek_abc))
             listSection.add(EducationalSections("Math",R.drawable.speek_123))
             listSection.add(EducationalSections("ImageKnow",R.drawable.animals))
         }else if(sectionData=="Board"){
+            MainActivity.connectBluetooth.led_on_off("b")
             listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
             listSection.add(EducationalSections("English",R.drawable.board_abc))
             listSection.add(EducationalSections("Math",R.drawable.board_123))
             listSection.add(EducationalSections("Photo",R.drawable.animals))
         }else if(sectionData=="Questions"){
+            MainActivity.connectBluetooth.led_on_off("q")
             listSection.add(EducationalSections("Arabic",R.drawable.ques_arapic))
             listSection.add(EducationalSections("English",R.drawable.ques_abc))
             listSection.add(EducationalSections("Math",R.drawable.math))

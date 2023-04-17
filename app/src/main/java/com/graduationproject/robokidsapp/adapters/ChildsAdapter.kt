@@ -46,7 +46,7 @@ class ChildsAdapter(val context: Context, val onItemClickListener: OnItemClickLi
 
         fun bind(child: Child){
             childName.text = child.childName
-            childImage.setImageResource(child.childImage)
+            childImage.setImageResource(R.drawable.boy1)
         }
     }
 

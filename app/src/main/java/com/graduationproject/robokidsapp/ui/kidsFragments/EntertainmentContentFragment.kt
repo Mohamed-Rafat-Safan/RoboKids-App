@@ -13,6 +13,7 @@ import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentContentBinding
 
 import com.graduationproject.robokidsapp.data.model.Content
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.util.toast
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,6 +40,12 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
 
         startDate = Date()
         endDate = Date()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainActivity.connectBluetooth.led_on_off("t")
     }
 
     override fun onCreateView(

@@ -21,7 +21,6 @@ class ContentRepositoryImpl(val database: FirebaseFirestore,val storage : Fireba
                     result.invoke(Resource.Failure(error.message))
                     return@addSnapshotListener
                 }
-
                 val listVideos = ArrayList<Videos>()
                 var video: Videos
                 value!!.documents.forEach { document ->

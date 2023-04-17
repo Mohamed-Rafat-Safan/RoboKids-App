@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentMemoryGameBinding
 import com.graduationproject.robokidsapp.modelGaming.MemoryCard
+import com.graduationproject.robokidsapp.ui.MainActivity
 import kotlinx.coroutines.*
 
 class MemoryGameFragment : Fragment() {
@@ -29,6 +30,11 @@ class MemoryGameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainActivity.connectBluetooth.led_on_off("m")
     }
 
     override fun onCreateView(
@@ -81,6 +87,7 @@ class MemoryGameFragment : Fragment() {
                 button.alpha = 0.8f
                 button.setBackgroundResource(R.drawable.bg_memory_game_true)
                 if (count == 6){
+                    MainActivity.connectBluetooth.led_on_off("w")
                     GlobalScope.launch {
                         withContext(Dispatchers.Main){
                             buttons.forEachIndexed { index, Button ->

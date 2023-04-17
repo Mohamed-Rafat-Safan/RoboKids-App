@@ -1,5 +1,6 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,7 +16,9 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ChildsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentHomeKidsBinding
 import com.graduationproject.robokidsapp.data.model.Child
+import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
 import com.graduationproject.robokidsapp.data.model.Report
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.hide
@@ -36,16 +39,24 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
 
     private val infoViewModel: InfoViewModel by viewModels()
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+        MainActivity.connectBluetooth.bluetooth_connect_device()
+
     }
+
 
     override fun onResume() {
         super.onResume()
         //Hide status bar
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+        MainActivity.connectBluetooth.led_on_off("s")
+
     }
 
     override fun onCreateView(

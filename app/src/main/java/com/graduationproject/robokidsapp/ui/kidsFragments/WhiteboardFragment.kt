@@ -22,6 +22,7 @@ import com.graduationproject.robokidsapp.adapters.WhiteboardAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentWhiteboardBinding
 import com.graduationproject.robokidsapp.data.model.CustomCanvas
 import com.graduationproject.robokidsapp.data.model.ImageContent
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -214,6 +215,7 @@ class WhiteboardFragment : Fragment() {
         listWhiteBoardContent = ArrayList()
         when (type) {
             "Arabic" -> {
+                MainActivity.connectBluetooth.led_on_off("a")
                 for (i in 1569..1594) {
                     listWhiteBoardContent.add(ImageContent("", "" + i.toChar(), ""))
                 }
@@ -226,6 +228,7 @@ class WhiteboardFragment : Fragment() {
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_RTL
             }
             "English" -> {
+                MainActivity.connectBluetooth.led_on_off("e")
                 for (i in 'A'..'Z') {
                     listWhiteBoardContent.add(ImageContent("", "" + i, ""))
                 }
@@ -234,6 +237,7 @@ class WhiteboardFragment : Fragment() {
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
             "Math" -> {
+                MainActivity.connectBluetooth.led_on_off("h")
                 for (i in 0..100) {
                     listWhiteBoardContent.add(ImageContent("", "" + i, ""))
                 }
@@ -242,6 +246,7 @@ class WhiteboardFragment : Fragment() {
                 binding.rvWhiteboard.layoutDirection = View.LAYOUT_DIRECTION_LTR
             }
             "Photo" -> {
+                MainActivity.connectBluetooth.led_on_off("i")
                 binding.knowImageLayout.visibility = View.VISIBLE
                 contentViewModel.getWhiteboardContent()
                 observerGetWhiteboardContent()

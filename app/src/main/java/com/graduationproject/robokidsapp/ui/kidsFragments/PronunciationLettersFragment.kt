@@ -21,6 +21,7 @@ import com.chaquo.python.android.AndroidPlatform
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -101,9 +102,9 @@ class PronunciationLettersFragment : Fragment() {
         }
 
         //  check sound
-//        binding.ivCheckSound.setOnClickListener {
-//            checkRecording()
-//        }
+        binding.ivCheckSound.setOnClickListener {
+            checkRecording()
+        }
 
         binding.pronunciationLettersPrevious.setOnClickListener {
             binding.pronunciationLettersNext.visibility = View.VISIBLE
@@ -145,18 +146,22 @@ class PronunciationLettersFragment : Fragment() {
 
     fun checkContentType() {
         if (contentType == "Arabic") {
+            MainActivity.connectBluetooth.led_on_off("a")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.arabic_letters)
             playSound()
         } else if (contentType == "English") {
+            MainActivity.connectBluetooth.led_on_off("e")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.english_letters)
             playSound()
         } else if (contentType == "Math") {
+            MainActivity.connectBluetooth.led_on_off("h")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.numbers)
             playSound()
         } else if (contentType == "ImageKnow") {
+            MainActivity.connectBluetooth.led_on_off("i")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.photo)
             playSound()

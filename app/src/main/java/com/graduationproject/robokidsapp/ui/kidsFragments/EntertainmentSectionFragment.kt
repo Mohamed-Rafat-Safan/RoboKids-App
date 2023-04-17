@@ -13,6 +13,7 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.VideoAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentSectionBinding
 import com.graduationproject.robokidsapp.data.model.Videos
+import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.hide

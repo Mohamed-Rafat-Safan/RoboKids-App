@@ -21,6 +21,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
+import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
 import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
@@ -30,6 +31,8 @@ import com.graduationproject.robokidsapp.util.hide
 import com.graduationproject.robokidsapp.util.show
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 //                              بسم الله الرحمن الرحيم
@@ -37,19 +40,19 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     companion object{
         lateinit var binding:ActivityMainBinding
+        lateinit var connectBluetooth :  ConnectBluetooth
     }
     private lateinit var navController: NavController
 
     private val authViewModel: AuthViewModel by viewModels()
     private lateinit var infoViewModel:InfoViewModel
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        connectBluetooth = ConnectBluetooth(this)
 
         if(authViewModel.currentUser != null){
             infoViewModel = ViewModelProvider(this).get(InfoViewModel::class.java)
