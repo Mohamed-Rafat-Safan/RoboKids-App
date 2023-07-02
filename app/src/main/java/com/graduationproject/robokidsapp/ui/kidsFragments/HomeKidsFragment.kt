@@ -1,6 +1,5 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
-import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,10 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ChildsAdapter
-import com.graduationproject.robokidsapp.databinding.FragmentHomeKidsBinding
 import com.graduationproject.robokidsapp.data.model.Child
-import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
-import com.graduationproject.robokidsapp.data.model.Report
+import com.graduationproject.robokidsapp.databinding.FragmentHomeKidsBinding
 import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Resource
@@ -25,8 +22,7 @@ import com.graduationproject.robokidsapp.util.hide
 import com.graduationproject.robokidsapp.util.show
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 @AndroidEntryPoint
 class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
@@ -39,13 +35,10 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
 
     private val infoViewModel: InfoViewModel by viewModels()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
-        MainActivity.connectBluetooth.bluetooth_connect_device()
-
+//        MainActivity.connectBluetooth.bluetooth_connect_device()
     }
 
 
@@ -54,15 +47,12 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
         //Hide status bar
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-
-        MainActivity.connectBluetooth.led_on_off("s")
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHomeKidsBinding.inflate(inflater, container, false)
 
@@ -80,10 +70,10 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            rvKids.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvKids.adapter = adapter
             rvKids.setHasFixedSize(true)
         }
-
 
         // this listen to live data in viewModel (getParent)
         observerGetParent()
@@ -107,9 +97,11 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
                 is Resource.Success -> {
                     binding.progressBarHomeKids.hide()
 
-                    val image = resource.data.profile_img
-
-                    binding.imgParent.setImageResource(R.drawable.dad)
+                    if(resource.data.gender == "father"){
+                        binding.imgParent.setImageResource(R.drawable.father)
+                    }else{
+                        binding.imgParent.setImageResource(R.drawable.mother)
+                    }
                 }
             }
         }
@@ -145,8 +137,7 @@ class HomeKidsFragment : Fragment(),ChildsAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(child: Child) {
-
-        val action = HomeKidsFragmentDirections.actionHomeKidsFragmentToContentFragment(child)
+        val action = HomeKidsFragmentDirections.actionHomeKidsFragmentToContentEnterSplashFragment(child)
         mNavController.navigate(action)
     }
 

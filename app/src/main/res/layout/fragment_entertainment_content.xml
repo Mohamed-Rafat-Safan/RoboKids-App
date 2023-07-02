@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/main_background"
     tools:context=".ui.kidsFragments.EntertainmentContentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
         android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,12 +40,14 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_child"
+            android:id="@+id/entertainment_content_imgChild"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
             android:layout_gravity="end"
-            android:src="@drawable/boy"
-            android:layout_marginRight="@dimen/_8sdp"
+            android:background="@drawable/bg_select_gender_default"
+            android:src="@drawable/avatar1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

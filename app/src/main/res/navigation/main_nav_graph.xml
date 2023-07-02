@@ -31,13 +31,13 @@
             app:destination="@id/welcomeFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_parentsORKidsFragment_to_contentFragment"
-            app:destination="@id/contentFragment" />
-        <action
             android:id="@+id/action_parentsORKidsFragment_to_parentsHomeFragment"
             app:destination="@id/parentsHomeFragment"
             app:popUpTo="@id/parentsORKidsFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_parentsORKidsFragment_to_contentEnterSplashFragment"
+            app:destination="@id/contentEnterSplashFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -277,14 +277,8 @@
         android:label="fragment_content"
         tools:layout="@layout/fragment_content" >
         <action
-            android:id="@+id/action_contentFragment_to_homeKidsFragment"
-            app:destination="@id/homeKidsFragment" />
-        <action
             android:id="@+id/action_contentFragment_to_educationalContentFragment"
             app:destination="@id/educationalContentFragment" />
-        <action
-            android:id="@+id/action_contentFragment_to_parentsORKidsFragment"
-            app:destination="@id/parentsORKidsFragment" />
         <action
             android:id="@+id/action_contentFragment_to_intertainmentContentFragment"
             app:destination="@id/intertainmentContentFragment" />
@@ -298,13 +292,13 @@
         android:label="fragment_home_kids"
         tools:layout="@layout/fragment_home_kids" >
         <action
-            android:id="@+id/action_homeKidsFragment_to_contentFragment"
-            app:destination="@id/contentFragment" />
-        <action
             android:id="@+id/action_homeKidsFragment_to_parentsHomeFragment"
             app:destination="@id/parentsHomeFragment"
             app:popUpTo="@id/homeKidsFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeKidsFragment_to_contentEnterSplashFragment"
+            app:destination="@id/contentEnterSplashFragment" />
     </fragment>
     <fragment
         android:id="@+id/educationalContentFragment"
@@ -317,9 +311,6 @@
         <action
             android:id="@+id/action_educationalContentFragment_to_educationalSectionFragment"
             app:destination="@id/educationalSectionFragment" />
-        <argument
-            android:name="currentChild"
-            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentVidoFramFragment"
@@ -347,9 +338,6 @@
         <action
             android:id="@+id/action_intertainmentContentFragment_to_gamingSectionFragment"
             app:destination="@id/gamingSectionFragment" />
-        <argument
-            android:name="currentChild"
-            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
     <fragment
         android:id="@+id/intertainmentSectionFragment"
@@ -471,9 +459,9 @@
     </fragment>
     <fragment
         android:id="@+id/englishQuiz1Fragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.EnglishQuiz1Fragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.ConnectQuizFragment"
         android:label="fragment_english_quiz1"
-        tools:layout="@layout/fragment_english_quiz1" >
+        tools:layout="@layout/fragment_connect_quiz" >
         <action
             android:id="@+id/action_englishQuiz1Fragment_self"
             app:destination="@id/englishQuiz1Fragment"
@@ -485,9 +473,9 @@
     </fragment>
     <fragment
         android:id="@+id/mathQuiz1Fragment"
-        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.MathQuiz1Fragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.quizzes.MathQuizFragment"
         android:label="fragment_math_quiz1"
-        tools:layout="@layout/fragment_math_quiz1" >
+        tools:layout="@layout/fragment_math_quiz" >
         <action
             android:id="@+id/action_mathQuiz1Fragment_self"
             app:destination="@id/mathQuiz1Fragment"
@@ -507,5 +495,19 @@
         <argument
             android:name="language"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/contentEnterSplashFragment"
+        android:name="com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment"
+        android:label="fragment_content_enter_splash"
+        tools:layout="@layout/fragment_content_enter_splash" >
+        <action
+            android:id="@+id/action_contentEnterSplashFragment_to_contentFragment"
+            app:destination="@id/contentFragment"
+            app:popUpTo="@id/contentEnterSplashFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="currentChild"
+            app:argType="com.graduationproject.robokidsapp.data.model.Child" />
     </fragment>
 </navigation>

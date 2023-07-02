@@ -9,11 +9,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentGamingSectionBinding
-import com.graduationproject.robokidsapp.databinding.FragmentParentsDataBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
-import com.graduationproject.robokidsapp.ui.parentsFragments.SplashFragmentDirections
-import com.graduationproject.robokidsapp.util.toast
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
+import com.graduationproject.robokidsapp.util.hide
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,9 +34,16 @@ class GamingSectionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentGamingSectionBinding.inflate(inflater, container, false)
+
+        if (ContentFragment.currentChild.childName == "") { // is not register
+            binding.gamingSectionImageChild.hide()
+        } else {
+            val imageDrawable = getChildAvatarFormAssets(ContentFragment.currentChild.childAvatar, requireContext())
+            binding.gamingSectionImageChild.setImageDrawable(imageDrawable)
+        }
 
         binding.XOGame.setOnClickListener {
             val action = GamingSectionFragmentDirections.actionGamingSectionFragmentToTicTacToeFragment()

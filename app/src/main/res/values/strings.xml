@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">RoboKids App</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">RoboKids</string>
+
     <string name="welcome_back">&#x0020;<u>Welcome Back</u></string>
     <string name="sign_up_now"><u>Sign Up Now</u></string>
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
-    <string name="add_kids"><u>add kids</u></string>
     <string name="sign_up_title">Sign up</string>
     <string name="skip"><u>Skip</u></string>
 
@@ -37,9 +36,9 @@
                               \n- Enter your email and password.
                               \n- Choose the country.
                               \n- Click "Login".</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="addKids">Add Kids</string>
+
+    <string name="child_avatar">child photo</string>
+    <string name="addKids">Add Child</string>
     <string name="isYourChild">Is Your Child...</string>
     <string name="or">OR</string>
     <string name="childName">Child Name</string>
@@ -47,6 +46,16 @@
     <string name="childAge">Child Age</string>
     <string name="boy">Boy</string>
     <string name="girl">girl</string>
+    <string name="avatar_select">Choose cartoon character like your child</string>
+    <string name="advance_options">Advance Options</string>
+    <string name="add_child_password">Add child password</string>
+    <string name="enter_child_password">Enter child password</string>
+    <string name="four_digits">Consists 4 digits only</string>
+    <string name="enter_four_digits">Enter four digits</string>
+    <string name="choose_avatar">Choose child character</string>
+
+
+
     <string name="createNewPassword">Create New Password</string>
     <string name="infoPassword">Set your new password so you can login and access RoboKids</string>
     <string name="oldPassword">Old Password</string>
@@ -77,7 +86,6 @@
     <string name="thurs">Thurs</string>
     <string name="fri">Fri</string>
     <string name="enterPassword">Enter Your Password</string>
-    <string name="rememberMe">Remember Me</string>
     <string name="sign_in">Sign in</string>
     <string name="haveAccount">Don\'t Have an account? </string>
     <string name="quiz1">Quiz 1</string>
@@ -130,7 +138,7 @@
     <string name="del">DEL</string>
     <string name="very_bad">Very Bad</string>
     <string name="try_again">Try Again</string>
-    <string name="Stories">Films</string>
+    <string name="Films">Films</string>
     <string name="Music">Music</string>
     <string name="games">Games</string>
     <string name="you_won">You Won!</string>
@@ -185,7 +193,7 @@
     <string name="boardEnglish">Your child entered the section of learning to write English letters in time</string>
     <string name="boardMath">Your child entered the section of learning to write numbers in time</string>
     <string name="boardPhoto">Your child entered the section of learning to write the names of the pictures in time</string>
-
+ئ
 
     <!-- Strings used for fragments for navigation -->
 

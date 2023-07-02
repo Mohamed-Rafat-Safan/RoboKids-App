@@ -8,17 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.VideoAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentSectionBinding
 import com.graduationproject.robokidsapp.data.model.Videos
-import com.graduationproject.robokidsapp.ui.MainActivity
-import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
-import com.graduationproject.robokidsapp.util.Resource
-import com.graduationproject.robokidsapp.util.hide
-import com.graduationproject.robokidsapp.util.show
-import com.graduationproject.robokidsapp.util.toast
+import com.graduationproject.robokidsapp.util.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -45,9 +39,17 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEntertainmentSectionBinding.inflate(inflater, container, false)
+
+        if(ContentFragment.currentChild.childName==""){ // is not register
+            binding.ivChild.hide()
+        }else{
+            val imageDrawable =
+                getChildAvatarFormAssets(ContentFragment.currentChild.childAvatar, requireContext())
+            binding.ivChild.setImageDrawable(imageDrawable)
+        }
 
         sectionName = arguments?.getString("section_name")!!
         videoList = ArrayList()
@@ -55,7 +57,7 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
         if(sectionName == "Films"){
             contentViewModel.getFilmsContent()
             observerGetFilms()
-            binding.tvSectionName.text = getString(R.string.Stories)
+            binding.tvSectionName.text = getString(R.string.Films)
         }else {
             contentViewModel.getMusicContent()
             observerGetMusic()
@@ -63,7 +65,6 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
         }
 
         adapter = VideoAdapter(requireContext(),contentViewModel.storageInstance,this)
-//        binding.rvEntertainmentSection.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
         binding.rvEntertainmentSection.adapter = adapter
         binding.rvEntertainmentSection.setHasFixedSize(true)
 
@@ -134,10 +135,10 @@ class EntertainmentSectionFragment : Fragment() , VideoAdapter.OnItemClickListen
         val action = EntertainmentSectionFragmentDirections.actionIntertainmentSectionFragmentToIntertainmentVidoFramFragment(videos)
         mNavController.navigate(action)
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }

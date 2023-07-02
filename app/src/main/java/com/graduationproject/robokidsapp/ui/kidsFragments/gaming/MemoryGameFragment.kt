@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.databinding.FragmentMemoryGameBinding
 import com.graduationproject.robokidsapp.modelGaming.MemoryCard
-import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 import kotlinx.coroutines.*
 
 class MemoryGameFragment : Fragment() {
@@ -34,13 +34,13 @@ class MemoryGameFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        MainActivity.connectBluetooth.led_on_off("m")
+        arduinoBluetooth.sendMessage("memoryGame-") // send result to arduino bluetooth
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMemoryGameBinding.inflate(inflater, container, false)
 
@@ -87,7 +87,8 @@ class MemoryGameFragment : Fragment() {
                 button.alpha = 0.8f
                 button.setBackgroundResource(R.drawable.bg_memory_game_true)
                 if (count == 6){
-                    MainActivity.connectBluetooth.led_on_off("w")
+                    arduinoBluetooth.sendMessage("mgWin-") // send result to arduino bluetooth
+
                     GlobalScope.launch {
                         withContext(Dispatchers.Main){
                             buttons.forEachIndexed { index, Button ->

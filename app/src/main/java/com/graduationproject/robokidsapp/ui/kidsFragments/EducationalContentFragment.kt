@@ -1,23 +1,20 @@
 package com.graduationproject.robokidsapp.ui.kidsFragments
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalContentBinding
 import com.graduationproject.robokidsapp.data.model.Content
-import com.graduationproject.robokidsapp.ui.MainActivity
-import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
+import com.graduationproject.robokidsapp.util.hide
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,17 +27,13 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
     private lateinit var mNavController: NavController
     private lateinit var listContent: ArrayList<Content>
 
-    private val args by navArgs<EducationalContentFragmentArgs>()
-
     lateinit var startDate: Date
     lateinit var endDate: Date
 
-
-    private val infoViewModel: InfoViewModel by viewModels()
-
-    companion object{
+    companion object {
         var educationalTime = 0
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,17 +45,23 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
 
     override fun onResume() {
         super.onResume()
-
-        MainActivity.connectBluetooth.led_on_off("d")
-
+        arduinoBluetooth.sendMessage("educCont-")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEducationalContentBinding.inflate(inflater, container, false)
 
+        if (ContentFragment.currentChild.childName == "") { // is not register
+            binding.educationalContentImgChild.hide()
+        } else {
+            val imageDrawable =
+                getChildAvatarFormAssets(ContentFragment.currentChild.childAvatar, requireContext())
+            binding.educationalContentImgChild.setImageDrawable(imageDrawable)
+        }
 
         binding.educationalContentBack.setOnClickListener {
             mNavController.currentBackStackEntry?.let { backEntry ->
@@ -77,10 +76,10 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
 
 
         val adapter = ContentAdapter(requireContext(), listContent, this)
-        binding.rvEducationContent.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvEducationContent.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvEducationContent.adapter = adapter
         binding.rvEducationContent.setHasFixedSize(true)
-
 
         return binding.root
     }
@@ -90,12 +89,6 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
         val content = listContent[position]
         val action = EducationalContentFragmentDirections.actionEducationalContentFragmentToEducationalSectionFragment(content.contentName)
         mNavController.navigate(action)
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 
@@ -120,6 +113,11 @@ class EducationalContentFragment : Fragment(), ContentAdapter.OnItemClickListene
         val totalSecond = endSecond - startSecond
 
         educationalTime = (totalHour * 60) + totalMunit + (totalSecond / 60)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

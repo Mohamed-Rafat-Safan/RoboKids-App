@@ -48,7 +48,6 @@ class InfoRepositoryImpl(
                 mapOf(
                     "name" to parent.name,
                     "gender" to parent.gender,
-                    "profile_img" to parent.profile_img,
                     "countryCode" to parent.countryCode,
                     "birth_date" to parent.birth_date
                 )

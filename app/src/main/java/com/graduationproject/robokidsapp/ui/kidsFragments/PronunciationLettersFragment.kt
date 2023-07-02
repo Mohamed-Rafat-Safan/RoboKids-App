@@ -21,12 +21,11 @@ import com.chaquo.python.android.AndroidPlatform
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -146,22 +145,22 @@ class PronunciationLettersFragment : Fragment() {
 
     fun checkContentType() {
         if (contentType == "Arabic") {
-            MainActivity.connectBluetooth.led_on_off("a")
+            arduinoBluetooth.sendMessage("proArabicLetter-")  // send message to arduino bluetooth
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.arabic_letters)
             playSound()
         } else if (contentType == "English") {
-            MainActivity.connectBluetooth.led_on_off("e")
+            arduinoBluetooth.sendMessage("proEnglishLetter-")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.english_letters)
             playSound()
         } else if (contentType == "Math") {
-            MainActivity.connectBluetooth.led_on_off("h")
+            arduinoBluetooth.sendMessage("proNumbers-")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.numbers)
             playSound()
         } else if (contentType == "ImageKnow") {
-            MainActivity.connectBluetooth.led_on_off("i")
+            arduinoBluetooth.sendMessage("proImageName-")
             Glide.with(this).load(listImages[imageCounter].imageUrl).into(binding.letterImage)
             binding.pronunciationLettersTitle.text = getString(R.string.photo)
             playSound()
@@ -214,28 +213,37 @@ class PronunciationLettersFragment : Fragment() {
                 }
             }
         } else {
-            executor.execute {
-                mediaRecorder?.stop()
-                mediaRecorder?.release()
-                mediaRecorder = null
-                playableSecond = second
-                dummySecond = second
-                second = 0
-                isRecording = false
-
-                activity?.runOnUiThread {
-                    handler.removeCallbacksAndMessages(null)
-                    //binding.pronunciationLettersSpeaker.isEnabled = true
-                    binding.pronunciationLettersEnableSpeaker.isEnabled = true
-                    binding.pronunciationLettersEnableMic.visibility = View.INVISIBLE
-                    binding.pronunciationLettersMic.visibility = View.VISIBLE
-                }
-            }
+            // this stop the record if is playing
+            stopRecording()
         }
     } // end method startRecording
 
 
+    private fun stopRecording() {
+        executor.execute {
+            mediaRecorder?.stop()
+            mediaRecorder?.release()
+            mediaRecorder = null
+            playableSecond = second
+            dummySecond = second
+            second = 0
+            isRecording = false
+
+            activity?.runOnUiThread {
+                handler.removeCallbacksAndMessages(null)
+                //binding.pronunciationLettersSpeaker.isEnabled = true
+                binding.pronunciationLettersEnableSpeaker.isEnabled = true
+                binding.pronunciationLettersEnableMic.visibility = View.INVISIBLE
+                binding.pronunciationLettersMic.visibility = View.VISIBLE
+            }
+        }
+    }
+
     fun checkRecording() {
+        if (isRecording) {
+            stopRecording()
+        }
+
         if (!isPlaying) {
             if (path != null) {
 //                mediaPlayer!!.setDataSource(getRecordingFilePath())
@@ -380,10 +388,9 @@ class PronunciationLettersFragment : Fragment() {
 
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

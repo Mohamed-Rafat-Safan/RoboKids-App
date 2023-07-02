@@ -14,8 +14,7 @@ import com.graduationproject.robokidsapp.databinding.FragmentTicTacToeBinding
 import com.graduationproject.robokidsapp.modelGaming.Board
 import com.graduationproject.robokidsapp.modelGaming.BoardState
 import com.graduationproject.robokidsapp.modelGaming.Cell
-import com.graduationproject.robokidsapp.ui.MainActivity
-import kotlin.properties.Delegates
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 
 
 class TicTacToeFragment : Fragment() {
@@ -26,6 +25,7 @@ class TicTacToeFragment : Fragment() {
     val vm: MainActivityViewModel by viewModels()
     private var flag = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
@@ -33,13 +33,13 @@ class TicTacToeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        MainActivity.connectBluetooth.led_on_off("c")
+        arduinoBluetooth.sendMessage("tttGame-") // send result to arduino bluetooth
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         // Inflate the layout for this fragment
         _binding = FragmentTicTacToeBinding.inflate(inflater, container, false)
 
@@ -56,7 +56,7 @@ class TicTacToeFragment : Fragment() {
 
 
 
-    val updateBoard = Observer<Board> { board: Board ->
+    val updateBoard = Observer { board: Board ->
         binding.square0.setImageResource(board.topLeft.res)
         binding.square1.setImageResource(board.topCenter.res)
         binding.square2.setImageResource(board.topRight.res)
@@ -71,19 +71,22 @@ class TicTacToeFragment : Fragment() {
                 setupBoard(true)
                 flag = true
                 showWinningMessage(getString(R.string.you_won))
-                MainActivity.connectBluetooth.led_on_off("w")
+
+                arduinoBluetooth.sendMessage("tttWin-") // send result to arduino bluetooth
             }
             BoardState.CIRCLE_WON -> {
                 setupBoard(true)
                 flag = false
                 showWinningMessage(getString(R.string.you_lost))
-                MainActivity.connectBluetooth.led_on_off("y")
+
+                arduinoBluetooth.sendMessage("tttLost-") // send result to arduino bluetooth
             }
             BoardState.DRAW -> {
                 setupBoard(true)
                 flag = false
                 showWinningMessage(getString(R.string.it_draw))
-                MainActivity.connectBluetooth.led_on_off("y")
+
+                arduinoBluetooth.sendMessage("tttDraw-") // send result to arduino bluetooth
             }
             BoardState.INCOMPLETE -> {
                 setupBoard()
@@ -126,6 +129,8 @@ class TicTacToeFragment : Fragment() {
         binding.square7.setOnClickListener { vm.boardClicked(Cell.BOTTOM_CENTER) }
         binding.square8.setOnClickListener { vm.boardClicked(Cell.BOTTOM_RIGHT) }
         binding.buttonReset.setOnClickListener {
+            arduinoBluetooth.sendMessage("tttGame-") // send result to arduino bluetooth
+
             vm.resetBoard()
             binding.animationView.visibility = View.GONE
         }

@@ -12,8 +12,9 @@ import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.EducationalSectionsAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.data.model.EducationalSections
-import com.graduationproject.robokidsapp.ui.MainActivity
-import com.graduationproject.robokidsapp.util.toast
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
+import com.graduationproject.robokidsapp.util.hide
 
 
 class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItemClickListener {
@@ -21,9 +22,9 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
     private val binding get() = _binding!!
 
     private lateinit var mNavController: NavController
-    private lateinit var listSection:ArrayList<EducationalSections>
+    private lateinit var listSection: ArrayList<EducationalSections>
 
-    private lateinit var sectionData:String
+    private lateinit var sectionData: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,50 +35,64 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEducationalSectionBinding.inflate(inflater, container, false)
+
+        if (ContentFragment.currentChild.childName == "") { // is not register
+            binding.educationalSectionImgChild.hide()
+        } else {
+            val imageDrawable =
+                getChildAvatarFormAssets(ContentFragment.currentChild.childAvatar, requireContext())
+            binding.educationalSectionImgChild.setImageDrawable(imageDrawable)
+        }
 
         // get section name from content screen
         sectionData = arguments?.getString("currentSection")!!
 
         listSection = ArrayList()
 
-        if(sectionData=="Pronunciation"){
-            MainActivity.connectBluetooth.led_on_off("p")
-            listSection.add(EducationalSections("Arabic",R.drawable.speek_arapic))
-            listSection.add(EducationalSections("English",R.drawable.speek_abc))
-            listSection.add(EducationalSections("Math",R.drawable.speek_123))
-            listSection.add(EducationalSections("ImageKnow",R.drawable.animals))
-        }else if(sectionData=="Board"){
-            MainActivity.connectBluetooth.led_on_off("b")
-            listSection.add(EducationalSections("Arabic",R.drawable.board_arapic))
-            listSection.add(EducationalSections("English",R.drawable.board_abc))
-            listSection.add(EducationalSections("Math",R.drawable.board_123))
-            listSection.add(EducationalSections("Photo",R.drawable.animals))
-        }else if(sectionData=="Questions"){
-            MainActivity.connectBluetooth.led_on_off("q")
-            listSection.add(EducationalSections("Arabic",R.drawable.ques_arapic))
-            listSection.add(EducationalSections("English",R.drawable.ques_abc))
-            listSection.add(EducationalSections("Math",R.drawable.math))
+        if (sectionData == "Pronunciation") {
+           arduinoBluetooth.sendMessage("educSecPro-")  // send message to arduino bluetooth
+            listSection.add(EducationalSections("Arabic", R.drawable.speek_arapic))
+            listSection.add(EducationalSections("English", R.drawable.speek_abc))
+            listSection.add(EducationalSections("Math", R.drawable.speek_123))
+            listSection.add(EducationalSections("ImageKnow", R.drawable.animals))
+        } else if (sectionData == "Board") {
+            arduinoBluetooth.sendMessage("educSecBoard-")
+            listSection.add(EducationalSections("Arabic", R.drawable.board_arapic))
+            listSection.add(EducationalSections("English", R.drawable.board_abc))
+            listSection.add(EducationalSections("Math", R.drawable.board_123))
+            listSection.add(EducationalSections("Photo", R.drawable.animals))
+        } else if (sectionData == "Questions") {
+            arduinoBluetooth.sendMessage("educSecQues-")
+            listSection.add(EducationalSections("Arabic", R.drawable.ques_arapic))
+            listSection.add(EducationalSections("English", R.drawable.ques_abc))
+            listSection.add(EducationalSections("Math", R.drawable.math))
         }
 
 
-        val adapter = EducationalSectionsAdapter(requireContext() , listSection , this)
-        binding.rvEducationSection.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+        val adapter = EducationalSectionsAdapter(requireContext(), listSection, this)
+        binding.rvEducationSection.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvEducationSection.adapter = adapter
         binding.rvEducationSection.setHasFixedSize(true)
 
-        if (sectionData == "Pronunciation"){
+        if (sectionData == "Pronunciation") {
             binding.educationalSectionContentName.text = getString(R.string.Pronunciation)
-        }else if (sectionData == "Board"){
+        } else if (sectionData == "Board") {
             binding.educationalSectionContentName.text = getString(R.string.Board)
-        }else{
+        } else {
             binding.educationalSectionContentName.text = getString(R.string.Questions)
         }
 
-        binding.educationalContentBack.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+        binding.educationalSectionBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry ->
+                mNavController.popBackStack(
+                    backEntry.destination.id,
+                    true
+                )
+            }
         }
 
         return binding.root
@@ -87,17 +102,26 @@ class EducationalSectionFragment : Fragment(), EducationalSectionsAdapter.OnItem
 
     override fun onItemClick(position: Int) {
         val section = listSection[position]
-        when(sectionData){
-            "Pronunciation"->{
-                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToPronunciationLettersFragment(section.sectionName)
+        when (sectionData) {
+            "Pronunciation" -> {
+                val action =
+                    EducationalSectionFragmentDirections.actionEducationalSectionFragmentToPronunciationLettersFragment(
+                        section.sectionName
+                    )
                 mNavController.navigate(action)
             }
-            "Board"->{
-                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToWhiteboardFragment(section.sectionName)
+            "Board" -> {
+                val action =
+                    EducationalSectionFragmentDirections.actionEducationalSectionFragmentToWhiteboardFragment(
+                        section.sectionName
+                    )
                 mNavController.navigate(action)
             }
-            "Questions"->{
-                val action = EducationalSectionFragmentDirections.actionEducationalSectionFragmentToMainQuizzesFragment2(section.sectionName)
+            "Questions" -> {
+                val action =
+                    EducationalSectionFragmentDirections.actionEducationalSectionFragmentToMainQuizzesFragment2(
+                        section.sectionName
+                    )
                 mNavController.navigate(action)
             }
             else -> println("invalid section Data")

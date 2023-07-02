@@ -99,7 +99,7 @@
                         android:layout_height="@dimen/_60sdp"
                         android:background="@drawable/bg_select_gender"
                         android:padding="3dp"
-                        android:src="@drawable/dad" />
+                        android:src="@drawable/father" />
 
                     <TextView
                         android:id="@+id/tv_nameFather"

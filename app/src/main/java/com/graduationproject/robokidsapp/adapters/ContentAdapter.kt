@@ -45,8 +45,8 @@ class ContentAdapter(val context: Context, val listContent:ArrayList<Content>, v
                 nameContent.text = context.getString(R.string.Board)
             }else if(content.contentName == "Questions"){
                 nameContent.text = context.getString(R.string.Questions)
-            }else if(content.contentName == "Stories"){
-                nameContent.text = context.getString(R.string.Stories)
+            }else if(content.contentName == "Films"){
+                nameContent.text = context.getString(R.string.Films)
             }else if(content.contentName == "Music"){
                 nameContent.text = context.getString(R.string.Music)
             }else if(content.contentName == "Gaming"){

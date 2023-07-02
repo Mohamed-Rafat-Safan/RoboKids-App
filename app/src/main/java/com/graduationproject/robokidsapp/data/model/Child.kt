@@ -8,8 +8,9 @@ import java.util.Date
 data class Child(
     var id: String = "",
     val childName: String = "",
-    val childImage: Int = 0,
+    val childAvatar: Int = 0,
     val gender: String = "",
     val age: Int = 0,
-    val createDate:Date = Date()
+    var childPassword: String = "",
+    val createDate: Date = Date()
 ) : Parcelable

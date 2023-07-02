@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.adapters.ContentAdapter
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentContentBinding
-
 import com.graduationproject.robokidsapp.data.model.Content
-import com.graduationproject.robokidsapp.ui.MainActivity
-import com.graduationproject.robokidsapp.util.toast
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
+import com.graduationproject.robokidsapp.util.hide
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,7 +24,6 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
     private lateinit var listContent: ArrayList<Content>
-
 
     lateinit var startDate: Date
     lateinit var endDate: Date
@@ -40,21 +39,27 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
 
         startDate = Date()
         endDate = Date()
-
     }
 
     override fun onResume() {
         super.onResume()
-        MainActivity.connectBluetooth.led_on_off("t")
+        arduinoBluetooth.sendMessage("enterCont-") // send result to arduino bluetooth
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEntertainmentContentBinding.inflate(inflater, container, false)
 
+        if (ContentFragment.currentChild.childName == "") { // is not register
+            binding.entertainmentContentImgChild.hide()
+        } else {
+            val imageDrawable =
+                getChildAvatarFormAssets(ContentFragment.currentChild.childAvatar, requireContext())
+            binding.entertainmentContentImgChild.setImageDrawable(imageDrawable)
+        }
 
         listContent = ArrayList()
         listContent.add(Content("Films", R.drawable.stories))
@@ -82,9 +87,19 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    // this when click on any card in recyclerView
+    override fun onItemClick(position: Int) {
+        val sectionName = listContent[position].contentName
+
+        arduinoBluetooth.sendMessage("enter$sectionName-") // send result to arduino bluetooth
+
+        if (sectionName == "Gaming") {
+            val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToGamingSectionFragment()
+            mNavController.navigate(action)
+        } else {
+            val action = EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToIntertainmentSectionFragment(listContent[position].contentName)
+            mNavController.navigate(action)
+        }
     }
 
 
@@ -111,21 +126,9 @@ class EntertainmentContentFragment : Fragment(), ContentAdapter.OnItemClickListe
         entertainmentTime = (totalHour * 60) + totalMunit + (totalSecond / 60)
     }
 
-
-    // this when click on any card in recyclerView
-    override fun onItemClick(position: Int) {
-        if (listContent[position].contentName == "Gaming") {
-            val action =
-                EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToGamingSectionFragment()
-            mNavController.navigate(action)
-        } else {
-            val action =
-                EntertainmentContentFragmentDirections.actionIntertainmentContentFragmentToIntertainmentSectionFragment(
-                    listContent[position].contentName
-                )
-            mNavController.navigate(action)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-
 
 }

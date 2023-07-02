@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginHorizontal="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_1sdp"
     app:cardCornerRadius="@dimen/_10sdp">
 
 
@@ -22,14 +24,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_reports_kidsImage"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
+                android:background="@drawable/bg_select_gender_default"
+                android:src="@drawable/avatar1"
                 android:layout_gravity="start|center_vertical"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:src="@drawable/boy2" />
+                android:layout_marginHorizontal="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tv_reports_kidsName"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/main_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.kidsFragments.EntertainmentSectionFragment">
 
@@ -43,7 +43,10 @@
             android:id="@+id/iv_child"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/boy" />
+            android:background="@drawable/bg_select_gender_default"
+            android:src="@drawable/avatar1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="@dimen/_2sdp" />
 
     </LinearLayout>
 

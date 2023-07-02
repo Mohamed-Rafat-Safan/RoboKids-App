@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RoboKids App</string>
+    <string name="app_name">روبوكيدز</string>
     <string name="welcome_back">&#x0020;<u>مرحبًا بعودتك</u></string>
     <string name="sign_up_now">&#x0020;<u>أنشاء حساب الأن</u></string>
     <string name="sign_up_title">حساب جديد</string>
     <string name="draw_open">Open</string>
     <string name="draw_close">Close</string>
-    <string name="add_kids"><u>اضافة اطفال</u></string>
     <string name="skip"><u>تخطي</u></string>
     <string name="question1">هل التطبيق مجاني؟</string>
     <string name="question2">ما هو السن المناسب للاستفادة من التطبيق؟</string>
@@ -35,8 +34,9 @@
                               \n- أدخل بريدك الإلكتروني وكلمة المرور.
                               \n- اختر الدولة.
                               \n- انقر فوق "تسجيل الدخول".</string>
-    <string name="hello_blank_fragment">مرحبا جزء فارغ</string>
-    <string name="addKids">أضف الاطفال</string>
+
+    <string name="child_avatar">صورة طفلك</string>
+    <string name="addKids">أضف الطفل</string>
     <string name="isYourChild">هل طفلك...</string>
     <string name="or">أم</string>
     <string name="childName">ما اسمه؟</string>
@@ -44,6 +44,14 @@
     <string name="childAge">سن الطفل</string>
     <string name="boy">ولد</string>
     <string name="girl">بنت</string>
+    <string name="avatar_select">اختر شخصية كرتونية تشبه طفلك</string>
+    <string name="advance_options">خيارات متقدمة</string>
+    <string name="add_child_password">اضافة كلمة مرور للطفل</string>
+    <string name="enter_child_password">كلمة مرور الطفل</string>
+    <string name="four_digits">مكون من 4 أرقام فقط</string>
+    <string name="enter_four_digits">أدخل 4 أرقام</string>
+    <string name="choose_avatar">اختار شخصية لطفلك</string>
+
     <string name="createNewPassword">إنشاء كلمة مرور جديدة</string>
     <string name="infoPassword">قم بتعيين كلمة المرور الجديدة حتى تتمكن من تسجيل الدخول والوصول إلى RoboKids</string>
     <string name="oldPassword">كلمة المرور القديمة</string>
@@ -74,7 +82,6 @@
     <string name="thurs">الخميس</string>
     <string name="fri">الجمعه</string>
     <string name="enterPassword">ادخل كلمة المرور</string>
-    <string name="rememberMe">تذكرنى</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="haveAccount">ليس لديك حساب؟</string>
     <string name="quiz1">الاختبار١</string>
@@ -127,7 +134,7 @@
     <string name="del">مسح</string>
     <string name="very_bad">سئ جدا</string>
     <string name="try_again">حاول مره اخري</string>
-    <string name="Stories">افلام</string>
+    <string name="Films">افلام</string>
     <string name="Music">اغاني</string>
     <string name="games">العاب</string>
     <string name="you_won">لقد ربحت</string>

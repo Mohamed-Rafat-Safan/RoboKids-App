@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/main_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.kidsFragments.gaming.GamingSectionFragment">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
         android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,13 +35,17 @@
             android:text="@string/games"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/_25ssp" />
+            android:textSize="@dimen/_23ssp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/gaming_section_imageChild"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/boy" />
+            android:layout_gravity="center"
+           android:background="@drawable/bg_select_gender_default"
+            android:src="@drawable/avatar1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="@dimen/_2sdp" />
 
     </LinearLayout>
 

@@ -157,13 +157,13 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_select_country"
                     android:orientation="horizontal"
+                    android:layout_marginHorizontal="2dp"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingVertical="@dimen/_5sdp"
                     android:elevation="@dimen/_3sdp" >
 
                     <com.hbb20.CountryPickerView
                         android:id="@+id/countryPicker"
-
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 

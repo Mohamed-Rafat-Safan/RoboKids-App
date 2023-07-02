@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.navigation.NavController
-import com.graduationproject.robokidsapp.R
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.graduationproject.robokidsapp.databinding.FragmentEntertainmentVideoFramBinding
@@ -29,7 +28,7 @@ class EntertainmentVideoFramFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentEntertainmentVideoFramBinding.inflate(inflater, container, false)
 
@@ -57,7 +56,12 @@ class EntertainmentVideoFramFragment : Fragment() {
 
 
         binding.entertainmentVideoBack.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id,true) }
+            mNavController.currentBackStackEntry?.let { backEntry ->
+                mNavController.popBackStack(
+                    backEntry.destination.id,
+                    true
+                )
+            }
         }
 
         return binding.root

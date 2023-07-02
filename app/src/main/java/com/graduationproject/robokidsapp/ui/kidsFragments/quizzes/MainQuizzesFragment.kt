@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.graduationproject.robokidsapp.databinding.FragmentMainQuizzesBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 
 class MainQuizzesFragment : Fragment() {
     private var _binding: FragmentMainQuizzesBinding? = null
@@ -17,6 +17,7 @@ class MainQuizzesFragment : Fragment() {
 
     private lateinit var typeQuiz:String
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
@@ -24,15 +25,13 @@ class MainQuizzesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
-        MainActivity.connectBluetooth.led_on_off("z")
-
+        arduinoBluetooth.sendMessage("mainQuizzes-")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMainQuizzesBinding.inflate(inflater, container, false)
 

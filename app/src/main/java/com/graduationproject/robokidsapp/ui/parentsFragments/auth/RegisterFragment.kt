@@ -90,7 +90,6 @@ class RegisterFragment : Fragment(), TextWatcher {
             id = "",
             email = binding.etEmailRegister.text.toString(),
             name = "",
-            profile_img = "",
             gender = "",
             countryCode = countryCode,
             birth_date = ""

@@ -13,56 +13,48 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
 import com.graduationproject.robokidsapp.R
-import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
 import com.graduationproject.robokidsapp.databinding.ActivityMainBinding
 import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragmentDirections
 import com.graduationproject.robokidsapp.util.Resource
-import com.graduationproject.robokidsapp.util.hide
-import com.graduationproject.robokidsapp.util.show
-import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 //                              بسم الله الرحمن الرحيم
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
-    companion object{
-        lateinit var binding:ActivityMainBinding
-        lateinit var connectBluetooth :  ConnectBluetooth
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    companion object {
+        lateinit var binding: ActivityMainBinding
     }
+
     private lateinit var navController: NavController
 
     private val authViewModel: AuthViewModel by viewModels()
-    private lateinit var infoViewModel:InfoViewModel
+    private lateinit var infoViewModel: InfoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        connectBluetooth = ConnectBluetooth(this)
-
-        if(authViewModel.currentUser != null){
+        // هذه ال if علشان لما يفتح ال navigation drawer يلاقي الداتا الي سجل بيها تكون موجوده
+        if (authViewModel.currentUser != null) {
             infoViewModel = ViewModelProvider(this).get(InfoViewModel::class.java)
             infoViewModel.getParentData()
             lifecycleScope.launch {
-                infoViewModel.getParent.observe(this@MainActivity){resource->
+                infoViewModel.getParent.observe(this@MainActivity) { resource ->
                     when (resource) {
                         is Resource.Loading -> {}
                         is Resource.Failure -> {
-                            showToast(""+ resource.error)
+                            showToast("" + resource.error)
                         }
                         is Resource.Success -> {
                             val view = binding.navigationView.getHeaderView(0)
@@ -78,14 +70,24 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
         // this code is Permission
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            ActivityCompat.requestPermissions(this, permissions,0)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            val permissions = arrayOf(
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            ActivityCompat.requestPermissions(this, permissions, 0)
         }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
 
@@ -97,9 +99,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         binding.navigationView.setNavigationItemSelectedListener(this)
 
 
-
-        val actionToggle = ActionBarDrawerToggle(this, binding.drawLayout , binding.customToolbarMainActivity ,
-            R.string.draw_open , R.string.draw_close)
+        val actionToggle = ActionBarDrawerToggle(
+            this, binding.drawLayout, binding.customToolbarMainActivity,
+            R.string.draw_open, R.string.draw_close
+        )
 
         binding.drawLayout.addDrawerListener(actionToggle)
         actionToggle.syncState()
@@ -107,30 +110,35 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.myKids -> {
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToHomeKidsFragment()
+                val action =
+                    ParentsHomeFragmentDirections.actionParentsHomeFragmentToHomeKidsFragment()
                 navController.navigate(action)
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.knowApp -> {
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToGetToKnowTheAppFragment2()
+                val action =
+                    ParentsHomeFragmentDirections.actionParentsHomeFragmentToGetToKnowTheAppFragment2()
                 navController.navigate(action)
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.commonQuestions -> {
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToCommonQuestionsFragment()
+                val action =
+                    ParentsHomeFragmentDirections.actionParentsHomeFragmentToCommonQuestionsFragment()
                 navController.navigate(action)
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.setting -> {
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToSettingFragment()
+                val action =
+                    ParentsHomeFragmentDirections.actionParentsHomeFragmentToSettingFragment()
                 navController.navigate(action)
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
             }
             R.id.signOut -> {
                 authViewModel.logout {}
-                val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
+                val action =
+                    ParentsHomeFragmentDirections.actionParentsHomeFragmentToWelcomeFragment()
                 navController.navigate(action)
 
                 binding.drawLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -142,25 +150,21 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
 
-
-
-
-    fun closeDrawer(){
+    fun closeDrawer() {
         binding.drawLayout.closeDrawer(GravityCompat.START)
     }
 
-    fun showToast(str:String){
-        Toast.makeText(this, str ,Toast.LENGTH_LONG).show()
+    fun showToast(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show()
     }
 
     // هذه الدله علشان لو انت كنت فاتح ال navigation drawer ضغط علي زر الرجوع ميخرجش من التطبيق كاكل
     // لا هي لو مفتوحه هيعملها close عادي ومش هيخرجك من التطبيق
     override fun onBackPressed() {
-        if(binding.drawLayout.isDrawerOpen(GravityCompat.START))
+        if (binding.drawLayout.isDrawerOpen(GravityCompat.START))
             closeDrawer()
         else
             super.onBackPressed()
     }
-
 }
 

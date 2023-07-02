@@ -11,14 +11,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.graduationproject.robokidsapp.data.model.ConnectBluetooth
+import com.graduationproject.robokidsapp.data.model.Child
 import com.graduationproject.robokidsapp.data.model.Report
 import com.graduationproject.robokidsapp.databinding.FragmentContentBinding
-import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
+import com.graduationproject.robokidsapp.ui.parentsFragments.auth.AuthViewModel
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.InfoViewModel
 import com.graduationproject.robokidsapp.util.Constants.Companion.EDUCATIONAL_FLAG
 import com.graduationproject.robokidsapp.util.Constants.Companion.ENTERTAINMENT_FLAG
 import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
+import com.graduationproject.robokidsapp.util.hide
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -33,16 +36,19 @@ class ContentFragment : Fragment() {
     private lateinit var mNavController: NavController
     private val args by navArgs<ContentFragmentArgs>()
 
-    companion object{
+    companion object {
+        var currentChild = Child()
         var listOfNotifications = ArrayList<String>()
     }
+
 
     private var contentFlag = ""
     private var counterUpdated = 0
 
-    private lateinit var listReports: java.util.ArrayList<Report>
+    private lateinit var listReports: ArrayList<Report>
 
     private val infoViewModel: InfoViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
 
 
     override fun onResume() {
@@ -52,68 +58,59 @@ class ContentFragment : Fragment() {
 
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
-        // get all reports from firebase
-        infoViewModel.getReports(args.currentChild.id)
-        observerGetReports()
+        arduinoBluetooth.sendMessage("selectContent-") // send message to arduino bluetooth
 
-        MainActivity.connectBluetooth.led_on_off("s")
+        // check if parent is register in app or not
+        if (authViewModel.currentUser != null) {
+            // get all reports from firebase
+            infoViewModel.getReports(args.currentChild.id)
+            observerGetReports()
 
+            currentChild = args.currentChild
+            //get data from Home_Kids
+            binding.tvContentChildName.text = currentChild.childName
+            val drawable = getChildAvatarFormAssets(currentChild.childAvatar, requireContext())
+            binding.ivChild.setImageDrawable(drawable)
+        } else {
+            binding.tvContentChildName.hide()
+            binding.ivChild.hide()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentContentBinding.inflate(inflater, container, false)
 
         listReports = ArrayList()
 
-        //get data from Home_Kids
-        binding.tvContentChildName.text = args.currentChild.childName
-        binding.ivChild.setImageResource(args.currentChild.childImage)
-
-
         binding.educationalContent.setOnClickListener {
-            val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment(args.currentChild)
+            val action = ContentFragmentDirections.actionContentFragmentToEducationalContentFragment()
             mNavController.navigate(action)
             contentFlag = EDUCATIONAL_FLAG
             counterUpdated = 0
         }
 
         binding.entertainmentContent.setOnClickListener {
-            val action =
-                ContentFragmentDirections.actionContentFragmentToIntertainmentContentFragment(args.currentChild)
+            val action = ContentFragmentDirections.actionContentFragmentToIntertainmentContentFragment()
             mNavController.navigate(action)
             contentFlag = ENTERTAINMENT_FLAG
             counterUpdated = 0
         }
 
         binding.back.setOnClickListener {
-            mNavController.currentBackStackEntry?.let { backEntry ->
-                mNavController.popBackStack(
-                    backEntry.destination.id,
-                    true
-                )
-            }
+            mNavController.currentBackStackEntry?.let { backEntry -> mNavController.popBackStack(backEntry.destination.id, true) }
         }
-
 
         return binding.root
     }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
 
     private fun checkContent(report: Report, isEqual: Boolean) {
         if (contentFlag == EDUCATIONAL_FLAG) {
@@ -121,7 +118,7 @@ class ContentFragment : Fragment() {
             val reportUpdated = getObjReport(isEqual, report)
             infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
             observeUpdateReport()
-        } else if(contentFlag == ENTERTAINMENT_FLAG) {
+        } else if (contentFlag == ENTERTAINMENT_FLAG) {
             listOfNotifications.addAll(report.notifications)
             val reportUpdated = getObjReport(isEqual, report)
             infoViewModel.updateReports(args.currentChild.id, report.id, reportUpdated)
@@ -139,7 +136,6 @@ class ContentFragment : Fragment() {
 
         val dayNameFormat = SimpleDateFormat("EEEE")
         val dayName: String = dayNameFormat.format(date)
-
 
         for (report in listReports) {
             if (report.dayName == dayName) {
@@ -160,9 +156,9 @@ class ContentFragment : Fragment() {
                 id = report.id,
                 dayName = report.dayName,
                 dayDate = report.dayDate,
-                educationalTime = (EducationalContentFragment.educationalTime+report.educationalTime.toInt()).toString(),
+                educationalTime = (EducationalContentFragment.educationalTime + report.educationalTime.toInt()).toString(),
                 entertainmentTime = report.entertainmentTime,
-                totalTime = (EducationalContentFragment.educationalTime+report.totalTime.toInt()).toString(),
+                totalTime = (EducationalContentFragment.educationalTime + report.totalTime.toInt()).toString(),
                 notifications = listOfNotifications
             )
         } else if (!isEqual && contentFlag == EDUCATIONAL_FLAG) {
@@ -181,8 +177,8 @@ class ContentFragment : Fragment() {
                 dayName = report.dayName,
                 dayDate = report.dayDate,
                 educationalTime = report.educationalTime,
-                entertainmentTime = (EntertainmentContentFragment.entertainmentTime+report.entertainmentTime.toInt()).toString(),
-                totalTime = (report.totalTime.toInt()+EntertainmentContentFragment.entertainmentTime).toString(),
+                entertainmentTime = (EntertainmentContentFragment.entertainmentTime + report.entertainmentTime.toInt()).toString(),
+                totalTime = (report.totalTime.toInt() + EntertainmentContentFragment.entertainmentTime).toString(),
                 notifications = listOfNotifications
             )
         } else {
@@ -223,7 +219,7 @@ class ContentFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     listReports = resource.data
-                    if (counterUpdated == 0){
+                    if (counterUpdated == 0) {
                         updateReportsForContents()
                     }
                 }
@@ -231,10 +227,14 @@ class ContentFragment : Fragment() {
         }
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        arduinoBluetooth.sendMessage("welcome-")   // send message to arduino bluetooth
     }
 
 }

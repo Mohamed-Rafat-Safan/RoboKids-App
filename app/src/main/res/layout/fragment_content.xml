@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/baby_blue"
     tools:context=".ui.kidsFragments.ContentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
-        android:layoutDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,11 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:paddingEnd="@dimen/_6ssp"
-            android:text="child name"
+            android:layout_marginRight="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:text="محمد"
             android:textColor="@color/black"
             android:textSize="@dimen/_18ssp"
-            android:layout_marginRight="@dimen/_5sdp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_child"
             app:layout_constraintEnd_toStartOf="@+id/iv_child"
             app:layout_constraintTop_toTopOf="@+id/iv_child" />
@@ -44,7 +45,10 @@
             android:id="@+id/iv_child"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/boy"
+            android:background="@drawable/bg_select_gender_default"
+            android:src="@drawable/avatar1"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,8 +58,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,18 +71,20 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_30sdp"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_130sdp"
-                android:src="@drawable/educational"/>
+                android:src="@drawable/educational" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/educational"
-                android:textSize="@dimen/_20sdp"
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/black"/>
+                android:text="@string/educational"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,18 +93,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_30sdp"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_130sdp"
-                android:src="@drawable/entertaining"/>
+                android:src="@drawable/entertaining" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/entertainment"
-                android:textSize="@dimen/_20sdp"
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/black"/>
+                android:text="@string/entertainment"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

@@ -98,6 +98,7 @@ class WhiteboardAdapter(
         }
 
 
+        // machine learning
         WhiteboardFragment.binding.whiteboardCheckAnswer.setOnClickListener {
             WhiteboardFragment.binding.animationCorrect.hide()
             WhiteboardFragment.binding.animationIncorrect.hide()

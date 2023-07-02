@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.graduationproject.robokidsapp.R
@@ -17,6 +14,7 @@ import com.graduationproject.robokidsapp.databinding.CustomLayoutReportsKidsBind
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragment
 import com.graduationproject.robokidsapp.ui.parentsFragments.info.ParentsHomeFragmentDirections
 import com.graduationproject.robokidsapp.util.Constants.Companion.EDIT_KIDS
+import com.graduationproject.robokidsapp.util.getChildAvatarFormAssets
 
 
 class ReportsKidsAdapter(
@@ -42,9 +40,8 @@ class ReportsKidsAdapter(
 
         holder.bind(child)
 
-
         holder.optionChild.setOnClickListener {
-            showOptionKids(it,position, child)
+            showOptionKids(it, position, child)
         }
 
         holder.btnReports.setOnClickListener {
@@ -58,11 +55,10 @@ class ReportsKidsAdapter(
     }
 
 
-    class ReportsViewHolder(
+    inner class ReportsViewHolder(
         val binding: CustomLayoutReportsKidsBinding,
         onItemClickListener: OnItemClickListener
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(bindingAdapterPosition)
@@ -77,7 +73,8 @@ class ReportsKidsAdapter(
 
         fun bind(child: Child) {
             nameChild.text = child.childName
-            imageChild.setImageResource(child.childImage)
+            val imageDrawable = getChildAvatarFormAssets(child.childAvatar, context)
+            imageChild.setImageDrawable(imageDrawable)   // عدل يا حبيب قلبي
         }
     }
 
@@ -96,7 +93,11 @@ class ReportsKidsAdapter(
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.editKids -> {
-                    val action = ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment(EDIT_KIDS,child)
+                    val action =
+                        ParentsHomeFragmentDirections.actionParentsHomeFragmentToAddKidsFragment(
+                            EDIT_KIDS,
+                            child
+                        )
                     ParentsHomeFragment.mNavController.navigate(action)
                 }
                 R.id.deleteKids -> {

@@ -50,7 +50,7 @@ class KidsReportsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentKidsReportsBinding.inflate(inflater, container, false)
 
@@ -123,6 +123,13 @@ class KidsReportsFragment : Fragment() {
                     listReports[6]
                 )
             mNavController.navigate(action)
+        }
+
+
+        binding.ivBack.setOnClickListener {
+            mNavController.currentBackStackEntry?.let { backEntry ->
+                mNavController.popBackStack(backEntry.destination.id, true)
+            }
         }
 
 

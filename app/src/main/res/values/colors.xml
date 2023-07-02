@@ -10,6 +10,10 @@
 
     <color name="nameParent_color">#2196F3</color>
 
+    <color name="main_color">#03A9F4</color>
+    <color name="light_gray">#A2A4A5</color>
+    <color name="dark_gray">#727678</color>
+
     <color name="baby_blue">#E6F5FB</color>
     <color name="green">#46BF4B</color>
     <color name="red">#DD2417</color>

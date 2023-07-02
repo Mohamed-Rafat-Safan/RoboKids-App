@@ -7,24 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.graduationproject.robokidsapp.R
 import com.graduationproject.robokidsapp.data.model.ImageContent
-import com.graduationproject.robokidsapp.databinding.FragmentEducationalSectionBinding
 import com.graduationproject.robokidsapp.databinding.FragmentQuizSoundLittersBinding
-import com.graduationproject.robokidsapp.data.model.Images
-import com.graduationproject.robokidsapp.ui.MainActivity
+import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
-import com.graduationproject.robokidsapp.ui.kidsFragments.EducationalSectionFragmentDirections
 import com.graduationproject.robokidsapp.util.Resource
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import org.intellij.lang.annotations.Language
 
 @AndroidEntryPoint
 class QuizSoundLittersFragment : Fragment() {
@@ -40,6 +35,7 @@ class QuizSoundLittersFragment : Fragment() {
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var language:String
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
@@ -48,15 +44,13 @@ class QuizSoundLittersFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
-        MainActivity.connectBluetooth.led_on_off("v")
-
+        arduinoBluetooth.sendMessage("imageSoundQuiz-")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentQuizSoundLittersBinding.inflate(inflater, container, false)
 
@@ -69,6 +63,8 @@ class QuizSoundLittersFragment : Fragment() {
 
         binding.letter1.setOnClickListener {
             if(listSelectedImages[0].imageName == targetLetter.imageName){
+                arduinoBluetooth.sendMessage("correct-")  // send result to arduino bluetooth
+
                 binding.letter1.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -78,6 +74,8 @@ class QuizSoundLittersFragment : Fragment() {
                 binding.animationNext.playAnimation()
                 binding.tvNext.isEnabled = true
             }else{
+                arduinoBluetooth.sendMessage("inCorrect-")  // send result to arduino bluetooth
+
                 binding.letter1.setBackgroundResource(R.color.red)
                 binding.animationCorrect.visibility = View.GONE
                 binding.animationIncorrect.visibility = View.VISIBLE
@@ -87,6 +85,8 @@ class QuizSoundLittersFragment : Fragment() {
 
         binding.letter2.setOnClickListener {
             if(listSelectedImages[1].imageName == targetLetter.imageName){
+                arduinoBluetooth.sendMessage("correct-")  // send result to arduino bluetooth
+
                 binding.letter2.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -96,6 +96,8 @@ class QuizSoundLittersFragment : Fragment() {
                 binding.animationNext.playAnimation()
                 binding.tvNext.isEnabled = true
             }else{
+                arduinoBluetooth.sendMessage("inCorrect-")  // send result to arduino bluetooth
+
                 binding.letter2.setBackgroundResource(R.color.red)
                 binding.animationCorrect.visibility = View.GONE
                 binding.animationIncorrect.visibility = View.VISIBLE
@@ -105,6 +107,8 @@ class QuizSoundLittersFragment : Fragment() {
 
         binding.letter3.setOnClickListener {
             if(listSelectedImages[2].imageName == targetLetter.imageName){
+                arduinoBluetooth.sendMessage("correct-")  // send result to arduino bluetooth
+
                 binding.letter3.setBackgroundResource(R.color.green)
                 binding.animationCorrect.visibility = View.VISIBLE
                 binding.animationIncorrect.visibility = View.GONE
@@ -114,6 +118,8 @@ class QuizSoundLittersFragment : Fragment() {
                 binding.animationNext.playAnimation()
                 binding.tvNext.isEnabled = true
             }else{
+                arduinoBluetooth.sendMessage("inCorrect-")  // send result to arduino bluetooth
+
                 binding.letter3.setBackgroundResource(R.color.red)
                 binding.animationCorrect.visibility = View.GONE
                 binding.animationIncorrect.visibility = View.VISIBLE

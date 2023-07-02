@@ -139,7 +139,6 @@ class UpdateAccountFragment : Fragment() {
     fun getParentObj(): Parent {
         return Parent(
             name = binding.etParentsName.text.toString(),
-            profile_img = "",
             gender = gender,
             countryCode = countryCode,
             birth_date = binding.tvBirth.text.toString()
