@@ -74,7 +74,10 @@ class ContentEnterSplashFragment : Fragment() {
             delay(4000)
 
             val child = args.currentChild
-            val action = ContentEnterSplashFragmentDirections.actionContentEnterSplashFragmentToContentFragment(child)
+            val action =
+                ContentEnterSplashFragmentDirections.actionContentEnterSplashFragmentToContentFragment(
+                    child
+                )
             mNavController.navigate(action)
         }
     }
@@ -108,7 +111,12 @@ class ContentEnterSplashFragment : Fragment() {
                 }
                 Log.i("device", "" + device)
             }
-            return list[0]
+            if (list.size == 0) {
+                toast("HC-05 not found")
+                return null
+            } else {
+                return list[0]
+            }
         } else {
             toast("no paired bluetooth devices found")
             return null

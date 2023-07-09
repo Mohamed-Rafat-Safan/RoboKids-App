@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/mathQuiz1_exit"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_width="@dimen/_34sdp"
+        android:layout_height="@dimen/_34sdp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:src="@drawable/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,51 +31,51 @@
 
         <Button
             android:id="@+id/btn_0"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="0"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="1"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_2"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="2"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_3"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="3"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_4"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="4"
             android:layout_marginLeft="3dp"
@@ -84,35 +84,35 @@
             android:layout_marginBottom="3dp"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_5"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="5"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_6"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="6"
             android:background="#46C2CB"
             android:layout_marginBottom="3dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_7"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="7"
             android:layout_marginLeft="3dp"
@@ -120,48 +120,48 @@
             android:layout_marginBottom="3dp"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_8"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="8"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_9"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="9"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_muns"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="-"
             android:background="#46C2CB"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:layout_marginLeft="3dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"
             android:text="@string/del"
             android:background="#FD8A8A"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
     </GridLayout>
@@ -173,7 +173,7 @@
         android:layout_height="wrap_content"
         android:text="@string/checkAnswer"
         android:textAllCaps="false"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_16ssp"
         android:background="@drawable/bg_btn_math_quiz"
         android:textColor="@color/white"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -248,8 +248,8 @@
 
         <ImageView
             android:id="@+id/mathQuiz_image1"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
             android:src="@drawable/load" />
 
         <TextView
@@ -266,8 +266,8 @@
 
         <ImageView
             android:id="@+id/mathQuiz_image2"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
             android:src="@drawable/load"
             app:layout_constraintStart_toEndOf="@+id/gridLayout"
             app:layout_constraintTop_toTopOf="parent" />

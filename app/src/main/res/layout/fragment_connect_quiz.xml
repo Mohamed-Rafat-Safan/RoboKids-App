@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:background="@drawable/bg2_quiz"
-    android:padding="@dimen/_10sdp"
+    android:padding="@dimen/_8sdp"
     tools:context=".ui.kidsFragments.quizzes.ConnectQuizFragment">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/connect"
         android:textColor="#051468"
-        android:textSize="@dimen/_25ssp"
+        android:textSize="@dimen/_22ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lemon"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>

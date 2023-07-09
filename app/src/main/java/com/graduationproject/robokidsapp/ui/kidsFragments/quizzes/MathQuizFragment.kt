@@ -20,6 +20,7 @@ import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFrag
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hasInternetConnection
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -95,54 +96,58 @@ class MathQuizFragment : Fragment() {
             val answerText = binding.tvMathQuiz1Result.text
             if (answerText.isNotEmpty()) {
                 if (answerText.count { it == '-' } > 1 ||
-                    (answerText.contains("-") && (answerText.length == 1 || answerText.first() != '-')) ) {
+                    (answerText.contains("-") && (answerText.length == 1 || answerText.first() != '-'))) {
                     return@setOnClickListener
                 }
 
-                val answer:Int = answerText.trim().toString().toInt()
+                val answer: Int = answerText.trim().toString().toInt()
                 val operator = binding.tvOperator.text.trim().toString()
-                val result:Int
-                if (operator == "+"){
-                    result = listImage[counter-2].imageName.toInt() + listImage[counter-1].imageName.toInt()
-                }else{
-                    result = listImage[counter-2].imageName.toInt() - listImage[counter-1].imageName.toInt()
+                val result: Int
+                if (operator == "+") {
+                    result =
+                        listImage[counter - 2].imageName.toInt() + listImage[counter - 1].imageName.toInt()
+                } else {
+                    result =
+                        listImage[counter - 2].imageName.toInt() - listImage[counter - 1].imageName.toInt()
                 }
-                if (answer == result){
+                if (answer == result) {
                     arduinoBluetooth.sendMessage("correct-")  // send result to arduino bluetooth
-                    if(mediaPlayer.isPlaying){
+                    if (mediaPlayer.isPlaying) {
                         mediaPlayer.pause()
                         mediaPlayer.stop()
                         mediaPlayer.seekTo(0)
                     }
-                    mediaPlayer = MediaPlayer.create(requireContext() , R.raw.soundcorrect)
+                    mediaPlayer = MediaPlayer.create(requireContext(), R.raw.soundcorrect)
                     mediaPlayer.start()
                     numberTrue++
                     binding.numberTrue.text = numberTrue.toString()
-                    if (counter < 12){
+                    if (counter < 12) {
                         binding.tvMathQuiz1Result.text = ""
                         textNumber = ""
-                        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage1)
-                        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage2)
-                        binding.tvOperator.text = listOperator[(counter/2)-1]
+                        Glide.with(this).load(listImage[counter++].imageUrl)
+                            .into(binding.mathQuizImage1)
+                        Glide.with(this).load(listImage[counter++].imageUrl)
+                            .into(binding.mathQuizImage2)
+                        binding.tvOperator.text = listOperator[(counter / 2) - 1]
                     }
-                }else{
+                } else {
                     arduinoBluetooth.sendMessage("inCorrect-")  // send result to arduino bluetooth
-                    if(mediaPlayer.isPlaying){
+                    if (mediaPlayer.isPlaying) {
                         mediaPlayer.pause()
                         mediaPlayer.stop()
                         mediaPlayer.seekTo(0)
                     }
-                    mediaPlayer = MediaPlayer.create(requireContext() , R.raw.soundincorrect)
+                    mediaPlayer = MediaPlayer.create(requireContext(), R.raw.soundincorrect)
                     mediaPlayer.start()
                     numberFalse++
                     binding.numberFalse.text = numberFalse.toString()
-                    if(numberFalse == 5){
+                    if (numberFalse == 5) {
                         arduinoBluetooth.sendMessage("badResult-")
                         showBadDialog()
                     }
                 }
 
-                if (counter == listImage.size){
+                if (counter == listImage.size) {
                     arduinoBluetooth.sendMessage("goodResult-")
                     showGoodDialog()
                 }
@@ -189,11 +194,13 @@ class MathQuizFragment : Fragment() {
         listOperator.add("+")
         listOperator.add("-")
 
-        listImage.shuffle()
-        listOperator.shuffle()
-        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage1)
-        Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage2)
-        binding.tvOperator.text = listOperator[(counter / 2) - 1]
+        if (hasInternetConnection(requireContext())) {
+            listImage.shuffle()
+            listOperator.shuffle()
+            Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage1)
+            Glide.with(this).load(listImage[counter++].imageUrl).into(binding.mathQuizImage2)
+            binding.tvOperator.text = listOperator[(counter / 2) - 1]
+        }
     }
 
     private fun changeNumber(num: String) {

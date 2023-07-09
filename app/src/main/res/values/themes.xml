@@ -21,6 +21,7 @@
 
 <!--         hide scrollview stick from fragment-->
         <item name="android:scrollbarThumbVertical">@null</item>
+        <item name="android:scrollbarThumbHorizontal">@null</item>
 
 
     </style>

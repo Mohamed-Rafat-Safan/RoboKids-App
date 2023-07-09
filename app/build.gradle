@@ -47,7 +47,6 @@ android {
 //            buildPython "C:/Users/DELL/AppData/Local/Programs/Python/Python39/python.exe", "-3.9.9"
         }
 
-
     }
 
 

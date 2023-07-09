@@ -23,6 +23,7 @@ import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFrag
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentFragment
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentViewModel
 import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hasInternetConnection
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -125,35 +126,37 @@ class ConnectQuizFragment : Fragment() {
     }
 
     private fun disPlayData() {
-        listImage.shuffle()
-        val list:MutableList<ImageContent> = mutableListOf()
-        val listName:MutableList<String> = mutableListOf()
+        if(hasInternetConnection(requireContext())){
+            listImage.shuffle()
+            val list:MutableList<ImageContent> = mutableListOf()
+            val listName:MutableList<String> = mutableListOf()
 
-        for (i in 0..3){
-            list.add(listImage[i])
-            listName.add(listImage[i].imageName)
+            for (i in 0..3){
+                list.add(listImage[i])
+                listName.add(listImage[i].imageName)
+            }
+            listName.shuffle()
+            listName.shuffle()
+            Glide.with(this).load(list[0].imageUrl).into(binding.img1)
+            Glide.with(this).load(list[1].imageUrl).into(binding.img2)
+            Glide.with(this).load(list[2].imageUrl).into(binding.img3)
+            Glide.with(this).load(list[3].imageUrl).into(binding.img4)
+
+            binding.tvWord1.text = listName[0]
+            binding.tvWord2.text = listName[1]
+            binding.tvWord3.text = listName[2]
+            binding.tvWord4.text = listName[3]
+
+            binding.layout1.tag = ""+list[0].imageName
+            binding.layout2.tag = ""+list[1].imageName
+            binding.layout3.tag = ""+list[2].imageName
+            binding.layout4.tag = ""+list[3].imageName
+
+            binding.tvWord1.tag = ""+binding.tvWord1.text
+            binding.tvWord2.tag = ""+binding.tvWord2.text
+            binding.tvWord3.tag = ""+binding.tvWord3.text
+            binding.tvWord4.tag = ""+binding.tvWord4.text
         }
-        listName.shuffle()
-        listName.shuffle()
-        Glide.with(this).load(list[0].imageUrl).into(binding.img1)
-        Glide.with(this).load(list[1].imageUrl).into(binding.img2)
-        Glide.with(this).load(list[2].imageUrl).into(binding.img3)
-        Glide.with(this).load(list[3].imageUrl).into(binding.img4)
-
-        binding.tvWord1.text = listName[0]
-        binding.tvWord2.text = listName[1]
-        binding.tvWord3.text = listName[2]
-        binding.tvWord4.text = listName[3]
-
-        binding.layout1.tag = ""+list[0].imageName
-        binding.layout2.tag = ""+list[1].imageName
-        binding.layout3.tag = ""+list[2].imageName
-        binding.layout4.tag = ""+list[3].imageName
-
-        binding.tvWord1.tag = ""+binding.tvWord1.text
-        binding.tvWord2.tag = ""+binding.tvWord2.text
-        binding.tvWord3.tag = ""+binding.tvWord3.text
-        binding.tvWord4.tag = ""+binding.tvWord4.text
     }
 
     private fun observerGetImages() {
