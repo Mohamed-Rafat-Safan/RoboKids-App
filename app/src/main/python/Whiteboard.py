@@ -1,27 +1,23 @@
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
-from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
-from msrest.authentication import CognitiveServicesCredentials
-import os
-
-
 def convertImageToText(url):
-    subscription_key = "9d6e42eb7d5b497285552b371514f436"
-    endpoint = "https://mo-ezz-computer-vision.cognitiveservices.azure.com/"
-    computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    import socket
+    # create a socket object
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    read_response = computervision_client.read(url, raw=True)
-    read_operation_location = read_response.headers["Operation-Location"]
-    operation_id = read_operation_location.split("/")[-1]
-    while True:
-        read_result = computervision_client.get_read_result(operation_id)
-        if read_result.status.lower () not in ['notstarted', 'running']:
-            break
+    # get local machine name
+    host = '192.168.1.10'
+    port = 9999
 
-    imageText = ""
-    if read_result.status == OperationStatusCodes.succeeded:
-        for text_result in read_result.analyze_result.read_results:
-            for line in text_result.lines:
-                imageText +=  line.text
+    # connection to hostname on the port.
+    s.connect((host, port))
 
-    return imageText
+    # send a message to the server
+    message = url
+    s.send(message.encode('utf-8'))
+
+    # receive data from the server
+    data = s.recv(1024).decode('utf-8')
+
+    # close the connection
+    s.close()
+
+    return data

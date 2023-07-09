@@ -107,7 +107,7 @@ class WhiteboardAdapter(
             updateCountDownText()
             val bmp = WhiteboardFragment.binding.mCanvas.getBitmap()
 
-//            uploadImageAndGetText(bmp!!, imageContent)
+            uploadImageAndGetText(bmp!!, imageContent)
 
         }
     }
@@ -133,42 +133,46 @@ class WhiteboardAdapter(
                         Python.start(AndroidPlatform(context))
                     }
 
-                    val py = Python.getInstance()
-                    val module = py.getModule("Whiteboard")
-                    val imageText = module.callAttr("convertImageToText", url)
+                    try {
+                        val py = Python.getInstance()
+                        val module = py.getModule("Whiteboard")
+                        val imageText = module.callAttr("convertImageToText", "$url")
 
-                    val text: String = imageText.toString().trim()
+                        val text: String = imageText.toString().trim()
 
-                    if (imageContent.imageUrl == "") {
-                        if (text == imageContent.imageName) {
-                            Toast.makeText(
-                                context,
-                                "Incorrect: them: ${imageContent.imageName} || API: ${text}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            WhiteboardFragment.binding.animationWait.hide()
-                            WhiteboardFragment.binding.animationCorrect.show()
-                            WhiteboardFragment.binding.animationIncorrect.hide()
+                        if (imageContent.imageUrl == "") {
+                            if (text == imageContent.imageName) {
+                                Toast.makeText(
+                                    context,
+                                    "correct: select: ${imageContent.imageName} || AI: ${text}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                WhiteboardFragment.binding.animationWait.hide()
+                                WhiteboardFragment.binding.animationCorrect.show()
+                                WhiteboardFragment.binding.animationIncorrect.hide()
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Incorrect: select: ${imageContent.imageName} || AI: ${text}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                WhiteboardFragment.binding.animationWait.hide()
+                                WhiteboardFragment.binding.animationCorrect.hide()
+                                WhiteboardFragment.binding.animationIncorrect.show()
+                            }
                         } else {
-                            Toast.makeText(
-                                context,
-                                "Incorrect: them: ${imageContent.imageName} || API: ${text}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            WhiteboardFragment.binding.animationWait.hide()
-                            WhiteboardFragment.binding.animationCorrect.hide()
-                            WhiteboardFragment.binding.animationIncorrect.show()
+                            if (text.lowercase().trim() == imageContent.imageName.lowercase().trim()) {
+                                WhiteboardFragment.binding.animationWait.hide()
+                                WhiteboardFragment.binding.animationCorrect.show()
+                                WhiteboardFragment.binding.animationIncorrect.hide()
+                            } else {
+                                WhiteboardFragment.binding.animationWait.hide()
+                                WhiteboardFragment.binding.animationCorrect.hide()
+                                WhiteboardFragment.binding.animationIncorrect.show()
+                            }
                         }
-                    } else {
-                        if (text.lowercase().trim() == imageContent.imageName.lowercase().trim()) {
-                            WhiteboardFragment.binding.animationWait.hide()
-                            WhiteboardFragment.binding.animationCorrect.show()
-                            WhiteboardFragment.binding.animationIncorrect.hide()
-                        } else {
-                            WhiteboardFragment.binding.animationWait.hide()
-                            WhiteboardFragment.binding.animationCorrect.hide()
-                            WhiteboardFragment.binding.animationIncorrect.show()
-                        }
+                    }catch (e:Exception){
+                        Toast.makeText(context, ""+e.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

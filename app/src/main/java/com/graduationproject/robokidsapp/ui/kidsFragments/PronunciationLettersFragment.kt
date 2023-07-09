@@ -23,6 +23,8 @@ import com.graduationproject.robokidsapp.data.model.ImageContent
 import com.graduationproject.robokidsapp.databinding.FragmentPronunciationLettersBinding
 import com.graduationproject.robokidsapp.ui.kidsFragments.ContentEnterSplashFragment.Companion.arduinoBluetooth
 import com.graduationproject.robokidsapp.util.Resource
+import com.graduationproject.robokidsapp.util.hide
+import com.graduationproject.robokidsapp.util.show
 import com.graduationproject.robokidsapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -106,6 +108,8 @@ class PronunciationLettersFragment : Fragment() {
         }
 
         binding.pronunciationLettersPrevious.setOnClickListener {
+            binding.correctAnswer.hide()
+            binding.incorrectAnswer.hide()
             binding.pronunciationLettersNext.visibility = View.VISIBLE
             binding.pronunciationLettersEnableSpeaker.playAnimation()
             if (imageCounter > 0) {
@@ -119,6 +123,8 @@ class PronunciationLettersFragment : Fragment() {
         }
 
         binding.pronunciationLettersNext.setOnClickListener {
+            binding.correctAnswer.hide()
+            binding.incorrectAnswer.hide()
             binding.pronunciationLettersPrevious.visibility = View.VISIBLE
             binding.pronunciationLettersEnableSpeaker.playAnimation()
             if (imageCounter < listImages.size - 1) {
@@ -251,21 +257,46 @@ class PronunciationLettersFragment : Fragment() {
                 if (!Python.isStarted()) {
                     Python.start(AndroidPlatform(requireContext()))
                 }
-
                 val py = Python.getInstance()
-                val module = py.getModule("PronunciationLetters")
-                val soundText = module.callAttr("recognize_from_en_audio", getRecordingFilePath())
 
-                if (soundText.toString() == "error") {
-                    toast("sound error")
-                } else {
-                    toast("" + soundText)
+                try {
+                    if (contentType == "Arabic"){
+                        val module = py.getModule("ArabicPronunciationLetters")
+                        val soundText = module.callAttr("recognize_from_ar_audio", "${getRecordingFilePath()}")
+
+                        if (soundText.toString() == listImages[imageCounter].imageName) {
+                            toast(soundText.toString())
+                            binding.correctAnswer.show()
+                            binding.incorrectAnswer.hide()
+                        } else {
+                            toast(soundText.toString())
+                            binding.correctAnswer.hide()
+                            binding.incorrectAnswer.show()
+                        }
+                    }else{
+                        val module = py.getModule("EnglishPronunciationLetters")
+                        val soundText = module.callAttr("recognize_from_en_audio", "${getRecordingFilePath()}")
+
+                        if (soundText.toString().trim().lowercase() == listImages[imageCounter].imageName.trim().lowercase()) {
+                            toast(soundText.toString())
+                            binding.correctAnswer.show()
+                            binding.incorrectAnswer.hide()
+                        } else {
+                            toast(soundText.toString())
+                            binding.correctAnswer.hide()
+                            binding.incorrectAnswer.show()
+                        }
+                    }
+
+                }catch (e:Exception){
+                    toast(e.message)
                 }
 
             } else {
                 Toast.makeText(requireContext(), "No Recording", Toast.LENGTH_SHORT).show()
                 return
             }
+
 //            mediaPlayer!!.prepare()
 //            mediaPlayer!!.start()
 //            isPlaying = true
