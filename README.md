@@ -20,8 +20,7 @@ And the entertainment section inside the application is intended to satisfy the 
 as there is a section for movies, songs and games to entertain himself after studying.
 
 
-==> And the tools used within the application:
-
+==> And the tools used within the application:</br>
   - language: Kotlin </br>
   - Navigation component </br>
   - Coroutines </br>
