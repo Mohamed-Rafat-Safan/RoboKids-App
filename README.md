@@ -7,6 +7,7 @@ and we know how much time they spent in each of the educational and recreational
 And the children's section is divided into two parts, an educational section and an entertainment section.
 
 The educational section contains:
+
   1- Teaching pronunciation: where we take the sound of the letter or word from the child and analyze it using machine learning, 
   and we can say whether the child pronounced the letter correctly or not.
   
