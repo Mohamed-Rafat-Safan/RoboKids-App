@@ -22,11 +22,17 @@ as there is a section for movies, songs and games to entertain himself after stu
 
 ==> And the tools used within the application:
 
-  language: Kotlin - Navigation component - Coroutines -
-  dependency injection by (Dagger Hilt) - architectural pattern by (MVVM) - 
-  Firebase - Glide - lottie for animation - connect bluetooth of adruino -
-  Chacopy to connect the application with machine learning - 
-  multiple screen (sdp-ssp) .
+  - language: Kotlin </br>
+  - Navigation component </br>
+  - Coroutines </br>
+  - dependency injection by (Dagger Hilt) </br>
+  - architectural pattern by (MVVM) </br> 
+  - Firebase </br>
+  - Glide </br>
+  - lottie for animation </br>
+  - connect bluetooth of adruino </br>
+  - Chacopy to connect the application with machine learning </br> 
+  - multiple screen (sdp-ssp) 
 
 The banner of Prject:
 <p align="center">
