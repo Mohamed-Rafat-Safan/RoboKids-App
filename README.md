@@ -33,7 +33,7 @@ as there is a section for movies, songs and games to entertain himself after stu
   - Chacopy to connect the application with machine learning </br> 
   - multiple screen (sdp-ssp) 
 
-The banner of Prject:
+The banner of Project:
 <p align="center">
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/76782050/252927983-a3cacc2b-69ad-473a-9534-b88da7e0071b.png"  />
 </p>
