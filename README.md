@@ -31,7 +31,8 @@ as there is a section for movies, songs and games to entertain himself after stu
   - lottie for animation </br>
   - connect bluetooth of adruino </br>
   - Chacopy to connect the application with machine learning </br> 
-  - multiple screen (sdp-ssp) 
+  - multiple screen (sdp-ssp) </br>
+  - Machine Learning (Handwriting Recognition & Automatic Speech Recognition) </br>
 
 The banner of Project:
 <p align="center">
