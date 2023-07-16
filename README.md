@@ -34,6 +34,9 @@ as there is a section for movies, songs and games to entertain himself after stu
   - multiple screen (sdp-ssp) </br>
   - Machine Learning (Handwriting Recognition & Automatic Speech Recognition) </br>
 
+
+The Link vedio of project: https://www.youtube.com/watch?v=Nq-n1ue9nM4  
+
 The banner of Project:
 <p align="center">
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/76782050/252927983-a3cacc2b-69ad-473a-9534-b88da7e0071b.png"  />
