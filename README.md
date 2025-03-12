@@ -19,8 +19,21 @@ The educational section contains:
 And the entertainment section inside the application is intended to satisfy the child after studying, 
 as there is a section for movies, songs and games to entertain himself after studying.
 
+</br>
 
-==> And the tools used within the application:</br>
+## Project objectives: </br>
+
+- Smart board for learning to write (Al)
+- Learn pronunciation (Al)
+- Robot that the child interacts with and learns through (Hardware)
+- Determine the level of the child
+- Send reports to parents
+- Ease of learning
+- App supports Arabic and English
+
+</br> 
+
+## The tools used within the application: </br>
   - language: Kotlin </br>
   - Navigation component </br>
   - Coroutines </br>
@@ -34,15 +47,18 @@ as there is a section for movies, songs and games to entertain himself after stu
   - multiple screen (sdp-ssp) </br>
   - Machine Learning (Handwriting Recognition & Automatic Speech Recognition) </br>
 
+</br>
 
 The Link vedio of project: https://www.youtube.com/watch?v=Nq-n1ue9nM4  
 
-The banner of Project:
+</br>
+
+### The banner of Project:
 <p align="center">
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/76782050/252927983-a3cacc2b-69ad-473a-9534-b88da7e0071b.png"  />
 </p>
 
-Parents part:
+### Parents part:
 
 <p align="center">
 <img src="https://github.com/Mohamed-Rafat-Safan/RoboKids-App/assets/76782050/0d6e2c98-df03-4821-b2f0-ba38a88033f7"  />
@@ -52,7 +68,7 @@ Parents part:
 <img src="https://github.com/Mohamed-Rafat-Safan/RoboKids-App/assets/76782050/65a4523d-713d-4b14-bcca-9a47f844484d"  />
 </p>
 
-Children's part:
+### Children's part:
 
 <p align="center">
 <img src="https://github.com/Mohamed-Rafat-Safan/RoboKids-App/assets/76782050/b8cf94ba-3ad2-4f82-a00d-19583fa42b93"  />
@@ -62,7 +78,7 @@ Children's part:
 <img src="https://github.com/Mohamed-Rafat-Safan/RoboKids-App/assets/76782050/054aebc9-0266-492c-a645-5cddf52deb6f"  />
 </p>
 
-The Final Result Of Project: 
+### The Final Result Of Project: 
 
 <p align="center">
 <img src="https://github.com/Mohamed-Rafat-Safan/RoboKids-App/assets/76782050/d91843be-f519-4d98-a58e-8b0bf9bd56a5" width="250" height="350" />
